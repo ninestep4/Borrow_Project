@@ -29,7 +29,13 @@
         </div>
         
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="btlogin">ตกลง</button>
+            <button type="submit" class="btn btn-success btn-block" name="btlogin">ตกลง</button>
+          </div>
+          
+          <br>
+
+          <div class="col-12">
+            <a href="index.php?Node=reg"class="btn btn-warning btn-block" name="btregis">สมัครสมาชิก</a>
           </div>
           <!-- /.col -->
         </div>

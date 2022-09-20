@@ -4,23 +4,32 @@ include_once("condb.php");
 
 function  ViewContent($Node=""){
 if($Node==""){return "content_das.php";}
+else if($Node=="home"){return "home.php";}
 else if($Node=="pagelogin"){return "frmlogin.php";}
+else if($Node=="reg"){return "register.php";}
 else if($Node=="chk"){return "chklogin.php";}
 else if($Node=="lout"){return "logout.php";}
+else if($Node=="saveregis"){return "saveregis.php";}
 
+//ผู้ใช้ แอดมิน
 else if($Node=="showmem"){return "showmember.php";}
 else if($Node=="addmem"){return "addmember.php";}
+else if($Node=="editmem"){return "editmember.php";}
+else if($Node=="editpro"){return "editprofile.php";}
 
+//วัสดุ
 else if($Node=="smat"){return "showmat.php";}
 else if($Node=="amat"){return "addmat.php";}
 else if($Node=="emat"){return "editmat.php";}
 else if($Node=="stmat"){return "showtotalmat.php";}
 
-
+//การคำนวณวัสดุ
 else if($Node=="sdraw"){return "showdraw.php";}
 else if($Node=="drawmat"){return "draw_mat.php";}
 else if($Node=="hisdraw"){return "his_draw.php";}
 else if($Node=="managedraw"){return "manage_draw.php";}
+else if($Node=="managedraw"){return "manage_draw.php";} 
+else if($Node=="restoredraw") {return "restore_draw.php";}
 
 
 else {return "index.php";}

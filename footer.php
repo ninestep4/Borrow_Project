@@ -1,6 +1,5 @@
   <footer class="main-footer">
-    <strong>Copyright &copy; 2021 <a href="#">ระบบจัดการวัสดุออนไลน์</a>.</strong>
-    All rights reserved.
+    <strong><a href="#">ระบบจอง-ยืม-คืนวัสดุ ครุภัณฑ์ของคลีนิกผู้สูงอายุชุมชนบางตลาดพัฒนา 1 จังหวัดนนทบุรี</a></strong>
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
     </div>

@@ -18,7 +18,7 @@ move_uploaded_file($_FILES["mem_img"]["tmp_name"],"img/".$_FILES["mem_img"]["nam
 
 $sql="INSERT INTO member ";
 $sql.="(mem_id,mem_name,mem_img,mem_mobile,";
-$sql.="mem_user,mem_pass,mem_level,mem_dept)";
+$sql.="mem_user,mem_pass,mem_level)";
 $sql.=" VALUES ";
 $sql.=" ( ";
 $sql.=" '' ";
@@ -28,7 +28,6 @@ $sql.=" ,'$mem_mobile' ";
 $sql.=" ,'$mem_user' ";
 $sql.=" ,'$mem_pass' ";
 $sql.=" ,'$mem_level' ";
-$sql.=" ,'$mem_dept' ";
 $sql.=" ) ";
 
 $res=mysqli_query($con,$sql);

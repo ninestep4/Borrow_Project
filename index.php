@@ -11,5 +11,5 @@ include_once(ViewContent($Node));
 
 
 include_once("footer.php");
-?>
 
+?>
