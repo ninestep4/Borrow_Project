@@ -159,7 +159,7 @@ $sum_md5 += $row7['sum_md5'];
                   </div>
                   <div class="text-end pt-5">
                     <p class="text-sm mb-0 text-capitalize">จำนวนวัสดุทั้งหมด</p>
-                    <h4 class="mb-0"><?= $sum_md4; ?>ชิ้น</h4>
+                    <h4 class="mb-0"><?= $sum_md4; ?> ชิ้น</h4>
                   </div>
                 </div>
               </div>
@@ -177,7 +177,7 @@ $sum_md5 += $row7['sum_md5'];
                   </div>
                   <div class="text-end pt-5">
                     <p class="text-sm mb-0 text-capitalize">จำนวนครุภัณฑ์ทั้งหมด</p>
-                    <h4 class="mb-0"><?= $sum_md5; ?>ชิ้น</h4>
+                    <h4 class="mb-0"><?= $sum_md5; ?> ชิ้น</h4>
                   </div>
                 </div>
               </div>
@@ -196,7 +196,7 @@ $sum_md5 += $row7['sum_md5'];
                   </div>
                   <div class="text-end pt-5">
                     <p class="text-sm mb-0 text-capitalize">รายการรออนุมัติ</p>
-                    <h4 class="mb-0"><?= $sum_md1; ?>รายการ</h4>
+                    <h4 class="mb-0"><?= $sum_md1; ?> รายการ</h4>
                   </div>
                 </div>
               </div>
@@ -215,7 +215,7 @@ $sum_md5 += $row7['sum_md5'];
                   </div>
                   <div class="text-end pt-5">
                     <p class="text-sm mb-0 text-capitalize">รายการที่ผ่านการอนุมัติ</p>
-                    <h4 class="mb-0"><?= $sum_md2; ?>รายการ</h4>
+                    <h4 class="mb-0"><?= $sum_md2; ?> รายการ</h4>
                   </div>
                 </div>
               </div>
@@ -235,8 +235,7 @@ $sum_md5 += $row7['sum_md5'];
                   </div>
                   <div class="text-end pt-5">
                     <p class="text-sm mb-0 text-capitalize">รายการที่ไม่ผ่านการอนุมัติ</p>
-                    <h4 class="mb-0"><?= $sum_md4; ?>รายการ
-                  </h4>
+                    <h4 class="mb-0"><?= $sum_md4; ?> รายการ</h4>
                   </div>
                 </div>
               </div>
