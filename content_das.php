@@ -45,7 +45,7 @@ $row7 = mysqli_fetch_assoc($res7);
 $sum_md5 += $row7['sum_md5'];
 
 ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 
 
 <!-- Content Wrapper. Contains page content -->

@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 <center>
 <br><br>
 <div class="login-box">

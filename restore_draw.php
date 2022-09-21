@@ -10,7 +10,7 @@ if (isset($_GET['DID'])) {
 }
 
 ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
     <div class="col-md-12">

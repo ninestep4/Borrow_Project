@@ -14,7 +14,7 @@ if (isOnline()) {
 }
 
 ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 <!-- Main Sidebar Container -->
 
 
@@ -125,10 +125,16 @@ if (isOnline()) {
                         <li class="nav-item">
                             <a href="index.php?Node=showmem" class="nav-link">
                                 <i class="material-icons  ">people</i>
-                                <p>จัดการข้อมูลผู้ใช้งาน</p>
+                                <p>จัดการข้อมูลแอดมิน</p>
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="index.php?Node=showpeople" class="nav-link">
+                                <i class="material-icons  ">people</i>
+                                <p>จัดการข้อมูลผู้ใช้งาน</p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="index.php?Node=smat" class="nav-link">

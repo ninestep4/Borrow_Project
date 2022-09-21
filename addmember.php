@@ -36,7 +36,7 @@ exit;
 
 }
 ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 
 
 
@@ -51,7 +51,7 @@ exit;
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">เพิ่มผู้ใช้งาน</h3>
+              <h3 class="card-title">เพิ่มแอดมิน</h3>
             </div>
             <div class="card-body">
 

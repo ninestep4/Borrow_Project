@@ -12,7 +12,7 @@ if (isset($_GET['MEMID'])) {
     $mem_residence = $row['mem_residence'];
 }
 ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <?php
 if (isset($_POST['btsavemem'])) {

@@ -13,7 +13,7 @@ if (isset($_GET['MATID'])) {
   $met_mtype = $row['met_mtype'];
 }
 ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 <?php
 if (isset($_POST['btsave'])) {
   $met_id = $_POST['met_id'];

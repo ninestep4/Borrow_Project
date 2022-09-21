@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['btsave'])) {
   $met_name = $_POST['met_name'];
   $met_detail = $_POST['met_detail'];
@@ -32,7 +33,7 @@ if (isset($_POST['btsave'])) {
   exit;
 }
 ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 
 
 

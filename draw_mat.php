@@ -89,57 +89,59 @@ if (isset($_POST['btsave'])) {
 
                 <div class="form-group">
                   <div>
-                  <label for="inputName">จำนวนที่เบิก <font color="red">(กรุณาเบิกวัสดุไม่เกินที่มีในสต็อก)</font></label>
-
-                  <br>
-                  <!-- <p>วันที่ยืม</p>
-                  <input type="date" id="start" name="value" min="2022-01-01" max="2022-12-31" value="">
-                  <br>
-                   <p>วันที่คืน</p>
-                  <input type="date" id="value" name="end" min="2022-01-01" max="2022-12-31" value=""> -->
-                  <br>
+                    <label for="inputName">จำนวนที่เบิก <font color="red">(กรุณาเบิกวัสดุไม่เกินที่มีในสต็อก)</font></label>
                   </div>
-                  <select id="inputStatus" name="user_name" class="form-control custom-select" required="">
+
+                  <select type="name"id="inputStatus" name="people_name" class="form-control custom-select" required="">
                     <option selected disabled>เลือกชื่อผู้มายืม</option>
 
 
                     <?php
-                    $sql = "SELECT * FROM user";
+                    $sql = "SELECT * FROM people";
                     $res = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_assoc($res)) {
-                      $mtype_id = $row['user_id'];
-                      $mtype_name = $row['user_name'];
+                      $mtype_id = $row['people_id'];
+                      $mtype_name = $row['people_name'];
                     ?>
                       <option value="<?= $mtype_id; ?>"><?= $mtype_name; ?></option>
 
                     <?php } ?>
 
-                  </select>
-                  
+                  </select> 
+
+                 
+
+
+
+
                   <div>
 
 
                     <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
-                    <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
-                    <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
-                  </div>
-                  
-                </div>
-                <div>
+                    <div>
+                      <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
+                    </div>
+                    <div>
+                      <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
+                    </div>
 
+                  </div>
+                  <div>
+
+                  </div>
                 </div>
+                <!-- /.card-body -->
               </div>
-              <!-- /.card-body -->
+
+              <!-- /.card -->
             </div>
 
-            <!-- /.card -->
-          </div>
 
+            <div class="col-md-1">
+              <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave">
 
-          <div class="col-md-1">
-            <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave">
-
-          </div>
+            </div>
+      </center>
 
     </section>
 

@@ -35,6 +35,8 @@ $mtype_name=$row['mtype_name'];
 
 ?>
 
+<link rel="stylesheet" href="./dist/css/adminlte.css">
+
                     <tr>
                     <td><img src="<?=$met_img;?>" width="80"></td>
                     <td><?=$met_name;?></td>

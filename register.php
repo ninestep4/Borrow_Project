@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+<link rel="stylesheet" href="./dist/css/adminlte.css">
     <center>
         <div class="register-box">
             <div class="card card-outline card-primary">

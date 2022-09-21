@@ -1,9 +1,9 @@
 <?php
-if (isset($_GET['MEMID'])) {
-    $MEMID = $_GET['MEMID'];
-    $sql = "DELETE FROM member WHERE mem_id='$MEMID' ";
+if (isset($_GET['USERID'])) {
+    $MEMID = $_GET['USERID'];
+    $sql = "DELETE FROM user WHERE people_id='$USERID' ";
     $res = mysqli_query($con, $sql);
-    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showmem">';
+    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showuser">';
     exit;
 }
 
@@ -16,8 +16,8 @@ if (isset($_GET['MEMID'])) {
         <div class="card">
 
             <div class="card-header">
-                <h3 class="card-title">จัดการข้อมูลแอดมิน
-                    <a href="index.php?Node=addmem"> [เพิ่มแอดมิน] </a>
+                <h3 class="card-title">จัดการข้อมูลผู้ใช้งาน
+                    <a href="index.php?Node=addpeople"> [เพิ่มผู้ใช้งาน] </a>
                 </h3>
             </div>
 
@@ -25,14 +25,15 @@ if (isset($_GET['MEMID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>รูปภาพ</th>
+                            
                             <th>ชื่อ-สกุล</th>
-                            <th>เบอร์โทร</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>สิทธิ์การใช้งาน</th>
+                            <th>เพศ</th>
+                            <th>เบอร์โทร</th>                          
+                            <th>ที่อยู่</th>
+                            <th>เลขบัตรประชาชน</th>                   
                             <th>แก้ไขประวัติ</th>
                             <th>ลบข้อมูล</th>
+                            
                             
                         </tr>
                     </thead>
@@ -40,31 +41,32 @@ if (isset($_GET['MEMID'])) {
 
 
                         <?php
-                        $sql = "SELECT member.* FROM member";
+                        $sql = "SELECT people. * FROM people";
                         $res = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($res)) {
-                            $mem_name = $row['mem_name'];                           
-                            $mem_mobile = $row['mem_mobile'];
-                            $mem_user = $row['mem_user'];
-                            $mem_pass = $row['mem_pass'];
-                            $mem_level = $row['mem_level'];
+                                                       
+                            $people_name = $row['people_name'];
+                            $people_sex = $row['people_sex'];
+                            $people_address = $row['people_address'];
+                            $people_idcard = $row['people_idcard'];
+                            $people_number = $row['people_number'];
 
-                            
-
-                            if ($mem_level == '1') {
-                                $levelname = "ผู้ดูแลระบบ";
-                            } else if ($mem_level == '2') {
-                                $levelname = "ผู้ใช้งานทั่วไป";
-                            }
                         ?>
 
                         <tr>
-                            <td><img src="<?= $mem_img; ?>" width="80"></td>
-                            <td><?= $mem_name; ?></td>                           
-                            <td><?= $mem_mobile; ?></td>
-                            <td><?= $mem_user; ?></td>
-                            <td><?= $mem_pass; ?></td>
-                            <td><?= $levelname; ?></td>
+                            
+                            <td><?= $people_name; ?></td>
+                            <td><?= $people_sex; ?></td> 
+                            <td><?= $people_number; ?></td> 
+                            <td><?= $people_address; ?></td> 
+                            <td><?= $people_idcard; ?></td>
+                            
+                             
+                                                   
+                            
+                            
+                            
+                            
 
                             <td>
                             <a href="index.php?Node=editmem&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 

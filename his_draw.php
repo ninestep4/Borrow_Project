@@ -57,7 +57,7 @@ WHERE dr1.draw_userid_draw='$memid' order by dr1.draw_status ASC  ";
                             }
 
                         ?>
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
                             <tr>
                                 <td><img src="<?= $met_img; ?>" width="80"></td>
                                 <td><?= $met_name; ?></td>

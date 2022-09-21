@@ -9,7 +9,7 @@ if (isset($_GET['MATID'])) {
 
 ?>
 
-
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <div class="content-wrapper">
  
