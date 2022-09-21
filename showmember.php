@@ -9,7 +9,7 @@ if (isset($_GET['MEMID'])) {
 
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
-<div class="content-wrapper">
+<div class="content-wrapper " style="background: -webkit-linear-gradient(#7EDABF, #20ECEF);">
     <br>
     <div class="col-md-12">
 

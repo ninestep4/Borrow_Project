@@ -49,7 +49,8 @@ $sum_md5 += $row7['sum_md5'];
 
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+
+<div class="content-wrapper" style="background: -webkit-linear-gradient(#7EDABF, #7ED9DA);">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -247,6 +248,7 @@ $sum_md5 += $row7['sum_md5'];
           <!-- /.row -->
 
 
+          <center>
           <head>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript">
@@ -266,6 +268,7 @@ $sum_md5 += $row7['sum_md5'];
                 var options = {
                   title: 'สถานะการจัดการข้อมูลการเบิกวัสดุ',
                   is3D: true,
+                  backgroundColor: 'none',
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -274,10 +277,12 @@ $sum_md5 += $row7['sum_md5'];
             </script>
           </head>
 
-          <body>
-            <div id="piechart_3d" style="width: 800px; height: 400px;"></div>
-          </body>
 
+          <body style="font-family: Arial;border: 0 none;">
+            <div id="piechart_3d" style="width: 800px; height: 400px; ">
+            </div>
+          </body>
+          </center>
 
 
 
@@ -327,17 +332,15 @@ LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)";
                               <?= $met_total; ?>
                             </font>
                           </span>
-                        <?php } 
-                        else if ($met_total > 3 && $met_total <= 7) {
+                        <?php } else if ($met_total > 3 && $met_total <= 7) {
                         ?>
-                          <span class="badge" style="background-color:  #FFC300 ;" >
+                          <span class="badge" style="background-color:  #FFC300 ;">
                             <font size="5">
                               <?= $met_total; ?>
                             </font>
                           </span>
-                        <?php } 
-                        else{
-                          ?>
+                        <?php } else {
+                        ?>
                           <span class="badge bg-danger">
                             <font size="5">
                               <?= $met_total; ?>

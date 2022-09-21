@@ -24,7 +24,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: #7EDABF;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #7EDABF;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2773,28 +2773,28 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #7EDABF;
+  border-color: #7EDABF;
   box-shadow: none;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #7EDABF;
+  border-color: #7EDABF;
 }
 
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #7EDABF;
+  border-color: #7EDABF;
   box-shadow: 0 0 0 0 rgba(38, 143, 255, 0.5);
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #7EDABF;
+  border-color: #7EDABF;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
@@ -3076,14 +3076,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-  color: #007bff;
-  border-color: #007bff;
+  color: #7EDABF;
+  border-color: #7EDABF;
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #7EDABF;
+  border-color: #7EDABF;
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -3091,15 +3091,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-  color: #007bff;
+  color: #7EDABF;
   background-color: transparent;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #7EDABF;
+  border-color: #7EDABF;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -4041,8 +4041,8 @@ input[type="button"].btn-block {
 
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  border-color: #007bff;
-  background-color: #007bff;
+  border-color: #7EDABF;
+  background-color: #7EDABF;
   box-shadow: none;
 }
 
@@ -4109,8 +4109,8 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-  border-color: #007bff;
-  background-color: #007bff;
+  border-color: #7EDABF;
+  background-color: #7EDABF;
   box-shadow: none;
 }
 
@@ -5403,8 +5403,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #7EDABF;
+  border-color: #7EDABF;
 }
 
 .page-item.disabled .page-link {
@@ -27170,7 +27170,7 @@ body.text-sm .input-group-text {
 }
 
 .card-primary:not(.card-outline) > .card-header {
-  background-color: #007bff;
+  background-color: #7EDABF;
 }
 
 .card-primary:not(.card-outline) > .card-header,
@@ -27183,15 +27183,15 @@ body.text-sm .input-group-text {
 }
 
 .card-primary.card-outline {
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #7EDABF;
 }
 
 .card-primary.card-outline-tabs > .card-header a:hover {
-  border-top: 3px solid #dee2e6;
+  border-top: 3px solid #7EDABF;
 }
 
 .card-primary.card-outline-tabs > .card-header a.active {
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #7EDABF;
 }
 
 .bg-primary > .card-header .btn-tool,
@@ -27223,7 +27223,7 @@ body.text-sm .input-group-text {
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.hour:hover,
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.minute:hover,
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.second:hover {
-  background-color: #0067d6;
+  background-color: #7EDABF;
   color: #fff;
 }
 
@@ -27236,7 +27236,7 @@ body.text-sm .input-group-text {
 .card.bg-primary .bootstrap-datetimepicker-widget table td.active:hover,
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.active,
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.active:hover {
-  background-color: #3395ff;
+  background-color: #7EDABF;
   color: #fff;
 }
 
@@ -27404,7 +27404,7 @@ body.text-sm .input-group-text {
 }
 
 .card-info.card-outline-tabs > .card-header a.active {
-  border-top: 3px solid #17a2b8;
+  border-top: 3px solid #7EDABF;
 }
 
 .bg-info > .card-header .btn-tool,
@@ -29581,7 +29581,7 @@ html.maximized-card {
 }
 
 .dark-mode .card-primary:not(.card-outline) > .card-header {
-  background-color: #3f6791;
+  background-color: #7EDABF;
 }
 
 .dark-mode .card-primary:not(.card-outline) > .card-header,
@@ -29594,15 +29594,15 @@ html.maximized-card {
 }
 
 .dark-mode .card-primary.card-outline {
-  border-top: 3px solid #3f6791;
+  border-top: 3px solid #7EDABF;
 }
 
 .dark-mode .card-primary.card-outline-tabs > .card-header a:hover {
-  border-top: 3px solid #dee2e6;
+  border-top: 3px solid #7EDABF;
 }
 
 .dark-mode .card-primary.card-outline-tabs > .card-header a.active {
-  border-top: 3px solid #3f6791;
+  border-top: 3px solid #7EDABF;
 }
 
 .dark-mode .bg-primary > .card-header .btn-tool,
@@ -52415,4 +52415,30 @@ a.text-muted:hover {
 .dark-mode .dark-mode.accent-gray-dark .page-item .page-link:hover, .dark-mode .dark-mode.accent-gray-dark .page-item .page-link:focus {
   color: #3f474e;
 }
+
+
+
+/* adduser css */
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #f093fb;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+  }
+  
+  .card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  }
+  .card-registration .select-arrow {
+  top: 13px;
+  }
+  
+
 /*# sourceMappingURL=adminlte.css.map */
