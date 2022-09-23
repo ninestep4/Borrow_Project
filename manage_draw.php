@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['DID'])) {
     $DID = $_GET['DID'];
-    $today = date("d-m-Y H:i", strtotime("$today + 5 hours"));
+    $today = date("Y-m-d H:i", strtotime("$today + 5 hours"));
 
     $sql = "UPDATE meterdraw SET draw_userid_app='$memid',draw_date_app='$today',draw_status='1' WHERE draw_id='$DID' ";
     $res = mysqli_query($con, $sql);
@@ -10,7 +10,7 @@ if (isset($_GET['DID'])) {
 }
 
 ?>
-<link rel="stylesheet" href="./dist/css/adminlte.css">
+
 <div class="content-wrapper">
     <br>
     <div class="col-md-12">

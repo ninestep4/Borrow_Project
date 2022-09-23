@@ -9,7 +9,7 @@ if (isset($_GET['MEMID'])) {
 
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
-<div class="content-wrapper " style="background: -webkit-linear-gradient(#7EDABF, #20ECEF);">
+<div class="content-wrapper ">
     <br>
     <div class="col-md-12">
 
@@ -17,7 +17,7 @@ if (isset($_GET['MEMID'])) {
 
             <div class="card-header">
                 <h3 class="card-title">จัดการข้อมูลแอดมิน
-                    <a href="index.php?Node=addmem"> [เพิ่มแอดมิน] </a>
+                    <a href="index.php?Node=addmem" class="linkadd"> [เพิ่มแอดมิน] </a>
                 </h3>
             </div>
 
@@ -25,7 +25,7 @@ if (isset($_GET['MEMID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>รูปภาพ</th>
+                            
                             <th>ชื่อ-สกุล</th>
                             <th>เบอร์โทร</th>
                             <th>Username</th>
@@ -43,12 +43,16 @@ if (isset($_GET['MEMID'])) {
                         $sql = "SELECT member.* FROM member";
                         $res = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($res)) {
+                            $mem_id = $row['mem_id'];
                             $mem_name = $row['mem_name'];                           
                             $mem_mobile = $row['mem_mobile'];
                             $mem_user = $row['mem_user'];
                             $mem_pass = $row['mem_pass'];
                             $mem_level = $row['mem_level'];
-
+                            
+                            //$randNumber = rand();
+                            
+                        
                             
 
                             if ($mem_level == '1') {
@@ -59,7 +63,7 @@ if (isset($_GET['MEMID'])) {
                         ?>
 
                         <tr>
-                            <td><img src="<?= $mem_img; ?>" width="80"></td>
+                            
                             <td><?= $mem_name; ?></td>                           
                             <td><?= $mem_mobile; ?></td>
                             <td><?= $mem_user; ?></td>

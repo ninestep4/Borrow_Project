@@ -102,11 +102,12 @@ if (isOnline()) {
                         </li>  
                         
                         <li class="nav-item">
-                            <a href="index.php?Node=sdraw" class="nav-link">
+                            <a href="index.php?Node=showdrawdrb" class="nav-link">
                                 <i class="nav-icon far fa-circle text-success"></i>
                                 <p>ทำเรื่องยืมครุภัณฑ์</p>
                             </a>
                         </li> 
+
 
                         <div class="info">
                                 <a class="d-block"> เมนูแอดมิน</a>
@@ -144,11 +145,25 @@ if (isOnline()) {
                         </li>
 
                         <li class="nav-item">
+                            <a href="index.php?Node=showdurable" class="nav-link">
+                                <i class="material-icons ">assignment</i>
+                                <p>จัดการข้อมูลครุภัณฑ์</p>
+                            </a> -->
+                        </li>
+
+                        <li class="nav-item">
                             <a href="index.php?Node=managedraw" class="nav-link">
                                 <i class="material-icons ">check</i>
                                 <p>จัดการข้อมูลการยืมวัสดุ</p>
                             </a>
                         </li>
+
+                        <!-- <li class="nav-item">
+                            <a href="index.php?Node=managedraw" class="nav-link">
+                                <i class="material-icons ">check</i>
+                                <p>จัดการข้อมูลการครุภัณฑ์</p>
+                            </a>
+                        </li> -->
 
                         <li class="nav-item">
                             <a href="index.php?Node=restoredraw" class="nav-link">
@@ -158,7 +173,7 @@ if (isOnline()) {
                         </li>
 
                         <li class="nav-item">
-                            <a href="index.php?Node=stmat" class="nav-link">
+                            <a href="index.php?Node=search" class="nav-link">
                                 <i class="material-icons">search</i>
                                 <p>รายงานวัสดุคงเหลือ</p>
                             </a>

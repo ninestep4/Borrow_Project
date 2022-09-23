@@ -18,12 +18,21 @@ else if($Node=="addmem"){return "addmember.php";}
 else if($Node=="editmem"){return "editmember.php";}
 else if($Node=="editpro"){return "editprofile.php";}
 else if($Node=="addpeople"){return "addpeople.php";}
+else if($Node=="search"){return "search.php";}
 
 //วัสดุ
 else if($Node=="smat"){return "showmat.php";}
 else if($Node=="amat"){return "addmat.php";}
 else if($Node=="emat"){return "editmat.php";}
 else if($Node=="stmat"){return "showtotalmat.php";}
+
+
+//ครุภัณณฑ์
+else if($Node=="showdurable"){return "showdurable.php";}
+else if($Node=="showdrawdrb"){return "showdrawdurable.php";}
+
+
+
 
 //การคำนวณวัสดุ
 else if($Node=="sdraw"){return "showdraw.php";}

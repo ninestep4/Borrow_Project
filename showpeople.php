@@ -1,9 +1,9 @@
 <?php
-if (isset($_GET['USERID'])) {
-    $MEMID = $_GET['USERID'];
-    $sql = "DELETE FROM user WHERE people_id='$USERID' ";
+if (isset($_GET['PEOPLEID'])) {
+    $PEOPLEID = $_GET['PEOPLEID'];
+    $sql = "DELETE FROM people WHERE people_id='$PEOPLEID' ";
     $res = mysqli_query($con, $sql);
-    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showuser">';
+    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showpeople">';
     exit;
 }
 
@@ -25,16 +25,16 @@ if (isset($_GET['USERID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            
+
                             <th>ชื่อ-สกุล</th>
                             <th>เพศ</th>
-                            <th>เบอร์โทร</th>                          
+                            <th>เบอร์โทร</th>
                             <th>ที่อยู่</th>
-                            <th>เลขบัตรประชาชน</th>                   
+                            <th>เลขบัตรประชาชน</th>
                             <th>แก้ไขประวัติ</th>
                             <th>ลบข้อมูล</th>
-                            
-                            
+
+
                         </tr>
                     </thead>
                     <tbody>
@@ -44,7 +44,7 @@ if (isset($_GET['USERID'])) {
                         $sql = "SELECT people. * FROM people";
                         $res = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($res)) {
-                                                       
+                            $people_id = $row['people_id'];
                             $people_name = $row['people_name'];
                             $people_sex = $row['people_sex'];
                             $people_address = $row['people_address'];
@@ -53,36 +53,39 @@ if (isset($_GET['USERID'])) {
 
                         ?>
 
-                        <tr>
-                            
-                            <td><?= $people_name; ?></td>
-                            <td><?= $people_sex; ?></td> 
-                            <td><?= $people_number; ?></td> 
-                            <td><?= $people_address; ?></td> 
-                            <td><?= $people_idcard; ?></td>
-                            
-                             
-                                                   
-                            
-                            
-                            
-                            
+                            <tr>
 
-                            <td>
-                            <a href="index.php?Node=editmem&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
-                            onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข 
-                            </a>
-                            </td>
+                                <td><?= $people_name; ?></td>
+                                <td><?= $people_sex; ?></td>
+                                <td><?= $people_number; ?></td>
+                                <td><?= $people_address; ?></td>
+                                <td><?= $people_idcard; ?></td>
 
 
-                            <td>
-                            <a href="index.php?Node=showmem&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-danger" 
-                            onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ 
-                            </a>
-                            </td>
 
-                            
-                        </tr>
+
+
+
+
+
+                                <td>
+                                    <a href="index.php?Node=editpeople&PEOPLEID=<?= $people_id; ?>" type="button" class="btn btn-warning" onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข
+                                    </a>
+                                </td>
+
+                                <!-- <td>
+                                    <span class="badge bg-danger">
+                                        <a href="index.php?Node=showpeople&PEOPLEID=<?= $people_id; ?>" onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ</a>
+                                    </span>
+                                </td> -->
+
+                                <td>
+                                    <a href="index.php?Node=showpeople&PEOPLEID=<?= $people_id; ?>" type="button" class="btn btn-danger" onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ
+                                    </a>
+                                </td> 
+
+
+                            </tr>
                         <?php } ?>
 
                     </tbody>
