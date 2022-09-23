@@ -47,11 +47,12 @@ if (isset($_POST['btsave'])) {
 
 
 
-  $sql3 = "INSERT INTO meterdraw (draw_id,draw_date,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow) VALUES ('','$draw_date','$draw_num','$met_id','$memid','','','0','$D_Post','$D_Postend')";
+  $sql3 = "INSERT INTO meterdraw (draw_id,draw_date,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name) VALUES ('','$draw_date','$draw_num','$met_id','$people_id','','','0','$D_Post','$D_Postend','$people_name')";
 
   $res3 = mysqli_query($con, $sql3);
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=hisdraw">';
-  exit;
+
+
 }
 
 
@@ -100,10 +101,10 @@ if (isset($_POST['btsave'])) {
                     $sql = "SELECT * FROM people";
                     $res = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_assoc($res)) {
-                      $mtype_id = $row['people_id'];
-                      $mtype_name = $row['people_name'];
+                      $people_id = $row['people_id'];
+                      $people_name = $row['people_name'];
                     ?>
-                      <option value="<?= $mtype_id; ?>"><?= $mtype_name; ?></option>
+                      <option value="<?= $people_id; ?>"><?= $people_name; ?></option>
 
                     <?php } ?>
 

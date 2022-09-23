@@ -6,7 +6,6 @@ $mem_user=$_POST['mem_user'];
 $mem_pass=$_POST['mem_pass'];
 $mem_dept=$_POST['mem_dept'];
 $mem_level=$_POST['mem_level'];
-
 $chk_pic=$_FILES['mem_img']["name"];
 if($chk_pic<>""){
 move_uploaded_file($_FILES["mem_img"]["tmp_name"],"img/".$_FILES["mem_img"]["name"]);
@@ -36,9 +35,8 @@ exit;
 
 }
 ?>
+
 <link rel="stylesheet" href="./dist/css/adminlte.css">
-
-
 
 <div class="content-wrapper">
 	<br>
@@ -47,13 +45,14 @@ exit;
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">เพิ่มแอดมิน</h3>
-            </div>
+    <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
             <div class="card-body">
+
+            <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">เพิ่มแอดมิน</h3>
 
               <div class="form-group">
                 <label for="inputName">ชื่อ-สกุล</label>
@@ -109,6 +108,12 @@ $dept_name=$row['dept_name'];
                 <input type="file" name="mem_img" id="inputName" class="form-control" required="">
               </div>
 
+              <div class="row">
+        <div class="col-12">
+        <input type="submit" value="บันทึกรายการ" class="btn btn-success float-right" name="btsave">
+        </div>
+      </div>
+
 
             </div>
             <!-- /.card-body -->
@@ -116,11 +121,7 @@ $dept_name=$row['dept_name'];
           <!-- /.card -->
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-        <input type="submit" value="บันทึกรายการ" class="btn btn-success float-right" name="btsave">
-        </div>
-      </div>
+</div>
       <br>
     </section>
     <!-- /.content -->

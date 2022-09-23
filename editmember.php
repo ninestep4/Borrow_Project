@@ -1,5 +1,5 @@
 <?php
-include_once("lib/condb.php");
+include_once "lib/condb.php";
 if (isset($_GET['MEMID'])) {
     $MEMID = $_GET['MEMID'];
 
@@ -42,48 +42,61 @@ if (isset($_POST['btsavemem'])) {
 
         <!-- Main content -->
         <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">แก้ไขข้อมูลผู้ใช้</h3>
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-lg-9 col-xl-7">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <div class="card-body p-4 p-md-5">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title">แก้ไขข้อมูลผู้ใช้</h3>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <input type="hidden" name="mem_id" value="<?=$mem_id;?>">
+
+
+                                                <div class="form-group">
+                                                    <label for="inputName">ชื่อ-นามสกุล</label>
+                                                    <input type="text" name="mem_name" id="inputName"
+                                                        class="form-control" required="" value="<?=$mem_name;?>">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputName">เบอร์โทรศัพท์</label>
+                                                    <input type="text" name="mem_mobile" id="inputName"
+                                                        class="form-control" required="" value="<?=$mem_mobile;?>">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputName">ที่อยู่อาศัย</label>
+                                                    <input type="text" name="mem_residence" id="inputName"
+                                                        class="form-control" required="" value="<?=$mem_residence;?>">
+                                                </div>
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="submit" value="บันทึกรายการ" class="btn btn-success float-right"
+                                            name="btsavemem">
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
                         </div>
-                        <div class="card-body">
-
-                            <input type="hidden" name="mem_id" value="<?= $mem_id; ?>">
-
-
-                            <div class="form-group">
-                                <label for="inputName">ชื่อ-นามสกุล</label>
-                                <input type="text" name="mem_name" id="inputName" class="form-control" required="" value="<?= $mem_name; ?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputName">เบอร์โทรศัพท์</label>
-                                <input type="text" name="mem_mobile" id="inputName" class="form-control" required="" value="<?= $mem_mobile; ?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputName">ที่อยู่อาศัย</label>
-                                <input type="text" name="mem_residence" id="inputName" class="form-control" required="" value="<?= $mem_residence; ?>">
-                            </div>
-
-                        </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <input type="submit" value="บันทึกรายการ" class="btn btn-success float-right" name="btsavemem">
-                </div>
-            </div>
-            <br>
         </section>
         <!-- /.content -->
 
     </form>
-
 
 </div>

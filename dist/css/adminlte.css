@@ -10,7 +10,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -35422,6 +35422,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  border-radius: 15px;
 }
 
 .login-box,
@@ -35445,9 +35446,11 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 .login-card-body,
 .register-card-body {
   background-color: #fff;
+  border-radius: 15px;
   border-top: 0;
   color: #666;
   padding: 20px;
+  
 }
 
 .login-card-body .input-group .form-control,
@@ -52440,9 +52443,17 @@ a.text-muted:hover {
   top: 13px;
   }
 
-  #pictures {
-    background: -webkit-linear-gradient(to bottom right,#7EDABF, #7ED9DA);
-  }
-  
+  .btn-search {
+    width: 120px;
+    height: 40px;
+    background: chocolate;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /*# sourceMappingURL=adminlte.css.map */

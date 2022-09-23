@@ -12,7 +12,6 @@ if (isset($_GET['MATID'])) {
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <div class="content-wrapper">
-  
  
   <br>
   <div class="col-md-12">
@@ -20,8 +19,8 @@ if (isset($_GET['MATID'])) {
     <div class="card">
 
       <div class="card-header">
-        <h3 class="card-title">จัดการข้อมูลวัสดุ
-          <a href="index.php?Node=amat"> [เพิ่มวัสดุ] </a>
+        <h3 class="card-title">จัดการข้อมูลครุภัณฑ์
+          <a href="index.php?Node=amat"> [เพิ่มครุภัณฑ์] </a>
         </h3>
       </div>
 
@@ -42,7 +41,7 @@ if (isset($_GET['MATID'])) {
           <tbody>
             <?php
             $sql = "SELECT meter.*,metertype.* FROM meter
-LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE (meter.met_mtype='1')";
+LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE (meter.met_mtype='2')";
             $res = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_assoc($res)) {
               $met_id = $row['met_id'];

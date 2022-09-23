@@ -89,7 +89,7 @@ $sum_md5 += $row7['sum_md5'];
           <center>
 
             <body onload="javascript:slideImage();">
-              <img id="imgeslide" src="bgimg/home.jpg" width="1920*1080">
+              <img id="imgeslide" src="bgimg/home.jpg">
               <script>
                 var i = 0;
 

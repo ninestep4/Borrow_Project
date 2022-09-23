@@ -8,7 +8,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="card">
-    <div class="card-body login-card-body">
+    <div class="card-body ">
       <p class="login-box-msg">กรุณากรอกข้อมูลให้ถูกต้อง</p>
 
       <form action="index.php?Node=chk" method="POST">

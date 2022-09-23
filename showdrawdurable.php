@@ -24,7 +24,7 @@
                     <tbody>
                         <?php
                         $sql = "SELECT meter.*,metertype.* FROM meter
-                      LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE meter.met_total>='1'AND (meter.met_mtype='1') ";
+                      LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE meter.met_total>='1'AND (meter.met_mtype='2') ";
                         $res = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($res)) {
                             $met_id = $row['met_id'];
