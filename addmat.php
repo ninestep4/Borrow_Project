@@ -44,15 +44,13 @@ if (isset($_POST['btsave'])) {
 
     <!-- Main content -->
     <section class="content">
-    <div class="container py-5 h-100">
-    <div class="row justify-content-center align-items-center h-100">
-      <div class="col-12 col-lg-9 col-xl-7">
-        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">เพิ่มข้อมูลวัสดุ</h3>
+            </div>
             <div class="card-body">
-
-            <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">เพิ่มข้อมูลวัสดุ</h3>
-        
 
               <div class="form-group">
                 <label for="inputName">ชื่อวัสดุ</label>
@@ -97,20 +95,17 @@ if (isset($_POST['btsave'])) {
               </div>
 
 
-              <div class="row">
-        <div class="col-12">
-          <input type="submit" value="บันทึกรายการ" class="btn btn-success float-right" name="btsave">
-        </div>
-      </div>
-
-
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
       </div>
-      
+      <div class="row">
+        <div class="col-12">
+          <input type="submit" value="บันทึกรายการ" class="btn btn-success float-right" name="btsave">
+        </div>
+      </div>
       <br>
     </section>
     <!-- /.content -->

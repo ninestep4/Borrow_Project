@@ -102,7 +102,7 @@ if (isOnline()) {
                         </li>  
                         
                         <li class="nav-item">
-                            <a href="index.php?Node=sdraw" class="nav-link">
+                            <a href="index.php?Node=showdrawdrb" class="nav-link">
                                 <i class="nav-icon far fa-circle text-success"></i>
                                 <p>ทำเรื่องยืมครุภัณฑ์</p>
                             </a>
@@ -148,7 +148,7 @@ if (isOnline()) {
                             <a href="index.php?Node=showdurable" class="nav-link">
                                 <i class="material-icons ">assignment</i>
                                 <p>จัดการข้อมูลครุภัณฑ์</p>
-                            </a>
+                            </a> -->
                         </li>
 
                         <li class="nav-item">
@@ -158,12 +158,12 @@ if (isOnline()) {
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="index.php?Node=managedraw" class="nav-link">
                                 <i class="material-icons ">check</i>
                                 <p>จัดการข้อมูลการครุภัณฑ์</p>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a href="index.php?Node=restoredraw" class="nav-link">

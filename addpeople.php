@@ -1,3 +1,43 @@
+<?php
+if(isset($_POST['btsave'])){
+$mem_name=$_POST['mem_name'];
+$mem_mobile=$_POST['mem_mobile'];
+$mem_user=$_POST['mem_user'];
+$mem_pass=$_POST['mem_pass'];
+$mem_dept=$_POST['mem_dept'];
+$mem_level=$_POST['mem_level'];
+
+$chk_pic=$_FILES['mem_img']["name"];
+if($chk_pic<>""){
+move_uploaded_file($_FILES["mem_img"]["tmp_name"],"img/".$_FILES["mem_img"]["name"]);
+    $mem_img="img/".$_FILES["mem_img"]["name"];
+}else{
+    $mem_img='';
+}
+
+$randNumber = rand();
+
+$sql="INSERT INTO member ";
+$sql.="(mem_id,mem_name,mem_img,mem_mobile,";
+$sql.="mem_user,mem_pass,mem_level)";
+$sql.=" VALUES ";
+$sql.=" ( ";
+$sql.=" '' ";
+$sql.=" ,'$mem_name' ";
+$sql.=" ,'$mem_img' ";
+$sql.=" ,'$mem_mobile' ";
+$sql.=" ,'$mem_user' ";
+$sql.=" ,'$mem_pass' ";
+$sql.=" ,'$mem_level' ";
+$sql.=" ) ";
+
+$res=mysqli_query($con,$sql);
+echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showmem">';
+exit;
+
+}
+?>
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <section class="vh-100 gradient-custom">
   <div class="content-wrapper">
