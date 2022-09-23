@@ -21,7 +21,7 @@
 
   <!-- CSS Files -->
   <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
-//////
+
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
   $( function() {
     $( "#datepicker" ).datepicker();
     $( "#datepickerend" ).datepicker();
-  } );vbnm,./
+  } );
   </script> -->
 
 
