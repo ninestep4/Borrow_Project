@@ -53,7 +53,7 @@ if (isset($_POST['btsavemem'])) {
                                             <div class="card-header">
                                                 <h3 class="card-title">แก้ไขข้อมูลผู้ใช้</h3>
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body">q
 
                                                 <input type="hidden" name="mem_id" value="<?=$mem_id;?>">
 
@@ -89,14 +89,13 @@ if (isset($_POST['btsavemem'])) {
                                     </div>
                                 </div>
                                 <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
         <!-- /.content -->
 
     </form>
-
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
