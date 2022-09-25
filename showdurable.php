@@ -27,7 +27,8 @@ if (isset($_GET['MATID'])) {
           </div>
           <div class="col-sm-4">
             <form align=right class="form-group my-3" method="POST">
-              <input type="text" placeholder="กรอกชื่อครุภัณฑ์ที่ต้องการค้นหา" class="" name="material_name" size="25"></input> <input type="submit" value="ค้นหา" class="btn btn-primary btn_custom" onclick="search()">
+              <input type="text" placeholder="กรอกชื่อครุภัณฑ์ที่ต้องการค้นหา" class="" name="material_name" size="25"></input> 
+              <input type="submit" value="ค้นหา" class=" btn-primary " onclick="search()">
             </form>
           </div>
         </div>

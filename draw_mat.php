@@ -71,10 +71,12 @@ if (isset($_POST['btsave'])) {
 
     <section class="content">
       <center>
-        <div class="row: center;">
-          <div class="col-md-8">
-            <div class="card card-primary">
-              <div class="card-header">
+      <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+        
                 <h3 class="card-title">เบิกข้อมูลวัสดุ</h3>
               </div>
               <div class="card-body">

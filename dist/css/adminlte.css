@@ -52424,13 +52424,13 @@ a.text-muted:hover {
 /* adduser css */
 .gradient-custom {
   /* fallback for old browsers */
-  background: #f093fb;
+  background: #7EDABF;
   
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgb(42, 247, 235));
+  background: -webkit-linear-gradient(to bottom right, #7EDABF, #7ED9DA);
   
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgb(42, 247, 235))
+  background: linear-gradient(to bottom right, #7EDABF, #7ED9DA)
   }
   
   .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -52448,5 +52448,10 @@ a.text-muted:hover {
     border: solid 1px #67C94A;
     color: #195008;
 }
+
+.down{
+  top: 100px;
+}
+
 
 /*# sourceMappingURL=adminlte.css.map */
