@@ -1,35 +1,38 @@
 <?php
 include_once "lib/condb.php";
-if (isset($_GET['MEMID'])) {
-    $MEMID = $_GET['MEMID'];
+if (isset($_GET['PEOPLEID'])) {
+    $PEOPLEID = $_GET['PEOPLEID'];
 
-    $sql = "SELECT * FROM member WHERE mem_id='$MEMID' ";
+    $sql = "SELECT * FROM people WHERE people_id='$PEOPLEID' ";
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_assoc($res);
-    $mem_id = $row['mem_id'];
-    $mem_name = $row['mem_name'];
-    $mem_mobile = $row['mem_mobile'];
-    $mem_residence = $row['mem_residence'];
+    $people_id = $row['people_id'];
+    $people_name = $row['people_name'];
+    $people_number = $row['people_number'];
+    $people_address = $row['people_address'];
+    $people_idcard = $row['people_idcard'];
 }
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <?php
-if (isset($_POST['btsavemem'])) {
-    $mem_id = $_POST['mem_id'];
-    $mem_name = $_POST['mem_name'];
-    $mem_mobile = $_POST['mem_mobile'];
-    $mem_residence = $_POST['mem_residence'];
+if (isset($_POST['btsavepeople'])) {
+    $people_id = $_POST['people_id'];
+    $people_name = $_POST['people_name'];
+    $people_number = $_POST['people_number'];
+    $people_address = $_POST['people_address'];
+    $people_idcard = $_POST['people_idcard'];
 
-    $sql = "UPDATE member SET ";
-    $sql .= " mem_name='$mem_name' ";
-    $sql .= " ,mem_mobile='$mem_mobile' ";
-    $sql .= " ,mem_residence='$mem_residence' ";
+    $sql = "UPDATE people SET ";
+    $sql .= " people_name='$people_name' ";
+    $sql .= " ,people_number='$people_number' ";
+    $sql .= " ,people_address='$people_address' ";
+    $sql .= " ,people_idcard='$people_idcard' ";
 
-    $sql .= " WHERE mem_id='$mem_id' ";
+    $sql .= " WHERE people_id='$people_id' ";
 
     $res = mysqli_query($con, $sql);
-    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showmem">';
+    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showpeople">';
     exit;
 }
 
@@ -38,7 +41,7 @@ if (isset($_POST['btsavemem'])) {
 <div class="content-wrapper">
     <br>
 
-    <form action="index.php?Node=editmem" method="POST" enctype="multipart/form-data">
+    <form action="index.php?Node=editpeople" method="POST" enctype="multipart/form-data">
 
         <!-- Main content -->
         <section class="content">
@@ -55,25 +58,31 @@ if (isset($_POST['btsavemem'])) {
                                             </div>
                                             <div class="card-body">q
 
-                                                <input type="hidden" name="mem_id" value="<?=$mem_id;?>">
+                                                <input type="hidden" name="people_id" value="<?=$people_id;?>">
 
 
                                                 <div class="form-group">
                                                     <label for="inputName">ชื่อ-นามสกุล</label>
-                                                    <input type="text" name="mem_name" id="inputName"
-                                                        class="form-control" required="" value="<?=$mem_name;?>">
+                                                    <input type="text" name="people_name" id="inputName"
+                                                        class="form-control" required="" value="<?=$people_name;?>">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="inputName">เบอร์โทรศัพท์</label>
-                                                    <input type="text" name="mem_mobile" id="inputName"
-                                                        class="form-control" required="" value="<?=$mem_mobile;?>">
+                                                    <input type="text" name="people_number" id="inputName"
+                                                        class="form-control" required="" value="<?=$people_number;?>">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="inputName">ที่อยู่อาศัย</label>
-                                                    <input type="text" name="mem_residence" id="inputName"
-                                                        class="form-control" required="" value="<?=$mem_residence;?>">
+                                                    <input type="text" name="people_address" id="inputName"
+                                                        class="form-control" required="" value="<?=$people_address;?>">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputName">เลขบัตรประชาชน</label>
+                                                    <input type="text" name="people_idcard" id="inputName"
+                                                        class="form-control" required="" value="<?=$people_idcard;?>">
                                                 </div>
 
                                             </div>
@@ -85,7 +94,7 @@ if (isset($_POST['btsavemem'])) {
                                 <div class="row">
                                     <div class="col-12">
                                         <input type="submit" value="บันทึกรายการ" class="btn btn-success float-right"
-                                            name="btsavemem">
+                                            name="btsavepeople">
                                     </div>
                                 </div>
                                 <br>

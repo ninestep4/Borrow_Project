@@ -19,6 +19,7 @@ else if($Node=="editmem"){return "editmember.php";}
 else if($Node=="editpro"){return "editprofile.php";}
 else if($Node=="addpeople"){return "addpeople.php";}
 else if($Node=="search"){return "search.php";}
+else if($Node=="editpeople"){return "editpeople.php";}
 
 //วัสดุ
 else if($Node=="smat"){return "showmat.php";}

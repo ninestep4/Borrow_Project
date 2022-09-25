@@ -52443,10 +52443,17 @@ a.text-muted:hover {
   top: 13px;
   }
 
-  .btn_custom {
-    background-color: #96D283;
-    border: solid 1px #67C94A;
-    color: #195008;
+  .btn-search {
+    width: 120px;
+    height: 40px;
+    background: chocolate;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .down{
