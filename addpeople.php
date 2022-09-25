@@ -20,7 +20,7 @@
                   <div class="col-md-6 mb-4 d-flex align-items-center">
                     <div class="form-outline datepicker w-100">
                       <input type="text" class="form-control form-control-lg" id="birthdayDate" />
-                      <label for="birthdayDate" class="form-label">เบอร์โทรศัพท์</label>
+                      <label for="phonenumber" class="form-label">เบอร์โทรศัพท์</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">

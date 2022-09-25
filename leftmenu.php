@@ -102,7 +102,7 @@ if (isOnline()) {
                         </li>  
                         
                         <li class="nav-item">
-                            <a href="index.php?Node=sdraw" class="nav-link">
+                            <a href="index.php?Node=showdrawdrb" class="nav-link">
                                 <i class="nav-icon far fa-circle text-success"></i>
                                 <p>ทำเรื่องยืมครุภัณฑ์</p>
                             </a>

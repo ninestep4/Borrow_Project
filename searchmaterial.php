@@ -1,4 +1,12 @@
-
+<?php
+    include_once("lib/condb.php");
+    include_once("lib/inc.php");
+    $material_name=$_POST["material_name"];
+    $sql = "SELECT * FROM meter WHERE met_name LIKE '%$material_name%' ORDER BY met_name ASC";
+    $res = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($res);
+    $order = 1;
+?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
@@ -11,16 +19,16 @@
                     <div class="col-sm-8">
                         <h3 class="card-title">รายการวัสดุสำหรับเบิก</h3>
                     </div>
-
+                    
                     <div class="col-sm-4">
-                        <form align=right class="form-group my-3" method="POST">
-                            <input type="text" placeholder="กรอกชื่อวัสดุที่ต้องการค้นหา" class="" name="material_name" size="25"></input>
-                            <input type="submit" value="ค้นหา" class="btn btn-primary btn_custom" onclick="search()">
-                        </form>
+                            <form align=right action="searchmaterial.php" class="form-group my-3" method="POST">   
+                                <input type="text" placeholder="กรอกชื่อวัสดุที่ต้องการค้นหา" class="" name="material_name" size="25"></input>
+                                <input type="submit" value="ค้นหา" class="btn btn-primary btn_custom ">
+                            </form>
                     </div>
-
+                    
                 </div>
-
+                
             </div>
 
             <div class="card-body p-0">
@@ -35,19 +43,10 @@
                             <th width="5%">เบิก</th>
                         </tr>
                     </thead>
-
-
-
                     <tbody>
                         <?php
-                        if (isset($_POST["material_name"])) {
-                            $material_name = $_POST["material_name"];
-                        }
-                        error_reporting(0);
                         $sql = "SELECT meter.*,metertype.* FROM meter
-                        LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
-                        WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND (meter.met_mtype='1')  )";
-                        $res = mysqli_query($con,$sql);
+                      LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE meter.met_total>='1'AND (meter.met_mtype='1') ";
                         
                         while ($row = mysqli_fetch_assoc($res)) {
                             $met_id = $row['met_id'];
@@ -75,10 +74,7 @@
 
 
                             </tr>
-
                         <?php } ?>
-
-                        
 
                     </tbody>
                 </table>

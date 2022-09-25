@@ -25,6 +25,7 @@ else if($Node=="smat"){return "showmat.php";}
 else if($Node=="amat"){return "addmat.php";}
 else if($Node=="emat"){return "editmat.php";}
 else if($Node=="stmat"){return "showtotalmat.php";}
+else if($Node=="searchmat"){return "searchmaterial.php";}
 
 
 //ครุภัณณฑ์

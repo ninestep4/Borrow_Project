@@ -12,17 +12,27 @@ if (isset($_GET['MATID'])) {
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <div class="content-wrapper">
- 
+
+
   <br>
   <div class="col-md-12">
 
     <div class="card">
 
       <div class="card-header">
-        <h3 class="card-title">จัดการข้อมูลครุภัณฑ์
-          <a href="index.php?Node=amat"> [เพิ่มครุภัณฑ์] </a>
-        </h3>
+        <div class="row">
+          <div class="col-sm-8" <h3 class="card-title">จัดการข้อมูลวัสดุ
+            <a href="index.php?Node=amat"> [เพิ่มวัสดุ] </a>
+            </h3>
+          </div>
+          <div class="col-sm-4">
+            <form align=right class="form-group my-3" method="POST">
+              <input type="text" placeholder="กรอกชื่อครุภัณฑ์ที่ต้องการค้นหา" class="" name="material_name" size="25"></input> <input type="submit" value="ค้นหา" class="btn btn-primary btn_custom" onclick="search()">
+            </form>
+          </div>
+        </div>
       </div>
+
 
       <div class="card-body p-0">
         <table class="table table-striped">
@@ -40,8 +50,13 @@ if (isset($_GET['MATID'])) {
           </thead>
           <tbody>
             <?php
+            if (isset($_POST["material_name"])) {
+              $material_name = $_POST["material_name"];
+            }
+            error_reporting(0);
             $sql = "SELECT meter.*,metertype.* FROM meter
-LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE (meter.met_mtype='2')";
+          LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
+          WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND (meter.met_mtype='2')  )";
             $res = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_assoc($res)) {
               $met_id = $row['met_id'];

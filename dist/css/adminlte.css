@@ -52427,10 +52427,10 @@ a.text-muted:hover {
   background: #f093fb;
   
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgb(42, 247, 235));
   
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgb(42, 247, 235))
   }
   
   .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -52443,17 +52443,10 @@ a.text-muted:hover {
   top: 13px;
   }
 
-  .btn-search {
-    width: 120px;
-    height: 40px;
-    background: chocolate;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .btn_custom {
+    background-color: #96D283;
+    border: solid 1px #67C94A;
+    color: #195008;
 }
 
 /*# sourceMappingURL=adminlte.css.map */

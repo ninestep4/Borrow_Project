@@ -12,13 +12,10 @@
             <div class="card-body p-0">
 
                 <table class="table table-striped">
-                    <?php
+                    
 
-                    if (isset($_POST["txtKeyword"])) {
-                        $strKeyword = $_POST["txtKeyword"];
-                    }
-                    ?>
-                    <form name="frmSearch" method="post"?>
+                    
+                    <form name="frmSearch" method="post"
                         <table width="599" border="1">
                             <tr>
                                 <th>Keyword
@@ -26,18 +23,24 @@
                                     
                                 </th>
                             </tr>
-                            <button onclick="search()" class="btn-search">
+                            <button onclick="search()" class="btn btn-primary btn_custom">
                                         Search
                                     </button>
                         </table>
                     </form>
 
                     <tbody>
-                        
+                        <table class="table table-striped">
                         <?php
+                        if (isset($_POST["txtKeyword"])) {
+                            $strKeyword = $_POST["txtKeyword"];
+                        }
+                        
                         error_reporting(0);
                         $sql = "SELECT * FROM people WHERE ( people_name LIKE '%$strKeyword%' )";
                         $res = mysqli_query($con, $sql);
+                        $count = mysqli_num_rows($res);
+                        $order = 1;
                         while ($row = mysqli_fetch_assoc($res)) {
                             $people_id = $row['people_id'];
                             $people_name = $row['people_name'];
@@ -52,11 +55,11 @@
 
 
 
-                        </tr>
+                            </tr>
                         
                         <?php } ?>
 
-                    
+                        </table>
                     </tbody>
                 </table>
             </div>
