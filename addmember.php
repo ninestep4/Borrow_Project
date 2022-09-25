@@ -98,14 +98,13 @@ $dept_name=$row['dept_name'];
         <select id="inputStatus" name="mem_level" class="form-control custom-select" required="">
           <option selected disabled>Select one</option>
           <option value="1">ผู้ดูแลระบบ</option>
-          <option value="2">ผู้ใช้งานทั่วไป</option>
         </select>
       </div>
 
 
               <div class="form-group">
                 <label for="inputName">รูปภาพ</label>
-                <input type="file" name="mem_img" id="inputName" class="form-control" required="">
+                <input type="file" name="mem_img" id="inputName" class="form-control" >
               </div>
 
               <div class="row">

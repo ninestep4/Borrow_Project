@@ -136,6 +136,10 @@ if (isOnline()) {
                                 <p>จัดการข้อมูลผู้ใช้งาน</p>
                             </a>
                         </li>
+                        
+                        <div class="info">
+                                <a class="d-block"> จัดการข้อมูลวัสดุและครุภัณฑ์</a>
+                        </div>
 
                         <li class="nav-item">
                             <a href="index.php?Node=smat" class="nav-link">
@@ -144,12 +148,12 @@ if (isOnline()) {
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        
                             <a href="index.php?Node=showdurable" class="nav-link">
                                 <i class="material-icons ">assignment</i>
                                 <p>จัดการข้อมูลครุภัณฑ์</p>
                             </a>
-                        </li>
+                        
 
                         <li class="nav-item">
                             <a href="index.php?Node=managedraw" class="nav-link">

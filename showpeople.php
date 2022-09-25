@@ -31,6 +31,7 @@ if (isset($_GET['PEOPLEID'])) {
                             <th>เบอร์โทร</th>
                             <th>ที่อยู่</th>
                             <th>เลขบัตรประชาชน</th>
+                            <th>ประเภทของบุคคล</th>
                             <th>แก้ไขประวัติ</th>
                             <th>ลบข้อมูล</th>
 
@@ -50,6 +51,7 @@ if (isset($_GET['PEOPLEID'])) {
                             $people_address = $row['people_address'];
                             $people_idcard = $row['people_idcard'];
                             $people_number = $row['people_number'];
+                            $people_type = $row['people_type'];
 
                         ?>
 
@@ -60,7 +62,7 @@ if (isset($_GET['PEOPLEID'])) {
                                 <td><?= $people_number; ?></td>
                                 <td><?= $people_address; ?></td>
                                 <td><?= $people_idcard; ?></td>
-
+                                <td><?= $people_type; ?></td>
 
 
 

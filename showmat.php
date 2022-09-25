@@ -56,7 +56,7 @@ if (isset($_GET['MATID'])) {
             error_reporting(0);
             $sql = "SELECT meter.*,metertype.* FROM meter
           LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
-          WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND (meter.met_mtype='1')  )";
+          WHERE ( met_name LIKE '%$material_name%' AND (meter.met_mtype='1')  )";
             $res = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_assoc($res)) {
               $met_id = $row['met_id'];
