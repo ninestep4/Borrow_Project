@@ -21,7 +21,7 @@ if (isset($_POST['btsavepeople'])) {
     $people_name = $_POST['people_name'];
     $people_number = $_POST['people_number'];
     $people_address = $_POST['people_address'];
-    $people_idcard = $row['people_idcard'];
+    $people_idcard = $_POST['people_idcard'];
 
     $sql = "UPDATE people SET ";
     $sql .= " people_name='$people_name' ";
@@ -41,7 +41,7 @@ if (isset($_POST['btsavepeople'])) {
 <div class="content-wrapper">
     <br>
 
-    <form action="index.php?Node=editpeople" method="POST" enctype="multipart/form-data">
+    <form action="index.php?Node=editpeople" method="POST">
 
         <!-- Main content -->
         <section class="content">

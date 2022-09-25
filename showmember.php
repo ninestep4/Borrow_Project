@@ -78,7 +78,7 @@ if (isset($_GET['MEMID'])) {
 
 
                             <td>
-                            <a href="index.php?Node=showpro&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-danger" 
+                            <a href="index.php?Node=showmem&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-danger" 
                             onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ 
                             </a>
                             </td>
