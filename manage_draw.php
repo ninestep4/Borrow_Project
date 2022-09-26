@@ -46,7 +46,7 @@ order by dr1.draw_status ASC  ";
 
                         while ($row = mysqli_fetch_assoc($res)) {
                             $draw_id = $row['draw_id'];
-                            $draw_date = $row['draw_date'];
+                            $metmtype = $row['met_mtype'];
                             $draw_num = $row['draw_num'];
                             $draw_metid = $row['draw_metid'];
                             $draw_userid_draw = $row['draw_userid_draw'];
@@ -59,7 +59,7 @@ order by dr1.draw_status ASC  ";
                             $met_img = $row['met_img'];
 
 
-                            $name1draw = $row['name1'];
+                           // $name1draw = $row['name1'];
                             $name2app = $row['name2'];
 
 
@@ -76,8 +76,8 @@ order by dr1.draw_status ASC  ";
                                 <td><?= $met_name; ?></td>
                                 <td><?= $draw_num; ?></td>
                                 <td>
-                                    <?= $name1draw; ?><br>
-                                    <?= $draw_date_app ?>
+                                    <?= $draw_userid_draw; ?><br>
+                                    (<?= $draw_date_app ?>)
                                 </td>
                                 <td>
                                     <?php

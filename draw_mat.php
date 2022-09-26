@@ -27,6 +27,11 @@ if (!empty($_POST)) {
   $D_Postend =  $_POST['end'];
 }
 
+if (!empty($_POST)) {
+  $peopleName = $_POST['people_name'];
+}
+
+
 if (isset($_POST['btsave'])) {
   $met_id = $_POST['met_id'];
   $draw_num = $_POST['draw_num'];
@@ -37,6 +42,7 @@ if (isset($_POST['btsave'])) {
   $res1 = mysqli_query($con, $sql1);
   $row1 = mysqli_fetch_assoc($res1);
   $met_total = $row1['met_total'];
+  $metmtype = $row1['met_mtype'];
 
   $totaldif = $met_total - $draw_num;
 
@@ -47,12 +53,12 @@ if (isset($_POST['btsave'])) {
 
 
 
-  $sql3 = "INSERT INTO meterdraw (draw_id,draw_date,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name) VALUES ('','$draw_date','$draw_num','$met_id','$people_id','','','0','$D_Post','$D_Postend','$people_name')";
+  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name) 
+  VALUES ('','$metmtype','$draw_num','$met_id','$peopleName','','','0','$D_Post','$D_Postend','$peopleName')";
 
   $res3 = mysqli_query($con, $sql3);
-  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=hisdraw">';
-
-
+  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
+  exit;
 }
 
 
@@ -71,10 +77,11 @@ if (isset($_POST['btsave'])) {
 
     <section class="content">
       <center>
-        <div class="row: center;">
-          <div class="col-md-8">
-            <div class="card card-primary">
-              <div class="card-header">
+      <div class="container py-5 h-100">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
                 <h3 class="card-title">เบิกข้อมูลวัสดุ</h3>
               </div>
               <div class="card-body">
@@ -104,7 +111,7 @@ if (isset($_POST['btsave'])) {
                       $people_id = $row['people_id'];
                       $people_name = $row['people_name'];
                     ?>
-                      <option value="<?= $people_id; ?>"><?= $people_name; ?></option>
+                      <option value="<?= $people_name; ?>"><?= $people_name; ?></option>
 
                     <?php } ?>
 
@@ -143,7 +150,7 @@ if (isset($_POST['btsave'])) {
 
             </div>
       </center>
-
+                    
     </section>
 
     <!-- /.content -->

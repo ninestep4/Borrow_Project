@@ -21,14 +21,13 @@ if (isset($_GET['MATID'])) {
 
       <div class="card-header">
         <div class="row">
-          <div class="col-sm-8" <h3 class="card-title">จัดการข้อมูลวัสดุ
+          <div class="col-sm-8" class="card-title">จัดการข้อมูลวัสดุ
             <a href="index.php?Node=amat"> [เพิ่มวัสดุ] </a>
-            </h3>
           </div>
           <div class="col-sm-4">
             <form align=right class="form-group my-3" method="POST">
-              <input type="text" placeholder="กรอกชื่อวัสดุที่ต้องการค้นหา" class="" name="material_name" size="25"></input> <input type="submit" value="ค้นหา" class="btn btn-primary btn_custom" onclick="search()">
-            </form>
+            <input type="text" placeholder="กรอกชื่อวัสดุที่ต้องการค้นหา" class="" name="material_name" size="25"></input> 
+              <input type="submit" value="ค้นหา" class=" btn-primary " onclick="search()">
           </div>
         </div>
       </div>

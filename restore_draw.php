@@ -1,14 +1,29 @@
 <?php
-if (isset($_GET['DID'])) {
-    $DID = $_GET['DID'];
-    $today = date("Y-m-d H:i:s", strtotime("$today + 5 hours"));
+// if (isset($_GET['DID'])) {
+//     $MATID = $_GET['MATID'];
+//     $totaldif = $met_total + $draw_num;
 
-    $sql = "UPDATE meterdraw SET draw_userid_app='$memid',draw_date_app='$today',draw_status='0' WHERE draw_id='$DID' ";
-    $res = mysqli_query($con, $sql);
+//     $sql2 = "UPDATE meter SET met_total='$totaldif' WHERE met_id='$MATID' ";
+//     $res2 = mysqli_query($con, $sql2);
+//     echo '<meta http-equiv="refresh" content="0; url=index.php?Node=restoredraw">';
+//     exit;
+// }
+
+if (isset($_POST['btre'])) {
+    $totaldif = $met_total + $draw_num;
+
+    $met_id = $_POST['met_id'];
+
+    $sql = "SELECT * FROM meter WHERE met_id='$met_id' ";
+    $res = mysqli_query($con, $sql1);
+    $row = mysqli_fetch_assoc($res1);
+    $met_total = $row['met_total'];
+
+    $sql2 = "UPDATE meter SET met_total='$totaldif' WHERE met_id='$met_id' ";
+    $res2 = mysqli_query($con, $sql2);
     echo '<meta http-equiv="refresh" content="0; url=index.php?Node=restoredraw">';
     exit;
 }
-
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
@@ -36,11 +51,9 @@ if (isset($_GET['DID'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT dr1.*,mt1.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1
-                                LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
-                                LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
-                                LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
-                                order by dr1.draw_status ASC  ";
+                        $sql = "SELECT * FROM meterdraw SELECT met_mtype FROM meter
+                                WHERE condition AND draw_status = '1' AND met_mtype = '2' 
+                                order by draw_status ASC  ";
 
                         $res = mysqli_query($con, $sql);
 
@@ -59,8 +72,8 @@ if (isset($_GET['DID'])) {
                             $met_img = $row['met_img'];
 
 
-                            $name1draw = $row['name1'];
-                            $name2app = $row['name2'];
+                            
+                            
 
 
                             if ($draw_status == '0') {
@@ -76,7 +89,7 @@ if (isset($_GET['DID'])) {
                                 <td><?= $met_name; ?></td>
                                 <td><?= $draw_num; ?></td>
                                 <td>
-                                    <?= $name1draw; ?><br>
+                                    <?= $draw_userid_draw; ?><br>
                                     (<?= $draw_date; ?>)
                                 </td>
                                 <td>
@@ -85,7 +98,7 @@ if (isset($_GET['DID'])) {
                                         echo "รออนุมัติ";
                                     } else {
                                     ?>
-                                        <?= $name2app; ?><br>
+                                        <?= $draw_userid_app; ?><br>
                                         (<?= $draw_date_app; ?>)
                                     <?php } ?>
                                 </td>
@@ -95,9 +108,8 @@ if (isset($_GET['DID'])) {
                                 </td>
                                 <td>
 
-                                    <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) 
-                                    return true; else return false;"><input type="button" value="รับคืน"></a>
 
+                                    <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) return true; else return false;"><input name="btre" type="button" value="รับคืน"></a>
                                 </td>
 
                             <?php } ?>

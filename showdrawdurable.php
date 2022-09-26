@@ -9,13 +9,13 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-sm-8">
-                        <h3 class="card-title">รายการวัสดุสำหรับเบิก</h3>
+                        <h3 class="card-title">รายการครุภัณฑ์สำหรับเบิก</h3>
                     </div>
 
                     <div class="col-sm-4">
                         <form align=right class="form-group my-3" method="POST">
                             <input type="text" placeholder="กรอกชื่อครุภัณฑ์ที่ต้องการค้นหา" class="" name="material_name" size="25"></input>
-                            <input type="submit" value="ค้นหา" class="btn btn-primary btn_custom" onclick="search()">
+                            <input type="submit" value="ค้นหา" class=" btn-primary " onclick="search()">
                         </form>
                     </div>
 
@@ -28,7 +28,7 @@
                     <thead>
                         <tr>
                             <th width="15%">รูปภาพ</th>
-                            <th width="20%">ชื่อวัสดุ</th>
+                            <th width="20%">ชื่อครุภัณฑ์</th>
                             <th width="25%">รายละเอียด</th>
                             <th width="15%">ประเภท</th>
                             <th width="15%">จำนวนวัสดุ</th>
