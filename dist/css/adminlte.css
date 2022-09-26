@@ -52456,9 +52456,10 @@ a.text-muted:hover {
     align-items: center;
 }
 
-.down{
-  top: 100px;
+.page-row {
+  display: table-row;
+  height: 1px;
 }
 
-
+.page-row-expanded { height: 100%; }
 /*# sourceMappingURL=adminlte.css.map */

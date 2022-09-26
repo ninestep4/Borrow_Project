@@ -14,7 +14,15 @@ if (isOnline()) {
 }
 
 ?>
+
 <link rel="stylesheet" href="./dist/css/adminlte.css">
+<link rel="stylesheet" href="./dist/css/style.css">
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<ul class="list-unstyled components mb-5">
+
 <!-- Main Sidebar Container -->
 
 
@@ -22,7 +30,6 @@ if (isOnline()) {
 
 
     <!-- Brand Logo -->
-
 
     <a href="index.php" class="brand-link">
         <img src="img/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -32,6 +39,7 @@ if (isOnline()) {
     <?php
     if (isOnline()) {
     ?>
+   
 
         <!-- Sidebar -->
         <div class="sidebar">
@@ -50,8 +58,11 @@ if (isOnline()) {
 
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2" >
             <ul class="nav  nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                
+            <ul class="list-unstyled components mb-5">
+                
 
                 <?php
                 if (!isOnline()) {
@@ -112,7 +123,6 @@ if (isOnline()) {
                         <div class="info">
                                 <a class="d-block"> เมนูแอดมิน</a>
                         </div>
-                    
 
                         <li class="nav-item">
                             <a href="index.php" class="nav-link">
@@ -121,60 +131,86 @@ if (isOnline()) {
                             </a>
                         </li>
 
+                        <!-- <li class="nav-item menu-open"> -->
+                        <li class="nav-item"> 
+                        <a href="#" class="nav-link active">
+                        <i class="material-icons  ">people</i>
+                        <p>
+                        จัดการข้อมูลบุคคล
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="index.php?Node=showmem" class="nav-link">
+                        <i class="material-icons  ">person</i>
+                            <p>จัดการข้อมูลแอดมิน</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="index.php?Node=showpeople" class="nav-link">
+                            <i class="material-icons  ">person</i>
+                            <p>จัดการข้อมูลผู้ใช้งาน</p>
+                            </a>
+                        </li>
+                        </ul>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                        <i class="material-icons  ">assignment</i>
+                        <p>
+                        จัดการข้อมูลวัสดุครุภัณฑ์
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="index.php?Node=smat" class="nav-link">
+                        <i class="material-icons  ">assignment</i>
+                            <p>จัดการข้อมูลวัสดุ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="index.php?Node=showdurable" class="nav-link">
+                            <i class="material-icons  ">assignment</i>
+                            <p>จัดการข้อมูลครุภัณฑ์</p>
+                            </a>
+                        </li>
+                        </ul>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                        <i class="material-icons  ">check</i>
+                        <p>
+                        จัดการข้อมูลการยืม-คืน
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="index.php?Node=managedraw" class="nav-link">
+                        <i class="material-icons  ">check</i>
+                            <p>จัดการข้อมูลการยืมวัสดุ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="index.php?Node=managedraw" class="nav-link">
+                            <i class="material-icons  ">check</i>
+                            <p>จัดการข้อมูลการครุภัณฑ์</p>
+                            </a>
+                        </li>
+                        </li>
+                        <li class="nav-item">
+                        <a href="index.php?Node=restoredraw" class="nav-link">
+                            <i class="material-icons  ">autorenew</i>
+                            <p>จัดการข้อมูลการคืนวัสดุ</p>
+                            </a>
+                        </li>
+                        </ul>
+                        </li>
                         
-
-                        <li class="nav-item">
-                            <a href="index.php?Node=showmem" class="nav-link">
-                                <i class="material-icons  ">people</i>
-                                <p>จัดการข้อมูลแอดมิน</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="index.php?Node=showpeople" class="nav-link">
-                                <i class="material-icons  ">people</i>
-                                <p>จัดการข้อมูลผู้ใช้งาน</p>
-                            </a>
-                        </li>
-                        
-                        <div class="info">
-                                <a class="d-block"> จัดการข้อมูลวัสดุและครุภัณฑ์</a>
-                        </div>
-
-                        <li class="nav-item">
-                            <a href="index.php?Node=smat" class="nav-link">
-                                <i class="material-icons ">assignment</i>
-                                <p>จัดการข้อมูลวัสดุ</p>
-                            </a>
-                        </li>
-
-                        
-                            <a href="index.php?Node=showdurable" class="nav-link">
-                                <i class="material-icons ">assignment</i>
-                                <p>จัดการข้อมูลครุภัณฑ์</p>
-                            </a>
-                        
-
-                        <li class="nav-item">
-                            <a href="index.php?Node=managedraw" class="nav-link">
-                                <i class="material-icons ">check</i>
-                                <p>จัดการข้อมูลการยืมวัสดุ</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="index.php?Node=managedraw" class="nav-link">
-                                <i class="material-icons ">check</i>
-                                <p>จัดการข้อมูลการครุภัณฑ์</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="index.php?Node=restoredraw" class="nav-link">
-                                <i class="material-icons">autorenew</i>
-                                <p>จัดการข้อมูลการคืนวัสดุ</p>
-                            </a>
-                        </li>
 
                         <li class="nav-item">
                             <a href="index.php?Node=search" class="nav-link">
@@ -183,13 +219,15 @@ if (isOnline()) {
                             </a>
                         </li>
 
-
+                        <hr><hr><hr><hr>
+                        <div class="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
                         <li class="nav-item">
                             <a href="index.php?Node=lout" class="nav-link">
                                 <i class="material-icons ">logout</i>
                                 <p>ออกจากระบบ</p>
                             </a>
                         </li>
+                        </div>
 
 
                     <?php } else if (isUser($_SESSION['usr'], $_SESSION['pwd'], $con)) { ?>
@@ -215,22 +253,47 @@ if (isOnline()) {
                             </a>
                         </li>
                     
-                    
+                        
                         <li class="nav-item">
                             <a href="index.php?Node=lout" class="nav-link">
                                 <i class="nav-icon far fa-circle text-warning"></i>
                                 <p>ออกจากระบบ</p>
                             </a>
-                        </li>
+                        </li>          
                     
                     <?php } ?>
 
                 <?php } ?>
 
+                 </ul>
 
             </ul>
+
         </nav>
         <!-- /.sidebar-menu -->
+
+
+
         </div>
         <!-- /.sidebar -->
+
+        <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+            } else {
+            dropdownContent.style.display = "block";
+            }
+        });
+        }
+        </script>
+     
+
 </aside>
