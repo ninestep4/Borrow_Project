@@ -10,20 +10,7 @@ if (isset($_GET['DID'])) {
     exit;
 }
 ?>
-<?php
-$perpage = 5;
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = 1;
-}
 
-$start = ($page - 1) * $perpage;
-
-
-$sql2 = "SELECT * from meterdraw limit {$start} , {$perpage} ";
-$res2 = mysqli_query($con, $sql2);
-?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
@@ -57,7 +44,7 @@ order by dr1.draw_status ASC  ";
 
                         $res = mysqli_query($con, $sql);
 
-                        while ($result = mysqli_fetch_assoc($res2)) {
+                        
                             while ($row = mysqli_fetch_assoc($res)) {
                                 $draw_id = $row['draw_id'];
                                 $metmtype = $row['met_mtype'];
@@ -112,36 +99,14 @@ order by dr1.draw_status ASC  ";
                                         <?php } ?>
                                     </td>
                                     </tr>
-                                    <?php } ?>    
+                                     
                                 
                             <?php } ?>
                         
                     </tbody>
                 </table>
-                <?php
-                                    $sql3 = "SELECT * FROM meterdraw";
-                                    $query3 = mysqli_query($con, $sql3);
-                                    $total_record = mysqli_num_rows($query3);
-                                    $total_page = ceil($total_record / $perpage);
-                                    ?>
+                
 
-                                    <nav>
-                                        <ul class="pagination">
-                                            <li>
-                                                <a href="index.php?Node=managedraw?page=1" aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                </a>
-                                            </li>
-                                            <?php for ($i = 1; $i <= $total_page; $i++) { ?>
-                                                <li><a href="index.php?Node=managedraw?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-                                            <?php } ?>
-                                            <li>
-                                                <a href="index.php?Node=managedraw?page=<?php echo $total_page; ?>" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
             </div>
 
         </div>
