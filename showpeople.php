@@ -63,14 +63,20 @@ if (isset($_GET['PEOPLEID'])) {
                                 $people_idcard = $row['people_idcard'];
                                 $people_number = $row['people_number'];
                                 $people_type = $row['people_type'];
+                                $peoplename_refer = $row['peoplename_refer'];
+                                $number_refer = $row['number_refer'];
 
                             ?>
 
                                 <tr>
 
-                                    <td><?= $people_name; ?></td>
+                                    <td><?= $people_name; ?><br>
+                                       (<?= $peoplename_refer; ?>)
+                                    </td>
                                     <td><?= $people_sex; ?></td>
-                                    <td><?= $people_number; ?></td>
+                                    <td><?= $people_number; ?><br>
+                                       (<?= $number_refer; ?>)
+                                    </td>
                                     <td><?= $people_address; ?></td>
                                     <td><?= $people_idcard; ?></td>
                                     <td><?= $people_type; ?></td>

@@ -26,7 +26,7 @@ if (isset($_GET['MATID'])) {
           </div>
           <div class="col-sm-4">
             <form align=right class="form-group my-3" method="POST">
-            <input type="text" placeholder="กรอกชื่อวัสดุที่ต้องการค้นหา" class="" name="material_name" size="25"></input> 
+              <input type="text" placeholder="กรอกชื่อวัสดุที่ต้องการค้นหา" class="" name="material_name" size="25"></input>
               <input type="submit" value="ค้นหา" class=" btn-primary " onclick="search()">
           </div>
         </div>
@@ -43,8 +43,10 @@ if (isset($_GET['MATID'])) {
               <th>รายละเอียด</th>
               <th>จำนวนที่มีอยู่</th>
               <th>ประเภท</th>
-              <th>ลบรายการ</th>
+              <th>นำเข้า</th>
               <th>แก้ไขรายการ</th>
+              <th>ลบรายการ</th>
+
             </tr>
           </thead>
           <tbody>
@@ -70,6 +72,7 @@ if (isset($_GET['MATID'])) {
             ?>
 
               <tr>
+                
                 <td><img src="<?= $met_img; ?>" width="80"></td>
                 <td><?= $met_id; ?></td>
                 <td><?= $met_name; ?></td>
@@ -77,18 +80,25 @@ if (isset($_GET['MATID'])) {
                 <td><?= $met_total; ?></td>
                 <td><?= $mtype_name; ?></td>
                 <td>
+                  <span class="badge bg-success">
+                    <a href="index.php?Node=import&MATID=<?= $met_id; ?>" onclick="if(confirm('คุณต้องการนำเข้ารายการนี้ใช่ไหม?')) return true; else return false;">นำเข้า</a>
+                  </span>
+
+                </td>
+                <td>
+                  <span class="badge bg-warning">
+                    <a href="index.php?Node=emat&MATID=<?= $met_id; ?>" onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข</a>
+                  </span>
+
+                </td>
+
+                <td>
                   <span class="badge bg-danger">
                     <a href="index.php?Node=smat&MATID=<?= $met_id; ?>" onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ</a>
                   </span>
                 </td>
 
-                <td>
-                  <span class="badge bg-warning">
-                    <a href="index.php?Node=emat&MATID=<?= $met_id; ?>" onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข</a>
-                  </span>
-                </td>
-
-
+                
               </tr>
             <?php } ?>
 

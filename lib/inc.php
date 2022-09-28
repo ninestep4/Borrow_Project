@@ -43,6 +43,7 @@ else if($Node=="hisdraw"){return "his_draw.php";}
 else if($Node=="managedraw"){return "manage_draw.php";}
 else if($Node=="managedraw"){return "manage_draw.php";} 
 else if($Node=="restoredraw") {return "restore_draw.php";}
+else if($Node=="import") {return "import.php";}
 
 
 else {return "index.php";}

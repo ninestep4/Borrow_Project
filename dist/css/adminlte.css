@@ -2195,6 +2195,10 @@ pre code {
   border: 0;
 }
 
+.footer,
+.push {
+  height: 50px;
+}
 .form-control {
   display: block;
   width: 100%;
@@ -4565,7 +4569,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: none;
 }
 
 .nav-fill > .nav-link,

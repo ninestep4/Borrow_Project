@@ -18,7 +18,7 @@ if (isOnline()) {
 <!-- Main Sidebar Container -->
 
 
- <aside class="main-sidebar sidebar-dark-primary elevation-4"> 
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
 
 
     <!-- Brand Logo -->
@@ -99,20 +99,20 @@ if (isOnline()) {
                                 <i class="nav-icon far fa-circle text-success"></i>
                                 <p>ทำเรื่องยืมวัสดุ</p>
                             </a>
-                        </li>  
-                        
+                        </li>
+
                         <li class="nav-item">
                             <a href="index.php?Node=showdrawdrb" class="nav-link">
                                 <i class="nav-icon far fa-circle text-success"></i>
                                 <p>ทำเรื่องยืมครุภัณฑ์</p>
                             </a>
-                        </li> 
+                        </li>
 
 
                         <div class="info">
-                                <a class="d-block"> เมนูแอดมิน</a>
+                            <a class="d-block"> เมนูแอดมิน</a>
                         </div>
-                    
+
 
                         <li class="nav-item">
                             <a href="index.php" class="nav-link">
@@ -121,7 +121,7 @@ if (isOnline()) {
                             </a>
                         </li>
 
-                        
+
 
                         <li class="nav-item">
                             <a href="index.php?Node=showmem" class="nav-link">
@@ -136,9 +136,9 @@ if (isOnline()) {
                                 <p>จัดการข้อมูลผู้ใช้งาน</p>
                             </a>
                         </li>
-                        
+
                         <div class="info">
-                                <a class="d-block"> จัดการข้อมูลวัสดุและครุภัณฑ์</a>
+                            <a class="d-block"> จัดการข้อมูลวัสดุและครุภัณฑ์</a>
                         </div>
 
                         <li class="nav-item">
@@ -148,12 +148,12 @@ if (isOnline()) {
                             </a>
                         </li>
 
-                        
+                        <li class="nav-item">
                             <a href="index.php?Node=showdurable" class="nav-link">
                                 <i class="material-icons ">assignment</i>
                                 <p>จัดการข้อมูลครุภัณฑ์</p>
                             </a>
-                        
+                        </li>
 
                         <li class="nav-item">
                             <a href="index.php?Node=managedraw" class="nav-link">
@@ -177,7 +177,7 @@ if (isOnline()) {
                         </li>
 
                         <li class="nav-item">
-                            <a href="index.php?Node=search" class="nav-link">
+                            <a href="index.php?Node=import" class="nav-link">
                                 <i class="material-icons">search</i>
                                 <p>รายงานวัสดุคงเหลือ</p>
                             </a>
@@ -214,15 +214,16 @@ if (isOnline()) {
                                 <p>ประวัติการเบิกวัสดุ</p>
                             </a>
                         </li>
-                    
-                    
-                        <li class="nav-item">
+
+                        
+                        <li  class="nav-item">
                             <a href="index.php?Node=lout" class="nav-link">
                                 <i class="nav-icon far fa-circle text-warning"></i>
                                 <p>ออกจากระบบ</p>
                             </a>
                         </li>
-                    
+                        
+
                     <?php } ?>
 
                 <?php } ?>

@@ -11,6 +11,8 @@ if (isset($_GET['PEOPLEID'])) {
     $people_number = $row['people_number'];
     $people_address = $row['people_address'];
     $people_idcard = $row['people_idcard'];
+    $peoplename_refer = $row['peoplename_refer'];
+    $number_refer = $row['number_refer'];
 }
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
@@ -22,12 +24,16 @@ if (isset($_POST['btsavepeople'])) {
     $people_number = $_POST['people_number'];
     $people_address = $_POST['people_address'];
     $people_idcard = $_POST['people_idcard'];
+    $peoplename_refer = $_POST['peoplename_refer'];
+    $number_refer = $_POST['number_refer'];
 
     $sql = "UPDATE people SET ";
     $sql .= " people_name='$people_name' ";
     $sql .= " ,people_number='$people_number' ";
     $sql .= " ,people_address='$people_address' ";
     $sql .= " ,people_idcard='$people_idcard' ";
+    $sql .= " ,peoplename_refer='$peoplename_refer' ";
+    $sql .= " ,number_refer='$number_refer' ";
 
     $sql .= " WHERE people_id='$people_id' ";
 
@@ -83,6 +89,18 @@ if (isset($_POST['btsavepeople'])) {
                                                     <label for="inputName">เลขบัตรประชาชน</label>
                                                     <input type="text" name="people_idcard" id="inputName"
                                                         class="form-control" required="" value="<?=$people_idcard;?>">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputName">ชื่อ-สกุลผู้อ้างอิง</label>
+                                                    <input type="text" name="peoplename_refer" id="inputName"
+                                                        class="form-control" required="" value="<?=$peoplename_refer;?>">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputName">เบอร์โทรศัพท์ผู้อ้างอิง</label>
+                                                    <input type="text" name="number_refer" id="inputName"
+                                                        class="form-control" required="" value="<?=$number_refer;?>">
                                                 </div>
 
                                             </div>
