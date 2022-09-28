@@ -219,7 +219,7 @@ if (isOnline()) {
                             </a>
                         </li>
 
-                        <hr><hr><hr><hr>
+                        <footer style="position:fixed; bottom: 0; height:100px; ">        
                         <div class="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
                         <li class="nav-item">
                             <a href="index.php?Node=lout" class="nav-link">
@@ -228,6 +228,7 @@ if (isOnline()) {
                             </a>
                         </li>
                         </div>
+                        </footer>
 
 
                     <?php } else if (isUser($_SESSION['usr'], $_SESSION['pwd'], $con)) { ?>
