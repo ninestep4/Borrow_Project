@@ -59,7 +59,7 @@
                                 
                                 <!-- ปุ่มเวอร์ชันใหม่ -->
                                 <td style="text-align:cent">
-                                    <a href="index.php?Node=drawmat&MATID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
+                                    <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>"type="button" class="btn btn-warning" 
                                         onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก 
                                     </a>
                                 </td>

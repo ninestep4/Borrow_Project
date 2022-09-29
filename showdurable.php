@@ -84,13 +84,13 @@ LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE (meter.m
                 <!-- ปุ่มเวอร์ชันใหม่ -->
 
                 <td style="text-align:center">
-                <a href="index.php?Node=emat&MATID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
+                <a href="index.php?Node=emat&MATID=<?= $met_id; ?>"type="button" class="btn btn-warning" 
                         onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข 
                     </a>
                 </td>
 
                 <td style="text-align:center">
-                <a href="index.php?Node=smat&MATID=<?= $mem_id; ?>"type="button" class="btn btn-danger" 
+                <a href="index.php?Node=smat&MATID=<?= $met_id; ?>"type="button" class="btn btn-danger" 
                         onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ 
                     </a>
                 </td>      
