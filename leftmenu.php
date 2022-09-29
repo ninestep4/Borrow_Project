@@ -177,7 +177,7 @@ if (isOnline()) {
                         </li>
 
                         <li class="nav-item">
-                            <a href="index.php?Node=import" class="nav-link">
+                            <a href="index.php?Node=report" class="nav-link">
                                 <i class="material-icons">search</i>
                                 <p>รายงานวัสดุคงเหลือ</p>
                             </a>

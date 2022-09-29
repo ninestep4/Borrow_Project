@@ -223,6 +223,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  vertical-align: middle;
 }
 
 label {
@@ -1876,6 +1877,7 @@ pre code {
 
 .table-sm th,
 .table-sm td {
+  vertical-align: center;
   padding: 0.3rem;
 }
 

@@ -32,20 +32,20 @@ if (isset($_GET['MATID'])) {
         </div>
       </div>
 
-
-      <div class="card-body p-0">
+      
+      <div  class="card-body p-0">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>รูปภาพ</th>
-              <th>รหัส</th>
-              <th>ชื่อวัสดุ</th>
-              <th>รายละเอียด</th>
-              <th>จำนวนที่มีอยู่</th>
-              <th>ประเภท</th>
-              <th>นำเข้า</th>
-              <th>แก้ไขรายการ</th>
-              <th>ลบรายการ</th>
+              <th width="10%">รูปภาพ</th>
+              <th width="10%">รหัส</th>
+              <th width="10%">ชื่อวัสดุ</th>
+              <th width="10%">รายละเอียด</th>
+              <th width="10%">จำนวนที่มีอยู่</th>
+              <th width="10%">ประเภท</th>
+              <th width="10%">นำเข้า</th>
+              <th width="10%">แก้ไขรายการ</th>
+              <th width="10%">ลบรายการ</th>
 
             </tr>
           </thead>
@@ -105,6 +105,7 @@ if (isset($_GET['MATID'])) {
           </tbody>
         </table>
       </div>
+      
 
     </div>
   </div>
