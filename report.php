@@ -47,6 +47,8 @@
                                  
                              </div>
                              <?php 
+                                    error_reporting(0);
+                                    
                                     if($month==1){
                                         $M="มกราคม";
                                     };

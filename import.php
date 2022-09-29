@@ -29,12 +29,7 @@ if (isset($_POST['btsave1'])) {
     $mem_name = $_POST['mem_name'];
   }
 
-  $sql1 = "SELECT * FROM meter WHERE met_id='$met_id' ";
-  $res1 = mysqli_query($con, $sql1);
-  $row1 = mysqli_fetch_assoc($res1);
-  $met_total = $row1['met_total'];
-  $metmtype = $row1['met_mtype'];
-  $met_name = $row1['met_name'];
+ 
   
 
   $totaldif = $met_total + $import;

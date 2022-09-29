@@ -1,30 +1,4 @@
-<?php
-// if (isset($_GET['DID'])) {
-//     $MATID = $_GET['MATID'];
-//     $totaldif = $met_total + $draw_num;
 
-//     $sql2 = "UPDATE meter SET met_total='$totaldif' WHERE met_id='$MATID' ";
-//     $res2 = mysqli_query($con, $sql2);
-//     echo '<meta http-equiv="refresh" content="0; url=index.php?Node=restoredraw">';
-//     exit;
-// }
-
-if (isset($_POST['btre'])) {
-    $totaldif = $met_total + $draw_num;
-
-    $met_id = $_POST['met_id'];
-
-    $sql = "SELECT * FROM meter WHERE met_id='$met_id' ";
-    $res = mysqli_query($con, $sql1);
-    $row = mysqli_fetch_assoc($res1);
-    $met_total = $row['met_total'];
-
-    $sql2 = "UPDATE meter SET met_total='$totaldif' WHERE met_id='$met_id' ";
-    $res2 = mysqli_query($con, $sql2);
-    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=restoredraw">';
-    exit;
-}
-?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
@@ -51,9 +25,8 @@ if (isset($_POST['btre'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT * FROM meterdraw SELECT met_mtype FROM meter
-                                WHERE condition AND draw_status = '1' AND met_mtype = '2' 
-                                order by draw_status ASC  ";
+                        $sql = "SELECT * FROM meter,meterdraw WHERE draw_status = '1' 
+                        order by draw_status ASC  ";
 
                         $res = mysqli_query($con, $sql);
 
@@ -109,7 +82,7 @@ if (isset($_POST['btre'])) {
                                 <td>
 
 
-                                    <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) return true; else return false;"><input name="btre" type="button" value="รับคืน"></a>
+                                    <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="รับคืน"></a>
                                 </td>
 
                             <?php } ?>

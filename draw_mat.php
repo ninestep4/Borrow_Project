@@ -43,6 +43,7 @@ if (isset($_POST['btsave'])) {
   $row1 = mysqli_fetch_assoc($res1);
   $met_total = $row1['met_total'];
   $metmtype = $row1['met_mtype'];
+  $met_name = $row1['met_name'];
 
   $totaldif = $met_total - $draw_num;
 
@@ -53,8 +54,8 @@ if (isset($_POST['btsave'])) {
 
 
 
-  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name) 
-  VALUES ('','$metmtype','$draw_num','$met_id','$peopleName','','','0','$D_Post','$D_Postend','$peopleName')";
+  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name) 
+  VALUES ('','$metmtype','$draw_num','$met_id','$peopleName','','','0','$D_Post','$D_Postend','$peopleName','$met_name')";
 
   $res3 = mysqli_query($con, $sql3);
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
@@ -77,80 +78,84 @@ if (isset($_POST['btsave'])) {
 
     <section class="content">
       <center>
-      <div class="container py-5 h-100">
+        <div class="container py-5 h-100">
           <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-lg-9 col-xl-7">
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
-                <h3 class="card-title">เบิกข้อมูลวัสดุ</h3>
-              </div>
-              <div class="card-body">
-
-                <input type="hidden" name="met_id" value="<?= $met_id; ?>">
-                <img src="<?= $met_img; ?>" width="120"><br>
-                <font size="5">
-                  <b>ชื่อวัสดุ:</b> <?= $met_name; ?><br>
-                  <b>รายละเอียด:</b> <?= $met_detail; ?><br>
-                  <b>จำนวนที่มีอยู่ในสต็อก:</b> <?= $met_total; ?> หน่วย<br>
-                </font>
-
-
-                <div class="form-group">
-                  <div>
-                    <label for="inputName">จำนวนที่เบิก <font color="red">(กรุณาเบิกวัสดุไม่เกินที่มีในสต็อก)</font></label>
-                  </div>
-
-                  <select type="name"id="inputStatus" name="people_name" class="form-control custom-select" required="">
-                    <option selected disabled>เลือกชื่อผู้มายืม</option>
-
-
-                    <?php
-                    $sql = "SELECT * FROM people";
-                    $res = mysqli_query($con, $sql);
-                    while ($row = mysqli_fetch_assoc($res)) {
-                      $people_id = $row['people_id'];
-                      $people_name = $row['people_name'];
-                    ?>
-                      <option value="<?= $people_name; ?>"><?= $people_name; ?></option>
-
-                    <?php } ?>
-
-                  </select> 
-
-                 
-
-
-
-
-                  <div>
-
-
-                    <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
-                    <div>
-                      <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
-                    </div>
-                    <div>
-                      <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
-                    </div>
-
-                  </div>
-                  <div>
-
-                  </div>
+                  <h3 class="card-title">เบิกข้อมูลวัสดุ</h3>
                 </div>
-                <!-- /.card-body -->
+                <div class="card-body">
+
+                  <input type="hidden" name="met_id" value="<?= $met_id; ?>">
+                  <img src="<?= $met_img; ?>" width="120"><br>
+                  <font size="5">
+                    <b>ชื่อวัสดุ:</b> <?= $met_name; ?><br>
+                    <b>รายละเอียด:</b> <?= $met_detail; ?><br>
+                    <b>จำนวนที่มีอยู่ในสต็อก:</b> <?= $met_total; ?> หน่วย<br>
+                  </font>
+
+
+                  <div class="form-group">
+                    <div>
+                      <label for="inputName">จำนวนที่เบิก <font color="red">(กรุณาเบิกวัสดุไม่เกินที่มีในสต็อก)</font></label>
+                    </div>
+
+                    <select type="name" id="inputStatus" name="people_name" class="form-control custom-select" required="">
+                      <option selected disabled>เลือกชื่อผู้มายืม</option>
+
+
+                      <?php
+                      $sql = "SELECT * FROM people";
+                      $res = mysqli_query($con, $sql);
+                      while ($row = mysqli_fetch_assoc($res)) {
+                        $people_id = $row['people_id'];
+                        $people_name = $row['people_name'];
+                      ?>
+                        <option value="<?= $people_name; ?>"><?= $people_name; ?></option>
+
+                      <?php } ?>
+
+                    </select>
+
+
+
+
+
+
+                    <div class="col-md-6 mb-4 pb-2">
+
+                      <?php
+                      if ($met_mtype == 2) {
+                      ?>
+                        <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
+                        <div>
+                          <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
+                        </div>
+                      <?php } ?>
+                      <div>
+                        <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
+                      </div>
+
+
+                    </div>
+                    <div>
+
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+
+                <!-- /.card -->
               </div>
 
-              <!-- /.card -->
-            </div>
 
+              <div class="col-md-1">
+                <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave">
 
-            <div class="col-md-1">
-              <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave">
-
-            </div>
+              </div>
       </center>
-                    
+
     </section>
 
     <!-- /.content -->
