@@ -25,12 +25,12 @@ if (isset($_GET['DID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th width="10%">รูปภาพ</th>
-                            <th width="20%">ชื่อวัสดุ</th>
-                            <th width="15%">จำนวนเบิก</th>
-                            <th width="20%">ผู้เบิก/วันเบิก</th>
-                            <th width="20%">ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th width="15%">สถานะ</th>
+                            <td width="10%">รูปภาพ</td>
+                            <td width="15%">ชื่อวัสดุ</td>
+                            <td width="15%">จำนวนเบิก</td>
+                            <td width="20%">ผู้เบิก/วันเบิก</td>
+                            <td width="20%">ผู้อนุมัติ/วันอนุมัติ</td>
+                            <td width="15%">สถานะ</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,6 @@ order by dr1.draw_status ASC  ";
 
                         while ($row = mysqli_fetch_assoc($res)) {
                             $draw_id = $row['draw_id'];
-                            $draw_date = $row['draw_date'];
                             $draw_num = $row['draw_num'];
                             $draw_metid = $row['draw_metid'];
                             $draw_userid_draw = $row['draw_userid_draw'];
