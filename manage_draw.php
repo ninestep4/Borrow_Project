@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['DID'])) {
     $DID = $_GET['DID'];
-    $today = date("d-m-Y H:i", strtotime("$today + 5 hours"));
+    $today = date("Y-m-d H:i", strtotime("$today + 5 hours"));
 
     $sql = "UPDATE meterdraw SET draw_userid_app='$memid',draw_date_app='$today',draw_status='1' WHERE draw_id='$DID' ";
     $res = mysqli_query($con, $sql);
@@ -10,7 +10,7 @@ if (isset($_GET['DID'])) {
 }
 
 ?>
-<link rel="stylesheet" href="./dist/css/adminlte.css">
+
 <div class="content-wrapper">
     <br>
     <div class="col-md-12">
@@ -25,12 +25,12 @@ if (isset($_GET['DID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th width="10%">รูปภาพ</th>
-                            <th width="20%">ชื่อวัสดุ</th>
-                            <th width="15%">จำนวนเบิก</th>
-                            <th width="20%">ผู้เบิก/วันเบิก</th>
-                            <th width="20%">ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th width="15%">สถานะ</th>
+                            <td width="10%">รูปภาพ</td>
+                            <td width="15%">ชื่อวัสดุ</td>
+                            <td width="15%">จำนวนเบิก</td>
+                            <td width="20%">ผู้เบิก/วันเบิก</td>
+                            <td width="20%">ผู้อนุมัติ/วันอนุมัติ</td>
+                            <td width="15%">สถานะ</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,6 @@ order by dr1.draw_status ASC  ";
 
                         while ($row = mysqli_fetch_assoc($res)) {
                             $draw_id = $row['draw_id'];
-                            $draw_date = $row['draw_date'];
                             $draw_num = $row['draw_num'];
                             $draw_metid = $row['draw_metid'];
                             $draw_userid_draw = $row['draw_userid_draw'];
@@ -93,7 +92,8 @@ order by dr1.draw_status ASC  ";
                                     <?= $statusname; ?>
                                     <?php if ($draw_status == '0') { ?>
 
-                                        <a href="index.php?Node=managedraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="อนุมัติ"></a>
+                                        <a href="index.php?Node=managedraw&DID=<?= $draw_id; ?>" 
+                                        onclick="if(confirm('คุณต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="อนุมัติ"></a>
 
                                     <?php } ?>
                                 </td>

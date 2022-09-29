@@ -21,7 +21,7 @@ if (isOnline()) {
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<ul class="list-unstyled components mb-5">
+
 
 <!-- Main Sidebar Container -->
 
@@ -188,6 +188,7 @@ if (isOnline()) {
                             <i class="right fas fa-angle-left"></i>
                         </p>
                         </a>
+
                         <ul class="nav nav-treeview">
                         <li class="nav-item">
                         <a href="index.php?Node=managedraw" class="nav-link">
@@ -201,6 +202,7 @@ if (isOnline()) {
                             <p>จัดการข้อมูลการครุภัณฑ์</p>
                             </a>
                         </li>
+
                         </li>
                         <li class="nav-item">
                         <a href="index.php?Node=restoredraw" class="nav-link">
@@ -220,14 +222,14 @@ if (isOnline()) {
                         </li>
 
                         <footer style="position:fixed; bottom: 0; height:100px; ">        
-                        <div class="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
-                        <li class="nav-item">
-                            <a href="index.php?Node=lout" class="nav-link">
-                                <i class="material-icons ">logout</i>
-                                <p>ออกจากระบบ</p>
-                            </a>
-                        </li>
-                        </div>
+                            <div class="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
+                                <li class="nav-item">
+                                <a href="index.php?Node=lout" class="nav-link">
+                                    <i class="material-icons ">logout</i>
+                                    <p>ออกจากระบบ</p>
+                                </a>
+                                </li>
+                            </div>
                         </footer>
 
 
@@ -266,35 +268,9 @@ if (isOnline()) {
 
                 <?php } ?>
 
-                 </ul>
-
             </ul>
-
         </nav>
         <!-- /.sidebar-menu -->
-
-
-
         </div>
-        <!-- /.sidebar -->
-
-        <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-        dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-            } else {
-            dropdownContent.style.display = "block";
-            }
-        });
-        }
-        </script>
-     
-
+        <!-- /.sidebar -->     
 </aside>

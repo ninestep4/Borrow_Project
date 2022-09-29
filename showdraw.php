@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
@@ -7,51 +6,26 @@
         <div class="card">
 
             <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h3 class="card-title">รายการวัสดุสำหรับเบิก</h3>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <form align=right class="form-group my-3" method="POST">
-                            
-                            <input type="text" placeholder="กรอกชื่อวัสดุที่ต้องการค้นหา" class="" name="material_name" size="25"></input>
-                            
-                            <input type="submit" value="ค้นหา"onclick="search()"  class="btn-primary" ></input>
-                                
-                        </form>
-                    </div>
-
-                </div>
-
+                <h3 class="card-title">รายการวัสดุสำหรับเบิก</h3>
             </div>
 
             <div class="card-body p-0">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th width="15%">รูปภาพ</th>
-                            <th width="20%">ชื่อวัสดุ</th>
-                            <th width="25%">รายละเอียด</th>
-                            <th width="15%">ประเภท</th>
-                            <th width="15%">จำนวนวัสดุ</th>
-                            <th width="5%">เบิก</th>
+                            <td width="10%">รูปภาพ</td>
+                            <td width="10%">ชื่อวัสดุ</td>
+                            <td width="10%">รายละเอียด</td>
+                            <td width="1%">ประเภท</td>
+                            <td width="15%" style="text-align:center">จำนวนวัสดุ</td>
+                            <td width="5%" style="text-align:cent">เบิก</td>
                         </tr>
                     </thead>
-
-
-
                     <tbody>
                         <?php
-                        if (isset($_POST["material_name"])) {
-                            $material_name = $_POST["material_name"];
-                        }
-                        error_reporting(0);
                         $sql = "SELECT meter.*,metertype.* FROM meter
-                        LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
-                        WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND (meter.met_mtype='1')  )";
-                        $res = mysqli_query($con,$sql);
-                        
+                      LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE meter.met_total>='1'AND (meter.met_mtype='1') ";
+                        $res = mysqli_query($con, $sql);
                         while ($row = mysqli_fetch_assoc($res)) {
                             $met_id = $row['met_id'];
                             $met_name = $row['met_name'];
@@ -69,19 +43,31 @@
                                 <td><?= $met_name; ?></td>
                                 <td><?= $met_detail; ?></td>
                                 <td><?= $mtype_name; ?></td>
-                                <td><?= $met_total; ?></td>
-                                <td>
+                                <td style="text-align:center"><?= $met_total; ?></td>
+
+
+
+                                <!-- ปุ่มเวอร์ชันเก่า -->
+
+                                <!-- <td>
                                     <span class="badge bg-warning">
-                                        <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>" onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก</a>
+                                        <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>" 
+                                        onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก</a>
                                     </span>
+                                </td> -->
+
+
+                                <!-- ปุ่มเวอร์ชันใหม่ -->
+
+                                <td style="text-align:cent">
+                                    <a href="index.php?Node=drawmat&MATID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
+                                        onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก 
+                                    </a>
                                 </td>
 
 
                             </tr>
-
                         <?php } ?>
-
-                        
 
                     </tbody>
                 </table>

@@ -26,15 +26,13 @@ if (isset($_GET['PEOPLEID'])) {
                     <thead>
                         <tr>
 
-                            <th>ชื่อ-สกุล</th>
-                            <th>เพศ</th>
-                            <th>เบอร์โทร</th>
-                            <th>ที่อยู่</th>
-                            <th>เลขบัตรประชาชน</th>
-                            <th>ประเภทของบุคคล</th>
-                            <th>แก้ไขประวัติ</th>
-                            <th>ลบข้อมูล</th>
-
+                            <td>ชื่อ-สกุล</th>
+                            <td>เพศ</td>
+                            <td>เบอร์โทร</td>
+                            <td>ที่อยู่</td>
+                            <td>เลขบัตรประชาชน</td>
+                            <td style="text-align:center">แก้ไขประวัติ</td>
+                            <td style="text-align:center">ลบข้อมูล</td>
 
                         </tr>
                     </thead>
@@ -51,7 +49,6 @@ if (isset($_GET['PEOPLEID'])) {
                             $people_address = $row['people_address'];
                             $people_idcard = $row['people_idcard'];
                             $people_number = $row['people_number'];
-                            $people_type = $row['people_type'];
 
                         ?>
 
@@ -62,15 +59,7 @@ if (isset($_GET['PEOPLEID'])) {
                                 <td><?= $people_number; ?></td>
                                 <td><?= $people_address; ?></td>
                                 <td><?= $people_idcard; ?></td>
-                                <td><?= $people_type; ?></td>
-
-
-
-
-
-
-
-                                <td>
+                                <td style="text-align:center">
                                     <a href="index.php?Node=editpeople&PEOPLEID=<?= $people_id; ?>" type="button" class="btn btn-warning" onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข
                                     </a>
                                 </td>
@@ -81,7 +70,7 @@ if (isset($_GET['PEOPLEID'])) {
                                     </span>
                                 </td> -->
 
-                                <td>
+                                <td style="text-align:center">
                                     <a href="index.php?Node=showpeople&PEOPLEID=<?= $people_id; ?>" type="button" class="btn btn-danger" onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ
                                     </a>
                                 </td> 

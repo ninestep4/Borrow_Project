@@ -26,13 +26,13 @@ if (isset($_GET['MEMID'])) {
                     <thead>
                         <tr>
                             
-                            <th>ชื่อ-สกุล</th>
-                            <th>เบอร์โทร</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>สิทธิ์การใช้งาน</th>
-                            <th>แก้ไขประวัติ</th>
-                            <th>ลบข้อมูล</th>
+                            <td>ชื่อ-สกุล</td>
+                            <td>เบอร์โทร</td>
+                            <td>Username</td>
+                            <td>Password</td>
+                            <td>สิทธิ์การใช้งาน</td>
+                            <td style="text-align:center">แก้ไขประวัติ</td>
+                            <td style="text-align:center">ลบข้อมูล</td>
                             
                         </tr>
                     </thead>
@@ -70,15 +70,15 @@ if (isset($_GET['MEMID'])) {
                             <td><?= $mem_pass; ?></td>
                             <td><?= $levelname; ?></td>
 
-                            <td>
-                            <a href="index.php?Node=editpro&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
+                            <td style="text-align:center">
+                            <a href="index.php?Node=editmem&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
                             onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข 
                             </a>
                             </td>
 
 
-                            <td>
-                            <a href="index.php?Node=showpro&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-danger" 
+                            <td style="text-align:center">
+                            <a href="index.php?Node=showmem&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-danger" 
                             onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ 
                             </a>
                             </td>
