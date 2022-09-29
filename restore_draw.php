@@ -1,15 +1,4 @@
-<?php
-if (isset($_GET['DID'])) {
-    $DID = $_GET['DID'];
-    $today = date("Y-m-d H:i:s", strtotime("$today + 5 hours"));
 
-    $sql = "UPDATE meterdraw SET draw_userid_app='$memid',draw_date_app='$today',draw_status='0' WHERE draw_id='$DID' ";
-    $res = mysqli_query($con, $sql);
-    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=restoredraw">';
-    exit;
-}
-
-?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
@@ -36,11 +25,8 @@ if (isset($_GET['DID'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT dr1.*,mt1.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1
-                                LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
-                                LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
-                                LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
-                                order by dr1.draw_status ASC  ";
+                        $sql = "SELECT * FROM meter,meterdraw WHERE draw_status = '1' 
+                        order by draw_status ASC  ";
 
                         $res = mysqli_query($con, $sql);
 
@@ -98,6 +84,7 @@ if (isset($_GET['DID'])) {
                                     <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) 
                                     return true; else return false;"><input type="button" value="รับคืน"></a>
 
+                                    <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="รับคืน"></a>
                                 </td>
 
                             <?php } ?>

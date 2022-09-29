@@ -1,16 +1,17 @@
 <?php
 if (isset($_GET['DID'])) {
     $DID = $_GET['DID'];
-    $today = date("Y-m-d H:i", strtotime("$today + 5 hours"));
+    $today = date("Y-m-d");
 
-    $sql = "UPDATE meterdraw SET draw_userid_app='$memid',draw_date_app='$today',draw_status='1' WHERE draw_id='$DID' ";
+
+    $sql = "UPDATE meterdraw SET draw_userid_app='$memid',draw_date_app='{$today}',draw_status='1' WHERE draw_id='$DID' ";
     $res = mysqli_query($con, $sql);
     echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
     exit;
 }
-
 ?>
 
+<link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
     <div class="col-md-12">
@@ -25,27 +26,29 @@ if (isset($_GET['DID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <td width="10%">รูปภาพ</td>
-                            <td width="15%">ชื่อวัสดุ</td>
-                            <td width="15%">จำนวนเบิก</td>
-                            <td width="20%">ผู้เบิก/วันเบิก</td>
-                            <td width="20%">ผู้อนุมัติ/วันอนุมัติ</td>
-                            <td width="15%">สถานะ</td>
+                            <th >รูปภาพ</th>
+                            <th >ชื่อวัสดุ</th>
+                            <th >จำนวนเบิก</th>
+                            <th >ผู้เบิก/วันเบิก</th>
+                            <th >ผู้อนุมัติ/วันอนุมัติ</th>
+                            <th >รายละเอียด</th>
+                            <th >สถานะ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT dr1.*,mt1.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1
-LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
-LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
-LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
-order by dr1.draw_status ASC  ";
+                        $sql = "SELECT dr1.*,mt1.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1  
+                                LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
+                                LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
+                                LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
+                                order by dr1.draw_status ASC ";
 
                         $res = mysqli_query($con, $sql);
 
 
                         while ($row = mysqli_fetch_assoc($res)) {
                             $draw_id = $row['draw_id'];
+                            $met_mtype = $row['met_mtype'];
                             $draw_num = $row['draw_num'];
                             $draw_metid = $row['draw_metid'];
                             $draw_userid_draw = $row['draw_userid_draw'];
@@ -74,10 +77,12 @@ order by dr1.draw_status ASC  ";
                                 <td><img src="<?= $met_img; ?>" width="80"></td>
                                 <td><?= $met_name; ?></td>
                                 <td><?= $draw_num; ?></td>
+
                                 <td>
                                     <?= $name1draw; ?><br>
                                     <?= $draw_date_app ?>
                                 </td>
+
                                 <td>
                                     <?php
                                     if ($draw_status == '0') {
@@ -89,6 +94,12 @@ order by dr1.draw_status ASC  ";
                                     <?php } ?>
                                 </td>
                                 <td>
+                                    <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link" > 
+                                        <i class="material-icons">search</i>
+                                    </a>
+
+                                </td>
+                                <td>
                                     <?= $statusname; ?>
                                     <?php if ($draw_status == '0') { ?>
 
@@ -97,13 +108,15 @@ order by dr1.draw_status ASC  ";
 
                                     <?php } ?>
                                 </td>
-
-
                             </tr>
+
+
                         <?php } ?>
 
                     </tbody>
                 </table>
+
+
             </div>
 
         </div>

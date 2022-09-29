@@ -43,6 +43,10 @@ if (isset($_POST['btsave'])) {
   $sql .= " WHERE met_id='$met_id' ";
 
   $res = mysqli_query($con, $sql);
+
+  $sql2 = "UPDATE import SET met_total='$met_total'";
+  $res2 = mysqli_query($con, $sql);
+  
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=smat">';
   exit;
 }

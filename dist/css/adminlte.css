@@ -223,6 +223,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  vertical-align: middle;
 }
 
 label {
@@ -1876,6 +1877,7 @@ pre code {
 
 .table-sm th,
 .table-sm td {
+  vertical-align: center;
   padding: 0.3rem;
 }
 
@@ -2195,6 +2197,10 @@ pre code {
   border: 0;
 }
 
+.footer,
+.push {
+  height: 50px;
+}
 .form-control {
   display: block;
   width: 100%;
@@ -4565,7 +4571,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: none;
 }
 
 .nav-fill > .nav-link,

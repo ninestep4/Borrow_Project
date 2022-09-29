@@ -58,6 +58,7 @@ LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE (meter.m
             ?>
 
               <tr>
+                
                 <td><img src="<?= $met_img; ?>" width="80"></td>
                 <td><?= $met_id; ?></td>
                 <td><?= $met_name; ?></td>
@@ -101,6 +102,7 @@ LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id) WHERE (meter.m
           </tbody>
         </table>
       </div>
+      
 
     </div>
   </div>
