@@ -101,22 +101,45 @@ if (isset($_POST['btsave'])) {
                       <label for="inputName">จำนวนที่เบิก <font color="red">(กรุณาเบิกวัสดุไม่เกินที่มีในสต็อก)</font></label>
                     </div>
 
-                    <select type="name" id="inputStatus" name="people_name" class="form-control custom-select" required="">
-                      <option selected disabled>เลือกชื่อผู้มายืม</option>
+                   <body>  
+           <br /><br />  
+           <div class="container" style="width:500px;">  
+               
+                <input type="text" name="country" id="country" class="form-control" placeholder="ป้อนชื่อผู้มายืม" />  
+                <div id="countryList"></div>  
+           </div>  
+      </body>  
+      <style>  
+           ul{  
+                cursor:pointer;  
+           }  
+           </style>  
+ </html>  
+ <script>  
+ $(document).ready(function(){  
+      $('#country').keyup(function(){  
+           var query = $(this).val();  
+           if(query != '')  
+           {  
+                $.ajax({  
+                     url:"search.php",  
+                     method:"POST",  
+                     data:{query:query},  
+                     success:function(data)  
+                     {  
+                          $('#countryList').fadeIn();  
+                          $('#countryList').html(data);  
+                     }  
+                });  
+           }  
+      });  
+      $(document).on('click', 'li', function(){  
+           $('#country').val($(this).text());  
+           $('#countryList').fadeOut();  
+      });  
+ });  
+ </script>  
 
-
-                      <?php
-                      $sql = "SELECT * FROM people";
-                      $res = mysqli_query($con, $sql);
-                      while ($row = mysqli_fetch_assoc($res)) {
-                        $people_id = $row['people_id'];
-                        $people_name = $row['people_name'];
-                      ?>
-                        <option value="<?= $people_name; ?>"><?= $people_name; ?></option>
-
-                      <?php } ?>
-
-                    </select>
 
 
 
