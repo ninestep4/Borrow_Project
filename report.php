@@ -19,7 +19,7 @@
 
 
                              <div class="card-body col-md-15 mb-4"><br>
-                                 <select name="month" id="month" class="form-control custom-select">
+                                 <select name="month" id="month" class="form-control custom-select" style="width:500px;">
                                      <option value="">เลือกเดือนที่ต้องการค้นหา</option>
 
 
@@ -39,12 +39,8 @@
 
 
                                  </select>
-                                 <div class="col-12">
-                                    <br>
-                                    <input type="submit" value="ค้นหา" class="btn btn-success float-right " name="searchM">
-
-                                 </div>
-                                 
+                                 <input type="submit" value="ค้นหา" class="btn btn-success float-right " name="searchM" style="right:450px;">
+                             
                              </div>
                              <?php 
                                     error_reporting(0);
