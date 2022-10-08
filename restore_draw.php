@@ -1,3 +1,18 @@
+<?php
+if (isset($_GET['MATID'])) {
+  $MATID = $_GET['MATID'];
+
+  $sql = "SELECT * FROM meter WHERE met_id='$MATID' ";
+  $res = mysqli_query($con, $sql);
+  $row = mysqli_fetch_assoc($res);
+  $met_id = $row['met_id'];
+  $met_name = $row['met_name'];
+  $met_detail = $row['met_detail'];
+  $met_img = $row['met_img'];
+  $met_total = $row['met_total'];
+  $met_mtype = $row['met_mtype'];
+}
+?>
 
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
@@ -43,6 +58,7 @@
 
                             $met_name = $row['met_name'];
                             $met_img = $row['met_img'];
+                            $met_id = $row['met_id'];
 
 
                             
