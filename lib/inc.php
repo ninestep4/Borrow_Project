@@ -46,6 +46,7 @@ else if($Node=="restoredraw") {return "restore_draw.php";}
 else if($Node=="import") {return "import.php";}
 else if($Node=="report") {return "report.php";}
 else if($Node=="detail") {return "detaildraw.php";}
+else if($Node=="noapp") {return "noapp.php";}
 
 
 else {return "index.php";}

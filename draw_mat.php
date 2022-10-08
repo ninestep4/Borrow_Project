@@ -27,10 +27,15 @@ if (!empty($_POST)) {
   $D_Postend =  $_POST['end'];
 }
 
-if (!empty($_POST)) {
-  $peopleName = $_POST['people_name'];
-}
 
+
+
+
+include_once("search.php");
+
+if (!empty($_POST)) {
+  $output =  $_POST['people_name'];
+}
 
 if (isset($_POST['btsave'])) {
   $met_id = $_POST['met_id'];
@@ -54,14 +59,13 @@ if (isset($_POST['btsave'])) {
 
 
 
-  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name) 
-  VALUES ('','$metmtype','$draw_num','$met_id','$peopleName','','','0','$D_Post','$D_Postend','$peopleName','$met_name')";
+  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id) 
+  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id')";
 
   $res3 = mysqli_query($con, $sql3);
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
   exit;
 }
-
 
 
 ?>
@@ -101,59 +105,100 @@ if (isset($_POST['btsave'])) {
                       <label for="inputName">จำนวนที่เบิก <font color="red">(กรุณาเบิกวัสดุไม่เกินที่มีในสต็อก)</font></label>
                     </div>
 
-                    <select type="name" id="inputStatus" name="people_name" class="form-control custom-select" required="">
-                      <option selected disabled>เลือกชื่อผู้มายืม</option>
+                    <body>
+                      <br /><br />
+                      <div class="container" style="width:500px;">
+
+                        <input type="text" name="Name" id="Name" class="form-control" placeholder="ป้อนชื่อผู้มายืม" />
+                        <div id="peoplename"></div>
 
 
-                      <?php
-                      $sql = "SELECT * FROM people";
-                      $res = mysqli_query($con, $sql);
-                      while ($row = mysqli_fetch_assoc($res)) {
-                        $people_id = $row['people_id'];
-                        $people_name = $row['people_name'];
-                      ?>
-                        <option value="<?= $people_name; ?>"><?= $people_name; ?></option>
+                    </body>
+                    <style>
+                      ul {
+                        cursor: pointer;
+                      }
+                    </style>
 
-                      <?php } ?>
+                    </html>
 
-                    </select>
+                    <script>
+                      $(document).ready(function() {
+                        $('#Name').keyup(function() {
+                          var query = $(this).val();
+                          if (query != '') {
+                            $.ajax({
+                              url: "search.php",
+                              method: "POST",
+                              data: {
+                                query: query
+                              },
+                              success: function(data) {
+                                $('#peoplename').fadeIn();
+                                $('#peoplename').html(data);
+
+
+
+                              }
+                            });
+                          }
+                        });
+                        $(document).on('click', 'li', function() {
+                          $('#Name').val($(this).text());
+                          $('#peoplename').fadeOut();
+                        });
+
+                      });
+
+                      if (isset($_POST["valuesearch"])) {
+                        $valuesearch = $_POST["valuesearch"];
+                        print_r($valuesearch);
+                      }
+                    </script>
+
+
+                  </div>
 
 
 
 
 
+                  <div class="col-md-6 mb-4 pb-2">
 
-                    <div class="col-md-6 mb-4 pb-2">
+                    <?php
 
-                      <?php
-                      if ($met_mtype == 2) {
-                      ?>
-                        <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
-                        <div>
-                          <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
-                        </div>
-                      <?php } ?>
+
+                    if ($met_mtype == 2) {
+                    ?>
+                      <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
                       <div>
-                        <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
+                        <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
+
                       </div>
 
-
-                    </div>
+                    <?php } ?>
                     <div>
 
+                      <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
                     </div>
+
+
                   </div>
-                  <!-- /.card-body -->
+                  <div>
+
+                  </div>
                 </div>
-
-                <!-- /.card -->
+                <!-- /.card-body -->
               </div>
 
+              <!-- /.card -->
+            </div>
 
-              <div class="col-md-1">
-                <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave">
 
-              </div>
+            <div class="col-md-1">
+              <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave">
+
+            </div>
       </center>
 
     </section>
