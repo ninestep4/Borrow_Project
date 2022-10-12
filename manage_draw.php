@@ -6,7 +6,7 @@ if (isset($_GET['DID'])) {
 
     $sql = "UPDATE meterdraw SET draw_userid_app='$memid',draw_date_app='{$today}',draw_status='1' WHERE draw_id='$DID' ";
     $res = mysqli_query($con, $sql);
-    
+    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
     exit;
 }
 
