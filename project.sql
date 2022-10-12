@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2022 at 10:15 PM
+-- Generation Time: Oct 09, 2022 at 01:41 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -53,7 +53,10 @@ CREATE TABLE `import` (
 --
 
 INSERT INTO `import` (`met_name`, `met_id`, `met_total`, `import_total`, `mem_name`, `date_import`, `import_id`) VALUES
-('หัวใจเทียม', 5, 10, 5, 'มาเฟียไม่มีหัวใจ', '2022-09-29', 1);
+('หัวใจเทียม', 5, 10, 5, 'มาเฟียไม่มีหัวใจ', '2022-09-29', 1),
+('หัวใจเทียม', 5, 30, 10, '', '2022-10-08', 28),
+('ยาแดง', 1, 250, 200, '', '2022-10-08', 29),
+('ผ้าพันแผล', 3, 200, 10, '', '2022-10-08', 30);
 
 -- --------------------------------------------------------
 
@@ -101,11 +104,11 @@ CREATE TABLE `meter` (
 --
 
 INSERT INTO `meter` (`met_id`, `met_name`, `met_detail`, `met_img`, `met_total`, `met_mtype`) VALUES
-(1, 'ยาแดง', 'ทาแผล', 'matpic/2018-2609779.jpg', 211, '1'),
+(1, 'ยาแดง', 'ทาแผล', 'matpic/2018-2609779.jpg', 250, '1'),
 (2, 'เตียงนอน', 'เตียง', 'matpic/bed.jpg', 3, '2'),
-(3, 'ผ้าพันแผล', 'พันบริเวณที่บาดเจ็บ', 'matpic/50d3189a70d07100fbe6f768831823ab.jpg_720x720q80.jpg_.webp', 210, '1'),
-(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 0, '2'),
-(5, 'หัวใจเทียม', 'สำหรับมาเฟีย', 'matpic/modelheart.png', 10, '4');
+(3, 'ผ้าพันแผล', 'พันบริเวณที่บาดเจ็บ', 'matpic/50d3189a70d07100fbe6f768831823ab.jpg_720x720q80.jpg_.webp', 200, '1'),
+(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 80, '2'),
+(5, 'หัวใจเทียม', 'สำหรับมาเฟีย', 'matpic/modelheart.png', 29, '4');
 
 -- --------------------------------------------------------
 
@@ -125,28 +128,16 @@ CREATE TABLE `meterdraw` (
   `start_borrow` varchar(10) NOT NULL,
   `end_borrow` varchar(10) NOT NULL,
   `people_name` varchar(100) NOT NULL,
-  `people_id` int(11) NOT NULL
+  `met_name` varchar(100) NOT NULL,
+  `met_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `meterdraw`
 --
 
-INSERT INTO `meterdraw` (`draw_id`, `met_mtype`, `draw_num`, `draw_metid`, `draw_userid_draw`, `draw_userid_app`, `draw_date_app`, `draw_status`, `start_borrow`, `end_borrow`, `people_name`, `people_id`) VALUES
-(56, 2, 1, 2, 'ภาณุ โห้เฉื่อย', 0, '0000-00-00', '1', '2022-09-28', '2022-09-30', 'ภาณุ โห้เฉื่อย', 0),
-(57, 1, 1, 3, 'ภาณุ โห้เฉื่อย', 1, '0000-00-00', '1', '2022-09-29', '2022-09-30', 'ภาณุ โห้เฉื่อย', 0),
-(58, 1, 1, 3, '123123', 1, '2022-09-29', '1', '2022-09-29', '2022-09-30', '123123', 0),
-(59, 1, 1, 3, 'ภาณุ โห้เฉื่อย', 1, '0000-00-00', '1', '', '', 'ภาณุ โห้เฉื่อย', 0),
-(60, 1, 1, 3, '', 1, '0000-00-00', '1', '', '', '', 0),
-(61, 1, 1, 3, '', 1, '0000-00-00', '1', '', '', '', 0),
-(62, 1, 1, 3, '', 1, '0000-00-00', '1', '', '', '', 0),
-(63, 1, 1, 3, '', 1, '0000-00-00', '1', '', '', '', 0),
-(64, 1, 1, 1, '', 1, '0000-00-00', '1', '', '', '', 0),
-(65, 1, 1, 1, '', 1, '0000-00-00', '1', '', '', '', 0),
-(66, 2, 1, 4, '', 1, '0000-00-00', '1', '', '', '', 0),
-(67, 2, 1, 2, '', 1, '2022-09-28', '1', '', '', '', 0),
-(68, 1, 0, 1, '', 1, '2022-09-29', '1', '', '', '', 0),
-(69, 1, 0, 1, '', 0, '0000-00-00', '0', '', '', '', 0);
+INSERT INTO `meterdraw` (`draw_id`, `met_mtype`, `draw_num`, `draw_metid`, `draw_userid_draw`, `draw_userid_app`, `draw_date_app`, `draw_status`, `start_borrow`, `end_borrow`, `people_name`, `met_name`, `met_id`) VALUES
+(126, 4, 1, 5, '', 1, '2022-10-09', '1', '', '', '', 'หัวใจเทียม', 5);
 
 -- --------------------------------------------------------
 
@@ -245,7 +236,7 @@ ALTER TABLE `people`
 -- AUTO_INCREMENT for table `import`
 --
 ALTER TABLE `import`
-  MODIFY `import_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `import_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -263,7 +254,7 @@ ALTER TABLE `meter`
 -- AUTO_INCREMENT for table `meterdraw`
 --
 ALTER TABLE `meterdraw`
-  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `metertype`
