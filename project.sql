@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2022 at 01:41 AM
+-- Generation Time: Oct 16, 2022 at 08:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -104,11 +104,11 @@ CREATE TABLE `meter` (
 --
 
 INSERT INTO `meter` (`met_id`, `met_name`, `met_detail`, `met_img`, `met_total`, `met_mtype`) VALUES
-(1, 'ยาแดง', 'ทาแผล', 'matpic/2018-2609779.jpg', 250, '1'),
-(2, 'เตียงนอน', 'เตียง', 'matpic/bed.jpg', 3, '2'),
+(1, 'ยาแดง', 'ทาแผล', 'matpic/2018-2609779.jpg', 249, '1'),
+(2, 'เตียงนอน', 'เตียง', 'matpic/bed.jpg', 2, '2'),
 (3, 'ผ้าพันแผล', 'พันบริเวณที่บาดเจ็บ', 'matpic/50d3189a70d07100fbe6f768831823ab.jpg_720x720q80.jpg_.webp', 200, '1'),
-(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 80, '2'),
-(5, 'หัวใจเทียม', 'สำหรับมาเฟีย', 'matpic/modelheart.png', 29, '4');
+(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 82, '2'),
+(5, 'หัวใจเทียม', 'สำหรับมาเฟีย', 'matpic/modelheart.png', 39, '4');
 
 -- --------------------------------------------------------
 
@@ -137,7 +137,13 @@ CREATE TABLE `meterdraw` (
 --
 
 INSERT INTO `meterdraw` (`draw_id`, `met_mtype`, `draw_num`, `draw_metid`, `draw_userid_draw`, `draw_userid_app`, `draw_date_app`, `draw_status`, `start_borrow`, `end_borrow`, `people_name`, `met_name`, `met_id`) VALUES
-(126, 4, 1, 5, '', 1, '2022-10-09', '1', '', '', '', 'หัวใจเทียม', 5);
+(1, 1, 1, 1, '', 1, '2022-10-12', '1', '', '', '', 'ยาแดง', 1),
+(2, 2, 1, 4, '', 1, '0000-00-00', '4', '', '', '', 'ไม้ค้ำยัน', 4),
+(3, 2, 1, 2, '', 1, '2022-10-12', '4', '', '', '', 'เตียงนอน', 2),
+(4, 2, 1, 4, '', 1, '2022-10-12', '4', '', '', '', 'ไม้ค้ำยัน', 4),
+(5, 2, 1, 4, '', 1, '2022-10-12', '4', '', '', '', 'ไม้ค้ำยัน', 4),
+(6, 2, 2, 4, '', 1, '2022-10-12', '4', '', '', '', 'ไม้ค้ำยัน', 4),
+(7, 1, 1, 1, '', 1, '0000-00-00', '3', '', '', '', 'ยาแดง', 1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +202,8 @@ INSERT INTO `people` (`people_id`, `people_name`, `people_sex`, `people_address`
 -- Indexes for table `import`
 --
 ALTER TABLE `import`
-  ADD PRIMARY KEY (`import_id`);
+  ADD PRIMARY KEY (`import_id`),
+  ADD KEY `met_id` (`met_id`);
 
 --
 -- Indexes for table `member`
@@ -214,7 +221,9 @@ ALTER TABLE `meter`
 -- Indexes for table `meterdraw`
 --
 ALTER TABLE `meterdraw`
-  ADD PRIMARY KEY (`draw_id`);
+  ADD PRIMARY KEY (`draw_id`),
+  ADD KEY `met_id` (`met_id`),
+  ADD KEY `met_mtype` (`met_mtype`);
 
 --
 -- Indexes for table `metertype`
@@ -254,7 +263,7 @@ ALTER TABLE `meter`
 -- AUTO_INCREMENT for table `meterdraw`
 --
 ALTER TABLE `meterdraw`
-  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `metertype`
@@ -267,6 +276,16 @@ ALTER TABLE `metertype`
 --
 ALTER TABLE `people`
   MODIFY `people_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `import`
+--
+ALTER TABLE `import`
+  ADD CONSTRAINT `import_ibfk_1` FOREIGN KEY (`met_id`) REFERENCES `meter` (`met_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
