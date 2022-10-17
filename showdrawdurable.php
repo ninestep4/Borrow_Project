@@ -45,19 +45,6 @@
                                 <td><?= $mtype_name; ?></td>
                                 <td style="text-align:center"><?= $met_total; ?></td>
 
-
-
-                            
-                                <!-- ปุ่มเวอร์ชันเก่า -->                                
-                                <!-- <td>
-                                    <span class="badge bg-warning">
-                                        <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>" onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก</a>
-                                    </span>
-                                </td> -->
-
-
-                                
-                                <!-- ปุ่มเวอร์ชันใหม่ -->
                                 <td style="text-align:center">
                                     <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>"type="button" class="btn btn-warning" 
                                         onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก 

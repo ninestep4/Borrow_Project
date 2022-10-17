@@ -9,7 +9,22 @@ if (isset($_GET['DID'])) {
     echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
     exit;
 }
+
+$sql = "SELECT * FROM meter";
+$res = mysqli_query($con, $sql);
+
+while ($row = mysqli_fetch_assoc($res)) {
+    $met_id = $row['met_id'];
+    $met_name = $row['met_name'];
+    $met_detail = $row['met_detail'];
+    $met_img = $row['met_img'];
+    $met_total = $row['met_total'];
+    $met_mtype = $row['met_mtype'];
+}
 ?>
+
+
+
 
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
@@ -26,13 +41,13 @@ if (isset($_GET['DID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th >รูปภาพ</th>
-                            <th >ชื่อวัสดุ</th>
-                            <th >จำนวนเบิก</th>
-                            <th >ผู้เบิก/วันเบิก</th>
-                            <th >ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th >รายละเอียด</th>
-                            <th >สถานะ</th>
+                            <th>รูปภาพ</th>
+                            <th>ชื่อวัสดุ</th>
+                            <th>จำนวนเบิก</th>
+                            <th>ผู้เบิก/วันเบิก</th>
+                            <th>ผู้อนุมัติ/วันอนุมัติ</th>
+                            <th>รายละเอียด</th>
+                            <th>สถานะ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,9 +81,12 @@ if (isset($_GET['DID'])) {
 
 
                             if ($draw_status == '0') {
-                                $statusname = "<font color='red'>รอรับวัสดุ</font>";
-                            } else {
-                                $statusname = "<font color='Green'>รับวัสดุแล้ว</font>";
+                                $statusname = "<font color='yellow'>รอการอนุมัติ</font>";
+                            } elseif($draw_status == '3') {
+                                $statusname = "<font color='red'>ไม่อนุมัติ</font>";
+                            }
+                            else{
+                                $statusname = "<font color='Green'>อนุมัติ</font>";
                             }
 
                         ?>
@@ -94,7 +112,7 @@ if (isset($_GET['DID'])) {
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link" > 
+                                    <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link">
                                         <i class="material-icons">search</i>
                                     </a>
 
@@ -107,7 +125,13 @@ if (isset($_GET['DID'])) {
                                         onclick="if(confirm('คุณต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="อนุมัติ"></a>
 
                                     <?php } ?>
+                                    <?php if ($draw_status == '0') { ?>
+
+                                        <a href="index.php?Node=noapp&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณไม่ต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input name="btno" type="button" value="ไม่อนุมัติ"></a>
+
+                                    <?php } ?>
                                 </td>
+
                             </tr>
 
 

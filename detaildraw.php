@@ -37,14 +37,16 @@ if (isset($_GET['DID'])) {
                 <div class="card-body">
                         <tr>
                             <b>ชื่อวัสดุ:</b> <?= $met_name; ?>
-                            <b>ชื่อผู้ยืม:</b> <?= $draw_name; ?>
+                            
                         </tr><br><br>
+                        <b>ชื่อผู้ยืม:</b> <?= $draw_name; ?>
+                        <br><br>
                         <tr>
                             <b>จำนวน:</b> <?= $draw_num;?>
                         </tr><br><br>
                         <tr>
-                            <b>วันที่ยืม</b> <?= $start_borrow; ?>
-                            <b>วันที่คืน</b> <?= $end_borrow; ?>
+                            <b>วันที่ยืม:</b> <?= $start_borrow; ?>
+                            <b>วันที่คืน:</b> <?= $end_borrow; ?>
                         </tr>
                   <!-- /.card-body -->
                 </div>

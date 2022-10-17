@@ -1,4 +1,4 @@
- <?php
+<?php
     if (!empty($_POST)) {
         $month = $_POST['month'];
       }
