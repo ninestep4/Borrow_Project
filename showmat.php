@@ -87,12 +87,7 @@ if (isset($_GET['MATID'])) {
                     </a>
                 </td>
 
-                <td style="text-align:center">
-                    <a href="index.php?Node=smat&MATID=<?= $met_id; ?>"type="button" class="btn btn-danger" 
-                        onclick="if(confirm('คุณต้องการลบรายการนี้ใช่ไหม?')) return true; else return false;">ลบ 
-                    </a>
-                </td>           
-
+            
               </tr>
             <?php } ?>
 

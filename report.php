@@ -1,10 +1,39 @@
 <?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
+$fontDirs = $defaultConfig['fontDir'];
+
+$defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
+$fontData = $defaultFontConfig['fontdata'];
+
+$mpdf = new \Mpdf\Mpdf([
+    'fontDir' => array_merge($fontDirs, [
+        __DIR__ . '/tmp',
+    ]),
+    'fontdata' => $fontData + [
+        'sarabun' => [
+            'R' => 'THSarabunNew.ttf',
+            'I' => 'THSarabunNew Italic.ttf',
+            'B' => 'THSarabunNew Bold.ttf',
+            'BI'=> 'THSarabunNew BoldItalic.ttf'
+        ]
+    ],
+    'default_font' => 'sarabun'
+]);
+
+
     if (!empty($_POST)) {
         $month = $_POST['month'];
-      }
-
+      }   
 
     ?>
+
+    
+
+
+
  <section class="content">
      <form action="index.php?Node=report" method="POST" enctype="multipart/form-data">
          <center>
@@ -39,9 +68,73 @@
 
 
                                  </select>
-                                 <input type="submit" value="ค้นหา" class="btn btn-success float-right " name="searchM" style="right:450px;">
+                                 <input type="submit" value="ค้นหา" class=" btn-success " name="searchM" >
                              
+                                 
+                                 <!-- <input type="button" value="Download PDF File" onclick="DownloadFile('Sample.pdf')" />
+
+                                    <script type="text/javascript">
+                                        function DownloadFile(fileName) {
+                                            //Set the File URL.
+                                            var url = "Files/" + fileName;
+                                
+                                            //Create XMLHTTP Request.
+                                            var req = new XMLHttpRequest();
+                                            req.open("GET", url, true);
+                                            req.responseType = "blob";
+                                            req.onload = function () {
+                                                //Convert the Byte Data to BLOB object.
+                                                var blob = new Blob([req.response], { type: "application/octetstream" });
+                                
+                                                //Check the Browser type and download the File.
+                                                var isIE = false || !!document.documentMode;
+                                                if (isIE) {
+                                                    window.navigator.msSaveBlob(blob, fileName);
+                                                } else {
+                                                    var url = window.URL || window.webkitURL;
+                                                    link = url.createObjectURL(blob);
+                                                    var a = document.createElement("a");
+                                                    a.setAttribute("download", fileName);
+                                                    a.setAttribute("href", link);
+                                                    document.body.appendChild(a);
+                                                    a.click();
+                                                    document.body.removeChild(a);
+                                                }
+                                            };
+                                            req.send();
+                                        };
+                                    </script> -->
+
+                                     <!-- ใช้ได้แต่ต้องมี server ก้อน -->
+                                        <!-- <button type="button" id="GetFile">Download</button>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+                                        <script>
+                                        $('#GetFile').on('click', function () {
+                                            $.ajax({
+                                                url: 'http://google.com',
+                                                method: 'GET',
+                                                xhrFields: {
+                                                    responseType: 'blob'
+                                                },
+                                                success: function (data) {
+                                                    var a = document.createElement('a');
+                                                    var url = window.URL.createObjectURL(data);
+                                                    a.href = url;
+                                                    a.download = 'myfile.pdf';
+                                                    document.body.append(a);
+                                                    a.click();
+                                                    a.remove();
+                                                    window.URL.revokeObjectURL(url);
+                                                }
+                                            });
+                                        });
+                                        </script> -->
+                                        
+                                        <a href="MyReport.pdf">โหลดผลการเรียน (pdf)</a>
                              </div>
+
+
+                                   
                              <?php 
                                     error_reporting(0);
                                     
@@ -82,6 +175,11 @@
                                         $M="ธันวาคม";
                                     };
                              ?>
+                             
+                             <?php
+                             ob_start();
+                             ?>
+
                              <div>
                                 <?php error_reporting(0);?>
                                         <h1>รายการนำเข้าประจำเดือน</h1>
@@ -145,6 +243,14 @@
 
                             <?php } ?>
                              </table>
+
+                            <?php
+                                $html=ob_get_contents();
+                                $mpdf->WriteHTML($html);
+                                $mpdf->Output("MyReport.pdf");
+                                ob_end_flush();
+                            ?>
+
                              <!-- /.card -->
                          </div>
 
