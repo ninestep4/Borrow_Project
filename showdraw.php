@@ -18,7 +18,7 @@
                             <td width="10%">รายละเอียด</td>
                             <td width="1%">ประเภท</td>
                             <td width="15%" style="text-align:center">จำนวนวัสดุ</td>
-                            <td width="5%" style="text-align:cent">เบิก</td>
+                            <td width="5%" style="text-align:center">เบิก</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,8 +59,8 @@
 
                                 <!-- ปุ่มเวอร์ชันใหม่ -->
 
-                                <td style="text-align:cent">
-                                    <a href="index.php?Node=drawmat&MATID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
+                                <td style="text-align:center">
+                                    <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>" type="button" class="btn btn-warning" 
                                         onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก 
                                     </a>
                                 </td>

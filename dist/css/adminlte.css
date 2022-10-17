@@ -223,6 +223,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  vertical-align: middle;
 }
 
 label {
@@ -1876,6 +1877,7 @@ pre code {
 
 .table-sm th,
 .table-sm td {
+  vertical-align: center;
   padding: 0.3rem;
 }
 
@@ -2195,6 +2197,10 @@ pre code {
   border: 0;
 }
 
+.footer,
+.push {
+  height: 50px;
+}
 .form-control {
   display: block;
   width: 100%;
@@ -4565,7 +4571,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: none;
 }
 
 .nav-fill > .nav-link,
@@ -52424,13 +52430,13 @@ a.text-muted:hover {
 /* adduser css */
 .gradient-custom {
   /* fallback for old browsers */
-  background: #f093fb;
+  background: #7EDABF;
   
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+  background: -webkit-linear-gradient(to bottom right, #7EDABF, #7ED9DA);
   
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+  background: linear-gradient(to bottom right, #7EDABF, #7ED9DA)
   }
   
   .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -52456,4 +52462,10 @@ a.text-muted:hover {
     align-items: center;
 }
 
+.page-row {
+  display: table-row;
+  height: 1px;
+}
+
+.page-row-expanded { height: 100%; }
 /*# sourceMappingURL=adminlte.css.map */

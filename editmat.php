@@ -43,6 +43,10 @@ if (isset($_POST['btsave'])) {
   $sql .= " WHERE met_id='$met_id' ";
 
   $res = mysqli_query($con, $sql);
+
+  $sql2 = "UPDATE import SET met_total='$met_total'";
+  $res2 = mysqli_query($con, $sql);
+  
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=smat">';
   exit;
 }
@@ -58,6 +62,11 @@ if (isset($_POST['btsave'])) {
 
     <!-- Main content -->
     <section class="content">
+    <div class="content-wrapper">
+    <div class="row justify-content align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
       <div class="row">
         <div class="col-md-12">
           <div class="card card-primary">
@@ -130,6 +139,10 @@ if (isset($_POST['btsave'])) {
         </div>
       </div>
       <br>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
     </section>
     <!-- /.content -->
 

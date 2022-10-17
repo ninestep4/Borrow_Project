@@ -19,12 +19,14 @@ else if($Node=="editmem"){return "editmember.php";}
 else if($Node=="editpro"){return "editprofile.php";}
 else if($Node=="addpeople"){return "addpeople.php";}
 else if($Node=="search"){return "search.php";}
+else if($Node=="editpeople"){return "editpeople.php";}
 
 //วัสดุ
 else if($Node=="smat"){return "showmat.php";}
 else if($Node=="amat"){return "addmat.php";}
 else if($Node=="emat"){return "editmat.php";}
 else if($Node=="stmat"){return "showtotalmat.php";}
+else if($Node=="searchmat"){return "searchmaterial.php";}
 
 
 //ครุภัณณฑ์
@@ -41,6 +43,10 @@ else if($Node=="hisdraw"){return "his_draw.php";}
 else if($Node=="managedraw"){return "manage_draw.php";}
 else if($Node=="managedraw"){return "manage_draw.php";} 
 else if($Node=="restoredraw") {return "restore_draw.php";}
+else if($Node=="import") {return "import.php";}
+else if($Node=="report") {return "report.php";}
+else if($Node=="detail") {return "detaildraw.php";}
+else if($Node=="pdf") {return "pdf.php";}
 
 
 else {return "index.php";}
