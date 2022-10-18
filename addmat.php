@@ -5,6 +5,7 @@ if (isset($_POST['btsave'])) {
   $met_detail = $_POST['met_detail'];
   $met_total = $_POST['met_total'];
   $met_mtype = $_POST['met_mtype'];
+  $unit_name = $_POST['unit_name'];
 
   $chk_pic = $_FILES['met_img']["name"];
   if ($chk_pic <> "") {
@@ -17,7 +18,7 @@ if (isset($_POST['btsave'])) {
 
   $sql = "INSERT INTO meter ";
   $sql .= "(met_id,met_name,met_detail,met_img,";
-  $sql .= "met_total,met_mtype)";
+  $sql .= "met_total,met_mtype,unit_name)";
   $sql .= " VALUES ";
   $sql .= " ( ";
   $sql .= " '' ";
@@ -26,6 +27,7 @@ if (isset($_POST['btsave'])) {
   $sql .= " ,'$met_img' ";
   $sql .= " ,'$met_total' ";
   $sql .= " ,'$met_mtype' ";
+  $sql .= " ,'$unit_name' ";
   $sql .= " ) ";
 
   $res = mysqli_query($con, $sql);
@@ -61,14 +63,33 @@ if (isset($_POST['btsave'])) {
 
               <div class="form-group">
                 <label for="inputName">รายละเอียด</label>
-                <input type="text" name="met_detail" id="inputName" class="form-control" required="">
+                <input type="text" name="met_detail" id="inputName" class="form-control" >
               </div>
 
-              <div class="form-group">
-                <label for="inputName">จำนวน</label>
-                <input type="number" name="met_total" id="inputName" class="form-control" required="">
-              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+                
+                  <label for="inputName">จำนวน</label>
+                  <input type="number" name="met_total" id="inputName" class="form-control" required="">
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+                  <label for="inputStatus">หน่วย</label>
+                  <select name="unit_name" id="inputStatus" class="form-control" required="">
+                  <option selected disabled>กรุณาเลือก</option>
+                      <?php
+                      $sql = "SELECT * FROM unit";
+                      $res = mysqli_query($con, $sql);
+                      while ($row = mysqli_fetch_assoc($res)) {
+                        $unit_id = $row['unit_id'];
+                        $unit_name = $row['unit_name'];
+                      ?>
+                        <option value="<?= $unit_name; ?>"><?= $unit_name; ?></option>
 
+                      <?php } ?>
+                  </select>
+                </div>
+              </div>
+              
 
               <div class="form-group">
                 <label for="inputStatus">ประเภทวัสดุ</label>
@@ -93,7 +114,7 @@ if (isset($_POST['btsave'])) {
 
               <div class="form-group">
                 <label for="inputName">รูปภาพ</label>
-                <input type="file" name="met_img" id="inputName" class="form-control" required="">
+                <input type="file" name="met_img" id="inputName" class="form-control" >
               </div>
 
 

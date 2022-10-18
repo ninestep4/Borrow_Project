@@ -53,7 +53,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT dr1.*,mt1.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1  
+                        $sql = "SELECT dr1.*,mt1.*, m1.mem_name AS name1 , m2.mem_name AS name2 FROM meterdraw dr1  
                                 LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
                                 LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
                                 LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
@@ -71,6 +71,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                             $draw_userid_app = $row['draw_userid_app'];
                             $draw_date_app = $row['draw_date_app'];
                             $draw_status = $row['draw_status'];
+                            $unit_name = $row['unit_name'];
 
 
                             $met_name = $row['met_name'];
@@ -96,7 +97,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                                 <td style="text-align:center"><?= $draw_id; ?></td>
                                 <td style="text-align:center"><img src="<?= $met_img; ?>" width="80"></td>
                                 <td style="text-align:center"><?= $met_name; ?></td>
-                                <td style="text-align:center"><?= $draw_num; ?></td>
+                                <td style="text-align:center"><?= $draw_num; ?> <?= $unit_name; ?></td>
 
                                 <td style="text-align:center">
                                     <?= $draw_userid_draw; ?><br>

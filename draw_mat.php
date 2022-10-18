@@ -11,6 +11,7 @@ if (isset($_GET['MATID'])) {
   $met_img = $row['met_img'];
   $met_total = $row['met_total'];
   $met_mtype = $row['met_mtype'];
+  $unit_name = $row['unit_name'];
 }
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
@@ -50,6 +51,7 @@ if (isset($_POST['btsave'])) {
   $met_total = $row1['met_total'];
   $metmtype = $row1['met_mtype'];
   $met_name = $row1['met_name'];
+  $unit_name = $row1['unit_name'];
 
   $totaldif = $met_total - $draw_num;
 
@@ -60,8 +62,8 @@ if (isset($_POST['btsave'])) {
 
 
 
-  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber) 
-  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id','$serialnumber')";
+  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber,unit_name) 
+  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id','$serialnumber','$unit_name')";
 
   $res3 = mysqli_query($con, $sql3);
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
@@ -97,7 +99,7 @@ if (isset($_POST['btsave'])) {
                   <font size="5">
                     <b>ชื่อวัสดุ:</b> <?= $met_name; ?><br>
                     <b>รายละเอียด:</b> <?= $met_detail; ?><br>
-                    <b>จำนวนที่มีอยู่ในสต็อก:</b> <?= $met_total; ?> หน่วย<br>
+                    <b>จำนวนที่มีอยู่ในสต็อก:</b> <?= $met_total; ?> <?= $unit_name; ?><br>
                   </font>
 
 
@@ -182,13 +184,16 @@ if (isset($_POST['btsave'])) {
                         <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
 
                       </div>
+                      <div>
+                      <label for="inputName"><font color="red">(หากไม่กำหนดวันคืนไม่ต้องเลือกวันที่คืน)</font></label>
+                    </div>
 
                     
 
                     <?php } ?>
                     <div>
 
-                      <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
+                      <p>จำนวน: <input type="number" required  min = "0" max = "99999" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
                     </div>
 
 

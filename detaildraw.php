@@ -12,6 +12,7 @@ if (isset($_GET['DID'])) {
   $end_borrow = $row['end_borrow'];
   $draw_num = $row['draw_num'];
   $serialnumber = $row['serialnumber'];
+  $unit_name = $row['unit_name'];
 
 }
 ?>
@@ -43,7 +44,7 @@ if (isset($_GET['DID'])) {
                         <b>ชื่อผู้ยืม:</b> <?= $draw_name; ?>
                         <br><br>
                         <tr>
-                            <b>จำนวน:</b> <?= $draw_num;?>
+                            <b>จำนวน:</b> <?= $draw_num;?> <?= $unit_name; ?>
                             <b>serialnumber:</b> <?= $serialnumber;?>
                         </tr><br><br>
                         <tr>
