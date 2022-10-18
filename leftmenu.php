@@ -111,7 +111,7 @@ if (isOnline()) {
                             <li class="nav-item">
                                 <a href="index.php?Node=sdraw" class="nav-link">
                                     <i class="nav-icon far fa-circle text-success"></i>
-                                    <p>ทำเรื่องยืมวัสดุ</p>
+                                    <p>ทำเรื่องเบิกวัสดุ</p>
                                 </a>
                             </li>
 

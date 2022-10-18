@@ -41,13 +41,13 @@ while ($row = mysqli_fetch_assoc($res)) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>รูปภาพ</th>
-                            <th>ชื่อวัสดุ</th>
-                            <th>จำนวนเบิก</th>
-                            <th>ผู้เบิก/วันเบิก</th>
-                            <th>ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th>รายละเอียด</th>
-                            <th>สถานะ</th>
+                            <td>รูปภาพ</td>
+                            <td>ชื่อวัสดุ</td>
+                            <td>จำนวนเบิก</td>
+                            <td>ผู้เบิก/วันเบิก</td>
+                            <td>ผู้อนุมัติ/วันอนุมัติ</td>
+                            <td>รายละเอียด</td>
+                            <td>สถานะ</td>
                         </tr>
                     </thead>
                     <tbody>

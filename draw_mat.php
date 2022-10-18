@@ -27,14 +27,10 @@ if (!empty($_POST)) {
     $D_Postend = $_POST['end'];
 }
 
-
-
-
-
-include_once("search.php");
+include_once "search.php";
 
 if (!empty($_POST)) {
-  $output =  $_POST['people_name'];
+    $output = $_POST['people_name'];
 }
 
 if (isset($_POST['btsave'])) {
@@ -54,11 +50,7 @@ if (isset($_POST['btsave'])) {
     $sql2 = "UPDATE meter SET met_total='$totaldif' WHERE met_id='$met_id' ";
     $res2 = mysqli_query($con, $sql2);
 
-
-
-
-
-  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id) 
+    $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id)
   VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id')";
 
     $res3 = mysqli_query($con, $sql3);
@@ -66,14 +58,12 @@ if (isset($_POST['btsave'])) {
     exit;
 }
 
-
 ?>
 
 
 
 
 <div class="content-wrapper">
-  <br>
   <form action="index.php?Node=drawmat" method="POST" enctype="multipart/form-data">
 
     <!-- Main content -->
@@ -105,21 +95,23 @@ if (isset($_POST['btsave'])) {
                     </div>
 
                     <body>
-                      <br /><br />
+                      <br />
                       <div class="container" style="width:500px;">
 
                         <input type="text" name="Name" id="Name" class="form-control" placeholder="ป้อนชื่อผู้มายืม" />
                         <div id="peoplename"></div>
 
+                        <br />
 
                     </body>
+
+
                     <style>
                       ul {
                         cursor: pointer;
                       }
                     </style>
 
-                    </html>
 
                     <script>
                       $(document).ready(function() {
@@ -164,39 +156,32 @@ if (isset($_POST['btsave'])) {
 
                   <div class="col-md-6 mb-4 pb-2">
 
-                    <?php
+                    <?php if ($met_mtype == 2) {?>
 
-
-                    if ($met_mtype == 2) {
-                    ?>
-                      <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
                       <div>
-                        <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
-
+                      <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
+                      <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
                       </div>
 
-                    <?php } ?>
-                    <div>
+                    <?php }?>
 
+                    <div>
                       <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
                     </div>
 
+                    <div>
+                    <input type="submit" value="ส่งเบิก" class="btn btn-success" style="width: 75px ;" name="btsave">
+                  </div>
 
                   </div>
-                  <div>
 
-                  </div>
+                    </div>
+
                 </div>
                 <!-- /.card-body -->
               </div>
 
               <!-- /.card -->
-            </div>
-
-
-            <div class="col-md-1">
-              <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave">
-
             </div>
       </center>
 

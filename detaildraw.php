@@ -13,7 +13,31 @@ if (isset($_GET['DID'])) {
   $draw_num = $row['draw_num'];
 
 }
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
+$fontDirs = $defaultConfig['fontDir'];
+
+$defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
+$fontData = $defaultFontConfig['fontdata'];
+
+$mpdf = new \Mpdf\Mpdf([
+    'fontDir' => array_merge($fontDirs, [
+        __DIR__ . '/tmp',
+    ]),
+    'fontdata' => $fontData + [
+        'sarabun' => [
+            'R' => 'THSarabunNew.ttf',
+            'I' => 'THSarabunNew Italic.ttf',
+            'B' => 'THSarabunNew Bold.ttf',
+            'BI'=> 'THSarabunNew BoldItalic.ttf'
+        ]
+    ],
+    'default_font' => 'sarabun'
+]);
 ?>
+
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <div class="content-wrapper">
@@ -30,7 +54,7 @@ if (isset($_GET['DID'])) {
             <div class="col-12 col-lg-9 col-xl-7">
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
-                
+
                   <h3>รายละเอียดการยืม</h3>
                 
                 </div>
@@ -48,23 +72,20 @@ if (isset($_GET['DID'])) {
                             <b>วันที่ยืม:</b> <?= $start_borrow; ?>
                             <b>วันที่คืน:</b> <?= $end_borrow; ?>
                         </tr>
+                    
                   <!-- /.card-body -->
                 </div>
-                
                 <!-- /.card -->
-              </div>
 
-              <div class="col-md-4">
-              <a href="index.php?Node=managedraw" class="btn btn-success  " >ย้อนกลับ</a>
+                <div>
+                  <a href="index.php?Node=managedraw" class="btn btn-success  " >ย้อนกลับ</a>
+                </div>
 
-            </div>
-             
+              </div>  
       </center>
 
     </section>
 
     <!-- /.content -->
-
-  
 
 </div>

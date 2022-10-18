@@ -12,7 +12,8 @@ if (isset($_GET['MATID'])) {
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <div class="content-wrapper">
- 
+
+
   <br>
   <div class="col-md-12">
 
@@ -43,12 +44,17 @@ if (isset($_GET['MATID'])) {
               <td width="1%">รายละเอียด</td>
               <td style="text-align:center">จำนวนที่มีอยู่</td>
               <td>ประเภท</td>
+              <td style="text-align:center">รายการนำเข้า</td>
               <td style="text-align:center">แก้ไขรายการ</td>
               <td style="text-align:center">ลบรายการ</td>
             </tr>
           </thead>
           <tbody>
             <?php
+            if (isset($_POST["material_name"])) {
+              $material_name = $_POST["material_name"];
+            }
+            error_reporting(0);
             $sql = "SELECT meter.*,metertype.* FROM meter
           LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
           WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='0'AND (meter.met_mtype='2')  )";
@@ -104,3 +110,7 @@ if (isset($_GET['MATID'])) {
     </div>
   </div>
 </div>
+
+
+              
+             

@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
@@ -6,8 +7,10 @@
         <div class="card">
 
             <div class="card-header">
-                <h3 class="card-title">รายการวัสดุสำหรับเบิก</h3>
-            </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h3 class="card-title">รายการวัสดุสำหรับเบิก</h3>
+                    </div>
 
                     <div class="col-sm-4">
                         <form align=right class="form-group my-3" method="POST">
@@ -32,8 +35,15 @@
                             <td width="5%" style="text-align:center">เบิก</td>
                         </tr>
                     </thead>
+
+
+
                     <tbody>
                         <?php
+                        if (isset($_POST["material_name"])) {
+                            $material_name = $_POST["material_name"];
+                        }
+                        error_reporting(0);
                         $sql = "SELECT meter.*,metertype.* FROM meter
                         LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
                         WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND ((meter.met_mtype='1') OR (meter.met_mtype='4')) )";
@@ -62,9 +72,8 @@
                                         onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก 
                                     </a>
                                 </td>
-
-
                             </tr>
+
                         <?php } ?>
 
 
@@ -76,3 +85,6 @@
         </div>
     </div>
 </div>
+
+
+                        

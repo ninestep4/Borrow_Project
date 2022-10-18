@@ -48,12 +48,12 @@ if(isset($_POST['btre'])){
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th width="10%">รูปภาพ</th>
-                            <th width="20%">ชื่อวัสดุ</th>
-                            <th width="15%">จำนวนเบิก</th>
-                            <th width="20%">ผู้เบิก/วันเบิก</th>
-                            <th width="20%">ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th width="10%">สถานะ</th>
+                            <td width="10%">รูปภาพ</td>
+                            <td width="20%">ชื่อวัสดุ</td>
+                            <td width="15%">จำนวนเบิก</td>
+                            <td width="20%">ผู้เบิก/วันเบิก</td>
+                            <td width="20%">ผู้อนุมัติ/วันอนุมัติ</td>
+                            <td width="10%">สถานะ</td>
                             
                         </tr>
                     </thead>
@@ -130,7 +130,7 @@ if(isset($_POST['btre'])){
                                     <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) 
                                     return true; else return false;"><input type="button" value="รับคืน"></a>
 
-                                <a href="index.php?Node=fucre&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" name="btre" value="รับคืน"></a>
+                            
                                 </td>
 
                                 <?php } ?>

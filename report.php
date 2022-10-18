@@ -192,12 +192,12 @@ $mpdf = new \Mpdf\Mpdf([
                          <table class="table table-striped">
                                  <thead>
                                      <tr>
-                                         <th width="10%">ลำดับ</th>
-                                         <th width="20%">ชื่อวัสดุ</th>
-                                         <th width="15%">จำนวนคงเหลือ</th>
-                                         <th width="20%">จำนวนนำเข้า</th>
-                                         <th width="20%">ผู้นำเข้า</th>
-                                         <th width="15%">วันที่นำเข้า</th>
+                                         <td style="text-align:center" width="10%">ลำดับ</td>
+                                         <td width="20%">ชื่อวัสดุ</td>
+                                         <td style="text-align:center" width="15%">จำนวนคงเหลือ</td>
+                                         <td style="text-align:center" width="20%">จำนวนนำเข้า</td>
+                                         <td width="20%">ผู้นำเข้า</td>
+                                         <td width="15%">วันที่นำเข้า</td>
                                      </tr>
                                  </thead>
                                  <tbody>
@@ -226,10 +226,10 @@ $mpdf = new \Mpdf\Mpdf([
 
                                      <tr>
 
-                                         <td><?= $import_id; ?></td>
+                                         <td style="text-align:center"><?= $import_id; ?></td>
                                          <td><?= $met_name; ?></td>
-                                         <td><?= $met_total; ?></td>
-                                         <td><?= $import_total; ?></td>
+                                         <td style="text-align:center"><?= $met_total; ?></td>
+                                         <td style="text-align:center"><?= $import_total; ?></td>
                                          <td><?= $mem_name; ?></td>
                                          <td><?= $date_import; ?></td>
 
