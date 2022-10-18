@@ -41,13 +41,14 @@ while ($row = mysqli_fetch_assoc($res)) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>รูปภาพ</th>
-                            <th>ชื่อวัสดุ</th>
-                            <th>จำนวนเบิก</th>
-                            <th>ผู้เบิก/วันเบิก</th>
-                            <th>ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th>รายละเอียด</th>
-                            <th>สถานะ</th>
+                            <th width="1 px">อันดับที่ </th> 
+                            <th style="text-align:center">รูปภาพ</th>
+                            <th style="text-align:center">ชื่อวัสดุ</th>
+                            <th style="text-align:center">จำนวนเบิก</th>
+                            <th style="text-align:center">ผู้เบิก/วันเบิก</th>
+                            <th style="text-align:center">ผู้อนุมัติ/วันอนุมัติ</th>
+                            <th style="text-align:center">รายละเอียด</th>
+                            <th style="text-align:center">สถานะ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,7 +57,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                                 LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
                                 LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
                                 LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
-                                order by dr1.draw_status ASC ";
+                                order by dr1.draw_id DESC ";
 
                         $res = mysqli_query($con, $sql);
 
@@ -92,16 +93,17 @@ while ($row = mysqli_fetch_assoc($res)) {
                         ?>
 
                             <tr>
-                                <td><img src="<?= $met_img; ?>" width="80"></td>
-                                <td><?= $met_name; ?></td>
-                                <td><?= $draw_num; ?></td>
+                                <td style="text-align:center"><?= $draw_id; ?></td>
+                                <td style="text-align:center"><img src="<?= $met_img; ?>" width="80"></td>
+                                <td style="text-align:center"><?= $met_name; ?></td>
+                                <td style="text-align:center"><?= $draw_num; ?></td>
 
-                                <td>
+                                <td style="text-align:center">
                                     <?= $draw_userid_draw; ?><br>
                                     (<?= $draw_date_app ?>)
                                 </td>
 
-                                <td>
+                                <td style="text-align:center">
                                     <?php
                                     if ($draw_status == '0') {
                                         echo "รออนุมัติ";
@@ -111,13 +113,13 @@ while ($row = mysqli_fetch_assoc($res)) {
                                         (<?= $draw_date_app; ?>)
                                     <?php } ?>
                                 </td>
-                                <td>
+                                <td style="text-align:center">
                                     <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link">
                                         <i class="material-icons">search</i>
                                     </a>
 
                                 </td>
-                                <td>
+                                <td style="text-align:center">
                                     <?= $statusname; ?>
                                     <?php if ($draw_status == '0') { ?>
 

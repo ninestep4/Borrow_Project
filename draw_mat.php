@@ -41,6 +41,7 @@ if (isset($_POST['btsave'])) {
   $met_id = $_POST['met_id'];
   $draw_num = $_POST['draw_num'];
   $draw_date = date("d-m-Y");
+  $serialnumber = $_POST['serialnumber'];
 
 
   $sql1 = "SELECT * FROM meter WHERE met_id='$met_id' ";
@@ -59,8 +60,8 @@ if (isset($_POST['btsave'])) {
 
 
 
-  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id) 
-  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id')";
+  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber) 
+  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id','$serialnumber')";
 
   $res3 = mysqli_query($con, $sql3);
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
@@ -158,23 +159,31 @@ if (isset($_POST['btsave'])) {
 
 
                   </div>
+                        <br>
 
 
 
 
-
-                  <div class="col-md-6 mb-4 pb-2">
+                  <div class="container" style="width:500px;">
 
                     <?php
 
 
                     if ($met_mtype == 2) {
                     ?>
+                    
+
+                      <input type="text" name="serialnumber" id="serialnumber" class="form-control" placeholder="ป้อนserialnumber" />
+                        <div id="serialnumber"></div><br>
+                        <div>
                       <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
+                        </div>
                       <div>
                         <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
 
                       </div>
+
+                    
 
                     <?php } ?>
                     <div>
