@@ -188,11 +188,12 @@ $mpdf = new \Mpdf\Mpdf([
                              
                          </div>
                          <div>
-                            
-                         <table class="table table-striped">
+                           
+                         <table class="table table-bordered table-striped"  >
+                         
                                  <thead>
                                      <tr>
-                                         <td style="text-align:center" width="10%">ลำดับ</td>
+                                         <td style="text-align:center" width="10%" >ลำดับ</td>
                                          <td width="20%">ชื่อวัสดุ</td>
                                          <td style="text-align:center" width="15%">จำนวนคงเหลือ</td>
                                          <td style="text-align:center" width="20%">จำนวนนำเข้า</td>
@@ -201,6 +202,8 @@ $mpdf = new \Mpdf\Mpdf([
                                      </tr>
                                  </thead>
                                  <tbody>
+
+                                
                             <?php
                              
 
@@ -220,22 +223,17 @@ $mpdf = new \Mpdf\Mpdf([
                              ?>
                          </div>
                          <div class="card-body p-0">
-                             
 
-
-
+                         
                                      <tr>
-
                                          <td style="text-align:center"><?= $import_id; ?></td>
                                          <td><?= $met_name; ?></td>
                                          <td style="text-align:center"><?= $met_total; ?></td>
                                          <td style="text-align:center"><?= $import_total; ?></td>
                                          <td><?= $mem_name; ?></td>
                                          <td><?= $date_import; ?></td>
-
-
-
                                      </tr>
+                            
 
 
                                  </tbody>
@@ -243,6 +241,7 @@ $mpdf = new \Mpdf\Mpdf([
 
                             <?php } ?>
                              </table>
+                             
 
                             <?php
                                 $html=ob_get_contents();

@@ -104,20 +104,16 @@ if (isset($_POST['btsave1'])) {
                     </div>
 
                   </div>
-                  <div>
 
+                  <div>
+                    <input type="submit" value="ส่งเบิก" class="btn btn-success" name="btsave1">
                   </div>
+                  
                 </div>
                 <!-- /.card-body -->
               </div>
 
               <!-- /.card -->
-            </div>
-
-
-            <div class="col-md-1">
-              <input type="submit" value="ส่งเบิก" class="btn btn-success float-right " name="btsave1">
-
             </div>
       </center>
 
