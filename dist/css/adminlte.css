@@ -2858,7 +2858,12 @@ fieldset:disabled a.btn {
   background-color: #28a745;
   border-color: #28a745;
   box-shadow: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  
 }
+
 
 .btn-success:hover {
   color: #fff;
