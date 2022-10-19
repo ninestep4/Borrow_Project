@@ -47,7 +47,7 @@ if (isset($_POST['btsavepeople'])) {
 <div class="content-wrapper">
     <br>
 
-    <form action="index.php?Node=editpeople" method="POST" enctype="multipart/form-data">
+    <form action="index.php?Node=editpeople" method="POST">
 
         <!-- Main content -->
         <section class="content">
@@ -62,7 +62,7 @@ if (isset($_POST['btsavepeople'])) {
                                             <div class="card-header">
                                                 <h3 class="card-title">แก้ไขข้อมูลผู้ใช้</h3>
                                             </div>
-                                            <div class="card-body">q
+                                            <div class="card-body">
 
                                                 <input type="hidden" name="people_id" value="<?=$people_id;?>">
 
@@ -116,13 +116,14 @@ if (isset($_POST['btsavepeople'])) {
                                     </div>
                                 </div>
                                 <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <!-- /.content -->
 
     </form>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 </div>

@@ -9,7 +9,22 @@ if (isset($_GET['DID'])) {
     echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
     exit;
 }
+
+$sql = "SELECT * FROM meter";
+$res = mysqli_query($con, $sql);
+
+while ($row = mysqli_fetch_assoc($res)) {
+    $met_id = $row['met_id'];
+    $met_name = $row['met_name'];
+    $met_detail = $row['met_detail'];
+    $met_img = $row['met_img'];
+    $met_total = $row['met_total'];
+    $met_mtype = $row['met_mtype'];
+}
 ?>
+
+
+
 
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
@@ -26,22 +41,23 @@ if (isset($_GET['DID'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th >รูปภาพ</th>
-                            <th >ชื่อวัสดุ</th>
-                            <th >จำนวนเบิก</th>
-                            <th >ผู้เบิก/วันเบิก</th>
-                            <th >ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th >รายละเอียด</th>
-                            <th >สถานะ</th>
+                            <th width="1 px">อันดับที่ </th> 
+                            <th style="text-align:center">รูปภาพ</th>
+                            <th style="text-align:center">ชื่อวัสดุ</th>
+                            <th style="text-align:center">จำนวนเบิก</th>
+                            <th style="text-align:center">ผู้เบิก/วันเบิก</th>
+                            <th style="text-align:center">ผู้อนุมัติ/วันอนุมัติ</th>
+                            <th style="text-align:center">รายละเอียด</th>
+                            <th style="text-align:center">สถานะ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT dr1.*,mt1.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1  
+                        $sql = "SELECT dr1.*,mt1.*, m1.mem_name AS name1 , m2.mem_name AS name2 FROM meterdraw dr1  
                                 LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
                                 LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
                                 LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
-                                order by dr1.draw_status ASC ";
+                                order by dr1.draw_id DESC ";
 
                         $res = mysqli_query($con, $sql);
 
@@ -55,6 +71,7 @@ if (isset($_GET['DID'])) {
                             $draw_userid_app = $row['draw_userid_app'];
                             $draw_date_app = $row['draw_date_app'];
                             $draw_status = $row['draw_status'];
+                            $unit_name = $row['unit_name'];
 
 
                             $met_name = $row['met_name'];
@@ -66,24 +83,28 @@ if (isset($_GET['DID'])) {
 
 
                             if ($draw_status == '0') {
-                                $statusname = "<font color='red'>รอรับวัสดุ</font>";
-                            } else {
-                                $statusname = "<font color='Green'>รับวัสดุแล้ว</font>";
+                                $statusname = "<font color='yellow'>รอการอนุมัติ</font>";
+                            } elseif($draw_status == '3') {
+                                $statusname = "<font color='red'>ไม่อนุมัติ</font>";
+                            }
+                            else{
+                                $statusname = "<font color='Green'>อนุมัติ</font>";
                             }
 
                         ?>
 
                             <tr>
-                                <td><img src="<?= $met_img; ?>" width="80"></td>
-                                <td><?= $met_name; ?></td>
-                                <td><?= $draw_num; ?></td>
+                                <td style="text-align:center"><?= $draw_id; ?></td>
+                                <td style="text-align:center"><img src="<?= $met_img; ?>" width="80"></td>
+                                <td style="text-align:center"><?= $met_name; ?></td>
+                                <td style="text-align:center"><?= $draw_num; ?> <?= $unit_name; ?></td>
 
-                                <td>
-                                    <?= $name1draw; ?><br>
-                                    <?= $draw_date_app ?>
+                                <td style="text-align:center">
+                                    <?= $draw_userid_draw; ?><br>
+                                    (<?= $draw_date_app ?>)
                                 </td>
 
-                                <td>
+                                <td style="text-align:center">
                                     <?php
                                     if ($draw_status == '0') {
                                         echo "รออนุมัติ";
@@ -93,21 +114,26 @@ if (isset($_GET['DID'])) {
                                         (<?= $draw_date_app; ?>)
                                     <?php } ?>
                                 </td>
-                                <td>
-                                    <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link" > 
+                                <td style="text-align:center">
+                                    <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link">
                                         <i class="material-icons">search</i>
                                     </a>
 
                                 </td>
-                                <td>
+                                <td style="text-align:center">
                                     <?= $statusname; ?>
                                     <?php if ($draw_status == '0') { ?>
 
-                                        <a href="index.php?Node=managedraw&DID=<?= $draw_id; ?>" 
-                                        onclick="if(confirm('คุณต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="อนุมัติ"></a>
+                                        <a href="index.php?Node=managedraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="อนุมัติ"></a>
+
+                                    <?php } ?>
+                                    <?php if ($draw_status == '0') { ?>
+
+                                        <a href="index.php?Node=noapp&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณไม่ต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input name="btno" type="button" value="ไม่อนุมัติ"></a>
 
                                     <?php } ?>
                                 </td>
+
                             </tr>
 
 

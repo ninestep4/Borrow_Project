@@ -26,7 +26,7 @@
 LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
 LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
 LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
-WHERE dr1.draw_userid_draw='$memid' order by dr1.draw_status ASC  ";
+WHERE dr1.draw_userid_draw='$peopleid' order by dr1.draw_status ASC  ";
 
                         $res = mysqli_query($con, $sql);
 

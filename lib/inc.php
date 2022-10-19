@@ -41,12 +41,12 @@ else if($Node=="sdraw"){return "showdraw.php";}
 else if($Node=="drawmat"){return "draw_mat.php";}
 else if($Node=="hisdraw"){return "his_draw.php";}
 else if($Node=="managedraw"){return "manage_draw.php";}
-else if($Node=="managedraw"){return "manage_draw.php";} 
 else if($Node=="restoredraw") {return "restore_draw.php";}
 else if($Node=="import") {return "import.php";}
 else if($Node=="report") {return "report.php";}
 else if($Node=="detail") {return "detaildraw.php";}
-else if($Node=="pdf") {return "pdf.php";}
+else if($Node=="noapp") {return "noapp.php";}
+else if($Node=="fucre") {return "fucre.php";}
 
 
 else {return "index.php";}

@@ -19,13 +19,14 @@ if (isOnline()) {
 <link rel="stylesheet" href="./dist/css/style.css">
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <!-- Main Sidebar Container -->
 
 
- <aside class="main-sidebar sidebar-dark-primary elevation-4"> 
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
 
 
     <!-- Brand Logo -->
@@ -38,7 +39,6 @@ if (isOnline()) {
     <?php
     if (isOnline()) {
     ?>
-   
 
 
         <!-- Sidebar -->
@@ -58,11 +58,8 @@ if (isOnline()) {
 
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2" >
+        <nav class="mt-2">
             <ul class="nav  nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                
-            <ul class="list-unstyled components mb-5">
-                
 
                 <ul class="list-unstyled components mb-5">
 
@@ -275,5 +272,5 @@ if (isOnline()) {
         </nav>
         <!-- /.sidebar-menu -->
         </div>
-        <!-- /.sidebar -->     
+        <!-- /.sidebar -->
 </aside>

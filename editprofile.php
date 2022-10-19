@@ -29,7 +29,7 @@ if (isset($_POST['btsavemem'])) {
     $sql .= " WHERE mem_id='$mem_id' ";
 
     $res = mysqli_query($con, $sql);
-    echo '<meta http-equiv="refresh" content="0; url=index.php">';
+    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showmem">';
     exit;
 }
 
