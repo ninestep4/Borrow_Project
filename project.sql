@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2022 at 08:01 PM
+-- Generation Time: Oct 18, 2022 at 09:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,18 +45,18 @@ CREATE TABLE `import` (
   `import_total` int(20) NOT NULL,
   `mem_name` varchar(100) NOT NULL,
   `date_import` date NOT NULL,
-  `import_id` int(11) NOT NULL
+  `import_id` int(11) NOT NULL,
+  `unit_name` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `import`
 --
 
-INSERT INTO `import` (`met_name`, `met_id`, `met_total`, `import_total`, `mem_name`, `date_import`, `import_id`) VALUES
-('หัวใจเทียม', 5, 10, 5, 'มาเฟียไม่มีหัวใจ', '2022-09-29', 1),
-('หัวใจเทียม', 5, 30, 10, '', '2022-10-08', 28),
-('ยาแดง', 1, 250, 200, '', '2022-10-08', 29),
-('ผ้าพันแผล', 3, 200, 10, '', '2022-10-08', 30);
+INSERT INTO `import` (`met_name`, `met_id`, `met_total`, `import_total`, `mem_name`, `date_import`, `import_id`, `unit_name`) VALUES
+('หัวใจเทียม', 5, 10, 1, '1', '2022-10-18', 1, NULL),
+('เตียงนอน', 2, 11, 1, '3', '2022-10-18', 2, NULL),
+('Conform 4', 11, 7, 1, '1', '2022-10-18', 3, 'กล่อง');
 
 -- --------------------------------------------------------
 
@@ -96,19 +96,21 @@ CREATE TABLE `meter` (
   `met_detail` text NOT NULL,
   `met_img` text NOT NULL,
   `met_total` int(10) NOT NULL,
-  `met_mtype` char(5) NOT NULL
+  `met_mtype` char(5) NOT NULL,
+  `unit_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `meter`
 --
 
-INSERT INTO `meter` (`met_id`, `met_name`, `met_detail`, `met_img`, `met_total`, `met_mtype`) VALUES
-(1, 'ยาแดง', 'ทาแผล', 'matpic/2018-2609779.jpg', 249, '1'),
-(2, 'เตียงนอน', 'เตียง', 'matpic/bed.jpg', 2, '2'),
-(3, 'ผ้าพันแผล', 'พันบริเวณที่บาดเจ็บ', 'matpic/50d3189a70d07100fbe6f768831823ab.jpg_720x720q80.jpg_.webp', 200, '1'),
-(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 82, '2'),
-(5, 'หัวใจเทียม', 'สำหรับมาเฟีย', 'matpic/modelheart.png', 39, '4');
+INSERT INTO `meter` (`met_id`, `met_name`, `met_detail`, `met_img`, `met_total`, `met_mtype`, `unit_name`) VALUES
+(1, 'ยาแดง', 'ทาแผล', 'matpic/2018-2609779.jpg', 249, '1', ''),
+(2, 'เตียงนอน', 'เตียง', 'matpic/bed.jpg', 11, '2', ''),
+(3, 'ผ้าพันแผล', 'พันบริเวณที่บาดเจ็บ', 'matpic/50d3189a70d07100fbe6f768831823ab.jpg_720x720q80.jpg_.webp', 200, '1', ''),
+(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 90, '2', 'คู่'),
+(5, 'หัวใจเทียม', 'สำหรับมาเฟีย', 'matpic/modelheart.png', 10, '4', ''),
+(11, 'Conform 4', '-', 'matpic/Screenshot 2022-10-19 025432.png', 6, '3', '');
 
 -- --------------------------------------------------------
 
@@ -129,21 +131,19 @@ CREATE TABLE `meterdraw` (
   `end_borrow` varchar(10) NOT NULL,
   `people_name` varchar(100) NOT NULL,
   `met_name` varchar(100) NOT NULL,
-  `met_id` int(11) NOT NULL
+  `met_id` int(11) NOT NULL,
+  `serialnumber` varchar(50) DEFAULT '-',
+  `unit_name` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `meterdraw`
 --
 
-INSERT INTO `meterdraw` (`draw_id`, `met_mtype`, `draw_num`, `draw_metid`, `draw_userid_draw`, `draw_userid_app`, `draw_date_app`, `draw_status`, `start_borrow`, `end_borrow`, `people_name`, `met_name`, `met_id`) VALUES
-(1, 1, 1, 1, '', 1, '2022-10-12', '1', '', '', '', 'ยาแดง', 1),
-(2, 2, 1, 4, '', 1, '0000-00-00', '4', '', '', '', 'ไม้ค้ำยัน', 4),
-(3, 2, 1, 2, '', 1, '2022-10-12', '4', '', '', '', 'เตียงนอน', 2),
-(4, 2, 1, 4, '', 1, '2022-10-12', '4', '', '', '', 'ไม้ค้ำยัน', 4),
-(5, 2, 1, 4, '', 1, '2022-10-12', '4', '', '', '', 'ไม้ค้ำยัน', 4),
-(6, 2, 2, 4, '', 1, '2022-10-12', '4', '', '', '', 'ไม้ค้ำยัน', 4),
-(7, 1, 1, 1, '', 1, '0000-00-00', '3', '', '', '', 'ยาแดง', 1);
+INSERT INTO `meterdraw` (`draw_id`, `met_mtype`, `draw_num`, `draw_metid`, `draw_userid_draw`, `draw_userid_app`, `draw_date_app`, `draw_status`, `start_borrow`, `end_borrow`, `people_name`, `met_name`, `met_id`, `serialnumber`, `unit_name`) VALUES
+(1, 2, 1, 4, '', 1, '2022-10-18', '1', '2022-10-18', '2022-10-21', '', 'ไม้ค้ำยัน', 4, 'ytrytryutrytr', NULL),
+(2, 3, 1, 11, '', 1, '0000-00-00', '3', '', '', '', 'Conform 4', 11, '', ''),
+(3, 3, 1, 11, '', 0, '0000-00-00', '0', '', '', '', 'Conform 4', 11, '', 'กล่อง');
 
 -- --------------------------------------------------------
 
@@ -194,6 +194,34 @@ INSERT INTO `people` (`people_id`, `people_name`, `people_sex`, `people_address`
 (13, '123123', 'หญิง', '123srr', '11234545325', '534534', 'บุคคลในชุมชน', '', ''),
 (14, 'tod', 'หญิง', '234', '234', '234', 'บุคคลในชุมชน', 'eiei', '22222222');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit`
+--
+
+CREATE TABLE `unit` (
+  `unit_id` int(100) NOT NULL,
+  `unit_name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `unit`
+--
+
+INSERT INTO `unit` (`unit_id`, `unit_name`) VALUES
+(1, 'ชิ้น'),
+(2, 'ม้วน'),
+(3, 'ชุด'),
+(4, 'ซอง'),
+(5, 'รีม'),
+(6, 'กล่อง'),
+(7, 'เตียง'),
+(8, 'โหล'),
+(9, 'คู่'),
+(10, 'แพ็ค'),
+(11, 'อัน');
+
 --
 -- Indexes for dumped tables
 --
@@ -238,6 +266,12 @@ ALTER TABLE `people`
   ADD PRIMARY KEY (`people_id`);
 
 --
+-- Indexes for table `unit`
+--
+ALTER TABLE `unit`
+  ADD PRIMARY KEY (`unit_id`) USING BTREE;
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -245,7 +279,7 @@ ALTER TABLE `people`
 -- AUTO_INCREMENT for table `import`
 --
 ALTER TABLE `import`
-  MODIFY `import_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `import_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -257,13 +291,13 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `meter`
 --
 ALTER TABLE `meter`
-  MODIFY `met_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `met_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `meterdraw`
 --
 ALTER TABLE `meterdraw`
-  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `metertype`
@@ -276,6 +310,12 @@ ALTER TABLE `metertype`
 --
 ALTER TABLE `people`
   MODIFY `people_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `unit`
+--
+ALTER TABLE `unit`
+  MODIFY `unit_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
