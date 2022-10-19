@@ -71,7 +71,7 @@ if (isset($_GET['MEMID'])) {
                             <td><?= $levelname; ?></td>
 
                             <td style="text-align:center">
-                            <a href="index.php?Node=editmem&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
+                            <a href="index.php?Node=editpro&MEMID=<?= $mem_id; ?>"type="button" class="btn btn-warning" 
                             onclick="if(confirm('คุณต้องการแก้ไขรายการนี้ใช่ไหม?')) return true; else return false;">แก้ไข 
                             </a>
                             </td>

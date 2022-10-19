@@ -49,9 +49,9 @@ if(isset($_POST['btre'])){
                     <thead>
                         <tr>
                             <td width="10%">รูปภาพ</td>
-                            <td width="20%">ชื่อวัสดุ</td>
-                            <td width="15%">จำนวนเบิก</td>
-                            <td width="20%">ผู้เบิก/วันเบิก</td>
+                            <td width="7%">ชื่อวัสดุ</td>
+                            <td width="15%" style="text-align:center">จำนวนเบิก</td>
+                            <td width="15%">ผู้เบิก/วันเบิก</td>
                             <td width="20%">ผู้อนุมัติ/วันอนุมัติ</td>
                             <td width="10%">สถานะ</td>
                             
@@ -130,10 +130,8 @@ if(isset($_POST['btre'])){
                                     <?php if ($draw_status == '1') { ?>
                                 
 
-                                    <a href="index.php?Node=restoredraw&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) 
-                                    return true; else return false;"><input type="button" value="รับคืน"></a>
 
-                            
+                                <a href="index.php?Node=fucre&DID=<?= $draw_id; ?>" onclick="if(confirm('คุณต้องการคืนรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" name="btre" value="รับคืน"></a>
                                 </td>
 
                                 <?php } ?>

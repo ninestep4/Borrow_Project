@@ -121,11 +121,6 @@ if (isset($_POST['btsave1'])) {
 
               <!-- /.card -->
             </div>
-
-
-            <div class="col-md-1">
-              <input type="submit" value="นำเข้า" class="btn btn-success float-right " name="btsave1">
-
             </div>
       </center>
 

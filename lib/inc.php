@@ -15,7 +15,6 @@ else if($Node=="saveregis"){return "saveregis.php";}
 else if($Node=="showmem"){return "showmember.php";}
 else if($Node=="showpeople"){return "showpeople.php";}
 else if($Node=="addmem"){return "addmember.php";}
-else if($Node=="editmem"){return "editmember.php";}
 else if($Node=="editpro"){return "editprofile.php";}
 else if($Node=="addpeople"){return "addpeople.php";}
 else if($Node=="search"){return "search.php";}
