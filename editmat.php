@@ -11,7 +11,7 @@ if (isset($_GET['MATID'])) {
   $met_img = $row['met_img'];
   $met_total = $row['met_total'];
   $met_mtype = $row['met_mtype'];
-  $unit_name = $row['unit_name'];
+  $unit_name1 = $row['unit_name'];
 }
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
@@ -99,6 +99,7 @@ if (isset($_POST['btsave'])) {
                           <label for="inputStatus">หน่วย</label>
                           <select name="unit_name" id="inputStatus" class="form-control" required="">
                             <option selected disabled>กรุณาเลือก</option>
+                            
                             <?php
                             $sql = "SELECT * FROM unit";
                             $res = mysqli_query($con, $sql);
@@ -106,7 +107,11 @@ if (isset($_POST['btsave'])) {
                               $unit_id = $row['unit_id'];
                               $unit_name = $row['unit_name'];
                             ?>
-                              <option value="<?= $unit_name; ?>"><?= $unit_name; ?></option>
+                              <option value="<?= $unit_id; ?>" <?php if ($unit_id == $unit_name1) {
+                                                                  echo "selected";
+                                                                } ?>>
+                                <?= $unit_name; ?>
+                              </option>
 
                             <?php } ?>
                           </select>
@@ -114,10 +119,10 @@ if (isset($_POST['btsave'])) {
 
 
                         <div class="form-group">
-                          <label for="inputStatus">ประเภทวัสดุ</label> <a href="#"> [เพิ่มประเภท] </a>
+                          <label for="inputStatus">ประเภทวัสดุ</label>
                           <select id="inputStatus" name="met_mtype" class="form-control custom-select" required="">
                             <option selected disabled>กรุณาเลือก</option>
-                            <option selected>สิ่งอำนวยความสะดวกแก่ผู้ป่วย</option>
+                            
                             <?php
                             $sql = "SELECT * FROM metertype";
                             $res = mysqli_query($con, $sql);

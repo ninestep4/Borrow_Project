@@ -69,6 +69,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                             $draw_metid = $row['draw_metid'];
                             $draw_userid_draw = $row['draw_userid_draw'];
                             $draw_userid_app = $row['draw_userid_app'];
+                            $people_name = $row['people_name'];
                             $draw_date_app = $row['draw_date_app'];
                             $draw_status = $row['draw_status'];
                             $unit_name = $row['unit_name'];
@@ -100,7 +101,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                                 <td style="text-align:center"><?= $draw_num; ?> <?= $unit_name; ?></td>
 
                                 <td style="text-align:center">
-                                    <?= $draw_userid_draw; ?><br>
+                                    <?= $people_name; ?><br>
                                     (<?= $draw_date_app ?>)
                                 </td>
 

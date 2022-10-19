@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
@@ -6,20 +5,71 @@
 
         <div class="card">
 
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h3 class="card-title">รายการครุภัณฑ์สำหรับเบิก</h3>
-                    </div>
+            <div class="card-header col-md-15 mb-1">
 
-                    <div class="col-sm-4">
-                        <form align=right class="form-group my-3" method="POST">
-                            <input type="text" placeholder="กรอกชื่อครุภัณฑ์ที่ต้องการค้นหา" class="" name="material_name" size="25"></input>
-                            <input type="submit" value="ค้นหา" class=" btn-primary " onclick="search()">
-                        </form>
-                    </div>
-
+                <div class="col-sm-8">
+                    <h3 class="card-title">รายการครุภัณฑ์สำหรับการยืม</h3>
                 </div>
+
+                <form method="POST">
+
+                    <div align=center class="card-body col-md-15 mb-1">
+
+                        <div class="row">
+                            <div align=center>
+                                <input type="text" name="Name" id="Name" class=" form-control " style="width:280px;" style="text-align: center" placeholder="ป้อนชื่อวัสดุ/ครุภัณฑ์ที่ต้องการค้นหา" />
+                                <br>
+                            </div>
+                        </div>
+                        <input type="submit" value="ค้นหา" class="btn btn-success ">
+                        <div id="peoplename"></div>
+
+                    </div>
+                    </body>
+                    <style>
+                        ul {
+                            cursor: pointer;
+                        }
+                    </style>
+
+
+
+                    <script>
+                        $(document).ready(function() {
+                            $('#Name').keyup(function() {
+                                var query = $(this).val();
+                                if (query != '') {
+                                    $.ajax({
+                                        url: "searchmeter.php",
+                                        method: "POST",
+                                        data: {
+                                            query: query
+                                        },
+                                        success: function(data) {
+                                            $('#peoplename').fadeIn();
+                                            $('#peoplename').html(data);
+
+
+
+                                        }
+                                    });
+                                }
+                            });
+                            $(document).on('click', 'li', function() {
+                                $('#Name').val($(this).text());
+                                $('#peoplename').fadeOut();
+                            });
+
+                        });
+
+                        if (isset($_POST["valuesearch"])) {
+                            $valuesearch = $_POST["valuesearch"];
+                            print_r($valuesearch);
+                        }
+                    </script>
+                </form>
+
+
 
             </div>
 
@@ -32,7 +82,7 @@
                             <td width="10%">รายละเอียด</td>
                             <td width="1%">ประเภท</td>
                             <td width="15%" style="text-align:center">จำนวนวัสดุ</td>
-                            <td width="5%" style="text-align:center">เบิก</td>
+                            <td width="5%" style="text-align:center">ยืม</td>
                         </tr>
                     </thead>
 
@@ -47,8 +97,8 @@
                         $sql = "SELECT meter.*,metertype.* FROM meter
                         LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
                         WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND (meter.met_mtype='2')  )";
-                        $res = mysqli_query($con,$sql);
-                        
+                        $res = mysqli_query($con, $sql);
+
                         while ($row = mysqli_fetch_assoc($res)) {
                             $met_id = $row['met_id'];
                             $met_name = $row['met_name'];
@@ -69,8 +119,7 @@
                                 <td style="text-align:center"><?= $met_total; ?></td>
 
                                 <td style="text-align:center">
-                                    <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>"type="button" class="btn btn-warning" 
-                                        onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก 
+                                    <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>" type="button" class="btn btn-warning" onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">ยืม
                                     </a>
                                 </td>
 
@@ -79,7 +128,7 @@
 
                         <?php } ?>
 
-                        
+
 
                     </tbody>
                 </table>

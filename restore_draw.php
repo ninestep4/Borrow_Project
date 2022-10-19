@@ -53,6 +53,7 @@ if(isset($_POST['btre'])){
                             <th width="15%" style="text-align:center">จำนวนเบิก</th>
                             <th width="15%">ผู้เบิก/วันเบิก</th>
                             <th width="20%">ผู้อนุมัติ/วันอนุมัติ</th>
+                            <th style="text-align:center">รายละเอียด</th>
                             <th width="10%">สถานะ</th>
                             
                         </tr>
@@ -74,7 +75,7 @@ if(isset($_POST['btre'])){
                             $draw_date = $row['draw_date_app'];
                             $draw_num = $row['draw_num'];
                             $draw_metid = $row['draw_metid'];
-                            $draw_userid_draw = $row['draw_userid_draw'];
+                            $draw_userid_draw = $row['people_name'];
                             $draw_userid_app = $row['draw_userid_app'];
                             $draw_date_app = $row['draw_date_app'];
                             $draw_status = $row['draw_status'];
@@ -125,6 +126,13 @@ if(isset($_POST['btre'])){
                                         (<?= $draw_date_app; ?>)
                                     <?php } ?>
                                 </td>
+                                <td style="text-align:center">
+                                    <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link">
+                                        <i class="material-icons">search</i>
+                                    </a>
+
+                                </td>
+                                <?php error_reporting(0); ?>
                                 <td>
                                     <?= $statusname; ?>
                                     <?php if ($draw_status == '1') { ?>

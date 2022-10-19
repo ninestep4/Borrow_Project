@@ -43,6 +43,7 @@ if (isset($_POST['btsave'])) {
   $draw_num = $_POST['draw_num'];
   $draw_date = date("d-m-Y");
   $serialnumber = $_POST['serialnumber'];
+  $Name = $_POST['Name'];
 
 
   $sql1 = "SELECT * FROM meter WHERE met_id='$met_id' ";
@@ -62,8 +63,8 @@ if (isset($_POST['btsave'])) {
 
 
 
-  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber,unit_name) 
-  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id','$serialnumber','$unit_name')";
+  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,   draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber,unit_name) 
+  VALUES                         (''    ,'$metmtype','$draw_num','$met_id','$valuesearch'      ,''            ,'',           '0',        '$D_Post','$D_Postend','$Name','$met_name','$met_id','$serialnumber','$unit_name')";
 
   $res3 = mysqli_query($con, $sql3);
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
@@ -123,7 +124,7 @@ if (isset($_POST['btsave'])) {
                       }
                     </style>
 
-                    </html>
+                    
 
                     <script>
                       $(document).ready(function() {
