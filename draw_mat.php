@@ -2,15 +2,16 @@
 if (isset($_GET['MATID'])) {
     $MATID = $_GET['MATID'];
 
-    $sql = "SELECT * FROM meter WHERE met_id='$MATID' ";
-    $res = mysqli_query($con, $sql);
-    $row = mysqli_fetch_assoc($res);
-    $met_id = $row['met_id'];
-    $met_name = $row['met_name'];
-    $met_detail = $row['met_detail'];
-    $met_img = $row['met_img'];
-    $met_total = $row['met_total'];
-    $met_mtype = $row['met_mtype'];
+  $sql = "SELECT * FROM meter WHERE met_id='$MATID' ";
+  $res = mysqli_query($con, $sql);
+  $row = mysqli_fetch_assoc($res);
+  $met_id = $row['met_id'];
+  $met_name = $row['met_name'];
+  $met_detail = $row['met_detail'];
+  $met_img = $row['met_img'];
+  $met_total = $row['met_total'];
+  $met_mtype = $row['met_mtype'];
+  $unit_name = $row['unit_name'];
 }
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
@@ -34,24 +35,31 @@ if (!empty($_POST)) {
 }
 
 if (isset($_POST['btsave'])) {
-    $met_id = $_POST['met_id'];
-    $draw_num = $_POST['draw_num'];
-    $draw_date = date("d-m-Y");
+  $met_id = $_POST['met_id'];
+  $draw_num = $_POST['draw_num'];
+  $draw_date = date("d-m-Y");
+  $serialnumber = $_POST['serialnumber'];
 
-    $sql1 = "SELECT * FROM meter WHERE met_id='$met_id' ";
-    $res1 = mysqli_query($con, $sql1);
-    $row1 = mysqli_fetch_assoc($res1);
-    $met_total = $row1['met_total'];
-    $metmtype = $row1['met_mtype'];
-    $met_name = $row1['met_name'];
+
+  $sql1 = "SELECT * FROM meter WHERE met_id='$met_id' ";
+  $res1 = mysqli_query($con, $sql1);
+  $row1 = mysqli_fetch_assoc($res1);
+  $met_total = $row1['met_total'];
+  $metmtype = $row1['met_mtype'];
+  $met_name = $row1['met_name'];
+  $unit_name = $row1['unit_name'];
 
     $totaldif = $met_total - $draw_num;
 
     $sql2 = "UPDATE meter SET met_total='$totaldif' WHERE met_id='$met_id' ";
     $res2 = mysqli_query($con, $sql2);
 
-    $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id)
-  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id')";
+
+
+
+
+  $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber,unit_name) 
+  VALUES ('','$metmtype','$draw_num','$met_id','$valuesearch','','','0','$D_Post','$D_Postend','$peopleName','$met_name','$met_id','$serialnumber','$unit_name')";
 
     $res3 = mysqli_query($con, $sql3);
     echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
@@ -83,9 +91,9 @@ if (isset($_POST['btsave'])) {
                   <input type="hidden" name="met_id" value="<?=$met_id;?>">
                   <img src="<?=$met_img;?>" width="120"><br>
                   <font size="5">
-                    <b>ชื่อวัสดุ:</b> <?=$met_name;?><br>
-                    <b>รายละเอียด:</b> <?=$met_detail;?><br>
-                    <b>จำนวนที่มีอยู่ในสต็อก:</b> <?=$met_total;?> หน่วย<br>
+                    <b>ชื่อวัสดุ:</b> <?= $met_name; ?><br>
+                    <b>รายละเอียด:</b> <?= $met_detail; ?><br>
+                    <b>จำนวนที่มีอยู่ในสต็อก:</b> <?= $met_total; ?> <?= $unit_name; ?><br>
                   </font>
 
 
@@ -149,24 +157,38 @@ if (isset($_POST['btsave'])) {
 
 
                   </div>
+                        <br>
 
 
 
 
+                  <div class="container" style="width:500px;">
 
-                  <div class="col-md-6 mb-4 pb-2">
+                    <?php
 
-                    <?php if ($met_mtype == 2) {?>
 
-                      <div>
+                    if ($met_mtype == 2) {
+                    ?>
+                    
+
+                      <input type="text" name="serialnumber" id="serialnumber" class="form-control" placeholder="ป้อนserialnumber" />
+                        <div id="serialnumber"></div><br>
+                        <div>
                       <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
-                      <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
-                      </div>
+                        </div>
+                      <div>
+                        <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
 
-                    <?php }?>
+                      </div>
+                      <div>
+                      <label for="inputName"><font color="red">(หากไม่กำหนดวันคืนไม่ต้องเลือกวันที่คืน)</font></label>
+                    </div>
+
+                    
 
                     <div>
-                      <p>จำนวน: <input type="number" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
+
+                      <p>จำนวน: <input type="number" required  min = "0" max = "99999" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
                     </div>
 
                     <div>

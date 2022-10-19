@@ -78,6 +78,9 @@ if(isset($_POST['btre'])){
                             $draw_userid_app = $row['draw_userid_app'];
                             $draw_date_app = $row['draw_date_app'];
                             $draw_status = $row['draw_status'];
+                            $unit_name = $row['unit_name'];
+
+                            
 
 
                             $met_name = $row['met_name'];
@@ -105,9 +108,9 @@ if(isset($_POST['btre'])){
                             <tr>
                                 <td><img src="<?= $met_img; ?>" width="80"></td>
                                 <td><?= $met_name; ?></td>
-                                <td><?= $draw_num; ?></td>
+                                <td style="text-align:center"><?= $draw_num; ?> <?= $unit_name; ?></td>
                                 <td>
-                                    <?= $met_total; ?><br>
+                                    <?= $draw_userid_draw; ?><br>
                                     (<?= $draw_date; ?>)
                                 </td>
                                 <td>

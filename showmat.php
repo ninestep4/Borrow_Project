@@ -42,7 +42,7 @@ if (isset($_GET['MATID'])) {
               <td>ชื่อวัสดุ</td>
               <td width="1%">รายละเอียด</td>
               <td style="text-align:center">จำนวนที่มีอยู่</td>
-              <td>ประเภท</td>
+              <td style="text-align:center">ประเภท</td>
               <td style="text-align:center">นำเข้า</td>
               <td style="text-align:center">แก้ไขรายการ</td>
               <td style="text-align:center">ลบรายการ</td>
@@ -57,7 +57,7 @@ if (isset($_GET['MATID'])) {
             error_reporting(0);
             $sql = "SELECT meter.*,metertype.* FROM meter
           LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
-          WHERE ( met_name LIKE '%$material_name%' AND ((meter.met_mtype='1') OR (meter.met_mtype='4'))  )";
+          WHERE ( met_name LIKE '%$material_name%' AND ((meter.met_mtype='1') OR (meter.met_mtype='4') OR (meter.met_mtype='3'))  )";
             $res = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_assoc($res)) {
               $met_id = $row['met_id'];
@@ -66,8 +66,9 @@ if (isset($_GET['MATID'])) {
               $met_img = $row['met_img'];
               $met_total = $row['met_total'];
               $met_mtype = $row['met_mtype'];
-
+              $unit_name = $row['unit_name'];
               $mtype_name = $row['mtype_name'];
+              
 
             ?>
 
@@ -77,8 +78,8 @@ if (isset($_GET['MATID'])) {
                 <td><?= $met_id; ?></td>
                 <td><?= $met_name; ?></td>
                 <td><?= $met_detail; ?></td>
-                <td style="text-align:center"><?= $met_total; ?></td>
-                <td><?= $mtype_name; ?></td>
+                <td style="text-align:center"><?= $met_total;?>  <?= $unit_name?></td>
+                <td style="text-align:center"><?= $mtype_name; ?></td>
 
 
                 <td style="text-align:center">

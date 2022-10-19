@@ -46,7 +46,7 @@
                         error_reporting(0);
                         $sql = "SELECT meter.*,metertype.* FROM meter
                         LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
-                        WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND ((meter.met_mtype='1') OR (meter.met_mtype='4')) )";
+                        WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND ((meter.met_mtype='1') OR (meter.met_mtype='4') OR (meter.met_mtype='3')) )";
                         $res = mysqli_query($con, $sql);
 
                         while ($row = mysqli_fetch_assoc($res)) {
@@ -56,7 +56,7 @@
                             $met_img = $row['met_img'];
                             $met_total = $row['met_total'];
                             $met_mtype = $row['met_mtype'];
-
+                            $unit_name = $row['unit_name'];
                             $mtype_name = $row['mtype_name'];
 
                         ?>
@@ -66,7 +66,7 @@
                                 <td><?= $met_name; ?></td>
                                 <td><?= $met_detail; ?></td>
                                 <td><?= $mtype_name; ?></td>
-                                <td style="text-align:center"><?= $met_total; ?></td>
+                                <td style="text-align:center"><?= $met_total; ?> <?= $unit_name?></td>
                                 <td style="text-align:center">
                                     <a href="index.php?Node=drawmat&MATID=<?= $met_id; ?>" type="button" class="btn btn-warning" 
                                         onclick="if(confirm('คุณต้องการเบิกรายการนี้ใช่ไหม?')) return true; else return false;">เบิก 

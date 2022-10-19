@@ -11,6 +11,8 @@ if (isset($_GET['DID'])) {
   $start_borrow = $row['start_borrow'];
   $end_borrow = $row['end_borrow'];
   $draw_num = $row['draw_num'];
+  $serialnumber = $row['serialnumber'];
+  $unit_name = $row['unit_name'];
 
 }
 
@@ -66,7 +68,8 @@ $mpdf = new \Mpdf\Mpdf([
                         <b>ชื่อผู้ยืม:</b> <?= $draw_name; ?>
                         <br><br>
                         <tr>
-                            <b>จำนวน:</b> <?= $draw_num;?>
+                            <b>จำนวน:</b> <?= $draw_num;?> <?= $unit_name; ?>
+                            <b>serialnumber:</b> <?= $serialnumber;?>
                         </tr><br><br>
                         <tr>
                             <b>วันที่ยืม:</b> <?= $start_borrow; ?>
