@@ -199,12 +199,7 @@ if (isOnline()) {
                                             <p>จัดการข้อมูลการยืมวัสดุ</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="index.php?Node=managedraw" class="nav-link">
-                                            <i class="material-icons  ">check</i>
-                                            <p>จัดการข้อมูลการครุภัณฑ์</p>
-                                        </a>
-                                    </li>
+                                    
 
                             </li>
                             <li class="nav-item">

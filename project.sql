@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2022 at 09:59 PM
+-- Generation Time: Oct 19, 2022 at 09:12 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -108,9 +108,11 @@ INSERT INTO `meter` (`met_id`, `met_name`, `met_detail`, `met_img`, `met_total`,
 (1, 'ยาแดง', 'ทาแผล', 'matpic/2018-2609779.jpg', 249, '1', ''),
 (2, 'เตียงนอน', 'เตียง', 'matpic/bed.jpg', 11, '2', ''),
 (3, 'ผ้าพันแผล', 'พันบริเวณที่บาดเจ็บ', 'matpic/50d3189a70d07100fbe6f768831823ab.jpg_720x720q80.jpg_.webp', 200, '1', ''),
-(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 90, '2', 'คู่'),
+(4, 'ไม้ค้ำยัน', 'ประคองการทรงตัว', 'matpic/ไม้ค้ำ.jpg', 91, '2', 'คู่'),
 (5, 'หัวใจเทียม', 'สำหรับมาเฟีย', 'matpic/modelheart.png', 10, '4', ''),
-(11, 'Conform 4', '-', 'matpic/Screenshot 2022-10-19 025432.png', 6, '3', '');
+(11, 'Conform 4', '-', 'matpic/Screenshot 2022-10-19 025432.png', 7, '3', '2'),
+(12, 'Conform 2', '-', 'matpic/Screenshot 2022-10-20 011640.png', 1, '3', '2'),
+(13, 'asd', 'asd', 'matpic/304388362_173725411885080_3635721219141515342_n.jpg', 1, '2', '10');
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,6 @@ CREATE TABLE `meterdraw` (
   `met_mtype` int(2) NOT NULL,
   `draw_num` int(10) NOT NULL,
   `draw_metid` int(10) NOT NULL,
-  `draw_userid_draw` varchar(100) NOT NULL,
   `draw_userid_app` int(20) NOT NULL,
   `draw_date_app` date NOT NULL,
   `draw_status` char(5) NOT NULL,
@@ -133,17 +134,19 @@ CREATE TABLE `meterdraw` (
   `met_name` varchar(100) NOT NULL,
   `met_id` int(11) NOT NULL,
   `serialnumber` varchar(50) DEFAULT '-',
-  `unit_name` varchar(100) DEFAULT NULL
+  `unit_name` varchar(100) DEFAULT NULL,
+  `draw_userid_draw` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `meterdraw`
 --
 
-INSERT INTO `meterdraw` (`draw_id`, `met_mtype`, `draw_num`, `draw_metid`, `draw_userid_draw`, `draw_userid_app`, `draw_date_app`, `draw_status`, `start_borrow`, `end_borrow`, `people_name`, `met_name`, `met_id`, `serialnumber`, `unit_name`) VALUES
-(1, 2, 1, 4, '', 1, '2022-10-18', '1', '2022-10-18', '2022-10-21', '', 'ไม้ค้ำยัน', 4, 'ytrytryutrytr', NULL),
-(2, 3, 1, 11, '', 1, '0000-00-00', '3', '', '', '', 'Conform 4', 11, '', ''),
-(3, 3, 1, 11, '', 0, '0000-00-00', '0', '', '', '', 'Conform 4', 11, '', 'กล่อง');
+INSERT INTO `meterdraw` (`draw_id`, `met_mtype`, `draw_num`, `draw_metid`, `draw_userid_app`, `draw_date_app`, `draw_status`, `start_borrow`, `end_borrow`, `people_name`, `met_name`, `met_id`, `serialnumber`, `unit_name`, `draw_userid_draw`) VALUES
+(1, 2, 1, 4, 1, '2022-10-18', '4', '2022-10-18', '2022-10-21', '', 'ไม้ค้ำยัน', 4, 'ytrytryutrytr', NULL, NULL),
+(2, 3, 1, 11, 1, '0000-00-00', '3', '', '', '', 'Conform 4', 11, '', '', NULL),
+(3, 3, 1, 11, 1, '0000-00-00', '3', '', '', '', 'Conform 4', 11, '', 'กล่อง', NULL),
+(4, 2, 1, 4, 1, '2022-10-19', '4', '', '', 'ภาณุ โห้เฉื่อย', 'ไม้ค้ำยัน', 4, '', 'คู่', NULL);
 
 -- --------------------------------------------------------
 
@@ -161,10 +164,15 @@ CREATE TABLE `metertype` (
 --
 
 INSERT INTO `metertype` (`mtype_id`, `mtype_name`) VALUES
-(1, 'วัสดุ'),
+(1, 'วัสดุสำนักงาน'),
 (2, 'ครุภัณฑ์'),
 (3, 'เวชภัณฑ์ที่มิใช่ยา'),
-(4, 'อวัยวะเทียม');
+(4, 'อวัยวะเทียม'),
+(5, 'วัสดุสนับสนุนทางการแพทย์'),
+(6, 'วัสดุงานบ้าน'),
+(7, 'วัสดุทางการแพทย์'),
+(8, 'วัสดุแบบแพทย์'),
+(9, 'วัสดุคอมพิวเตอร์');
 
 -- --------------------------------------------------------
 
@@ -291,19 +299,19 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `meter`
 --
 ALTER TABLE `meter`
-  MODIFY `met_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `met_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `meterdraw`
 --
 ALTER TABLE `meterdraw`
-  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `draw_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `metertype`
 --
 ALTER TABLE `metertype`
-  MODIFY `mtype_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `mtype_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `people`

@@ -55,9 +55,10 @@ if (isset($_GET['MATID'])) {
               $material_name = $_POST["material_name"];
             }
             error_reporting(0);
-            $sql = "SELECT meter.*,metertype.* FROM meter
+            $sql = "SELECT meter.*,metertype.*,unit.* FROM meter
           LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
-          WHERE ( met_name LIKE '%$material_name%' AND ((meter.met_mtype='1') OR (meter.met_mtype='4') OR (meter.met_mtype='3'))  )";
+          LEFT OUTER JOIN unit ON (meter.unit_name=unit.unit_id)
+          WHERE ( met_name LIKE '%$material_name%' AND ((meter.met_mtype='1') OR (meter.met_mtype='4') OR (meter.met_mtype='3'))  ) ORDER BY met_name ASC";
             $res = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_assoc($res)) {
               $met_id = $row['met_id'];

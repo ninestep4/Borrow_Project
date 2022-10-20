@@ -81,8 +81,6 @@ $sum_md5 += $row7['sum_md5'];
       <?php if (!isOnline()) { ?>
 
         <h2>ระบบจอง-ยืม-คืนวัสดุ ครุภัณฑ์ของคลีนิกผู้สูงอายุชุมชนบางตลาดพัฒนา 1 จังหวัดนนทบุรี</h2><br>
-          <img src="bgimg/home.jpg" width="1100" class="center">
-
 
 
           <html>

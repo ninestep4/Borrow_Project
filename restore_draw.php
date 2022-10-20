@@ -48,19 +48,21 @@ if(isset($_POST['btre'])){
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <td width="10%">รูปภาพ</td>
-                            <td width="7%">ชื่อวัสดุ</td>
-                            <td width="15%" style="text-align:center">จำนวนเบิก</td>
-                            <td width="15%">ผู้เบิก/วันเบิก</td>
-                            <td width="20%">ผู้อนุมัติ/วันอนุมัติ</td>
-                            <td width="10%">สถานะ</td>
+                            <th width="10%">รูปภาพ</th>
+                            <th width="7%">ชื่อวัสดุ</th>
+                            <th width="15%" style="text-align:center">จำนวนเบิก</th>
+                            <th width="15%">ผู้เบิก/วันเบิก</th>
+                            <th width="20%">ผู้อนุมัติ/วันอนุมัติ</th>
+                            <th style="text-align:center">รายละเอียด</th>
+                            <th width="10%">สถานะ</th>
                             
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT dr1.*,mt1.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1  
+                        $sql = "SELECT dr1.*,mt1.*,unit.*,m1.mem_name AS name1,m2.mem_name AS name2 FROM meterdraw dr1  
                         LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
+                        LEFT OUTER JOIN unit ON (dr1.unit_name=unit.unit_id)
                         LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
                         LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
                         order by dr1.draw_status ASC ";
@@ -74,7 +76,7 @@ if(isset($_POST['btre'])){
                             $draw_date = $row['draw_date_app'];
                             $draw_num = $row['draw_num'];
                             $draw_metid = $row['draw_metid'];
-                            $draw_userid_draw = $row['draw_userid_draw'];
+                            $draw_userid_draw = $row['people_name'];
                             $draw_userid_app = $row['draw_userid_app'];
                             $draw_date_app = $row['draw_date_app'];
                             $draw_status = $row['draw_status'];
@@ -125,6 +127,13 @@ if(isset($_POST['btre'])){
                                         (<?= $draw_date_app; ?>)
                                     <?php } ?>
                                 </td>
+                                <td style="text-align:center">
+                                    <a href="index.php?Node=detail&DID=<?= $draw_id; ?>" class="nav-link">
+                                        <i class="material-icons">search</i>
+                                    </a>
+
+                                </td>
+                                <?php error_reporting(0); ?>
                                 <td>
                                     <?= $statusname; ?>
                                     <?php if ($draw_status == '1') { ?>

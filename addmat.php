@@ -83,7 +83,7 @@ if (isset($_POST['btsave'])) {
                         $unit_id = $row['unit_id'];
                         $unit_name = $row['unit_name'];
                       ?>
-                        <option value="<?= $unit_name; ?>"><?= $unit_name; ?></option>
+                        <option value="<?= $unit_id; ?>"><?= $unit_name; ?></option>
 
                       <?php } ?>
                   </select>

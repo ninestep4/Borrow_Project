@@ -6,7 +6,7 @@ if (isset($_GET['DID'])) {
   $res = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($res);
   $draw_id = $row['draw_id'];
-  $draw_name = $row['draw_userid_draw'];
+  $people_name = $row['people_name'];
   $met_name = $row['met_name'];
   $start_borrow = $row['start_borrow'];
   $end_borrow = $row['end_borrow'];
@@ -65,7 +65,7 @@ $mpdf = new \Mpdf\Mpdf([
                             <b>ชื่อวัสดุ:</b> <?= $met_name; ?>
                             
                         </tr><br><br>
-                        <b>ชื่อผู้ยืม:</b> <?= $draw_name; ?>
+                        <b>ชื่อผู้ยืม:</b> <?= $people_name; ?>
                         <br><br>
                         <tr>
                             <b>จำนวน:</b> <?= $draw_num;?> <?= $unit_name; ?>
