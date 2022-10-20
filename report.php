@@ -65,7 +65,7 @@ if (!empty($_POST)) {
                                 </select>
 
                                 <input type="submit" value="ค้นหา" class="  btn-success " name="searchM" >
-                                <a href="MyReport.pdf">โหลดผลการเรียน (pdf)</a>
+                                <a href="MyReport.pdf">โหลดรายยการสรุปรายเดือน (pdf)</a>
                                 
                             </div>
                             <?php
