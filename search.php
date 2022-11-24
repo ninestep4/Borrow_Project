@@ -1,10 +1,11 @@
-<?php  
- $connect = mysqli_connect("localhost", "root", "", "project");  
+﻿<?php  
+ include_once("lib/condb.php");
+
  if(isset($_POST["query"]))  
  {  
       $output = '';  
       $query = "SELECT * FROM people WHERE people_name LIKE '%".$_POST["query"]."%'";  
-      $result = mysqli_query($connect, $query);  
+      $result = mysqli_query($con, $query);  
       $output = '<ul class="list-unstyled">';  
       if(mysqli_num_rows($result) > 0)  
       {  

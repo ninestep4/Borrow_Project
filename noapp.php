@@ -1,4 +1,10 @@
 <?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
+<?php
         if (isset($_GET['DID'])) {
             $DID = $_GET['DID'];
 

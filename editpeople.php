@@ -1,3 +1,9 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
 include_once "lib/condb.php";
 if (isset($_GET['PEOPLEID'])) {
@@ -62,7 +68,7 @@ if (isset($_POST['btsavepeople'])) {
                                             <div class="card-header">
                                                 <h3 class="card-title">แก้ไขข้อมูลผู้ใช้</h3>
                                             </div>
-                                            <div class="card-body">q
+                                            <div class="card-body">
 
                                                 <input type="hidden" name="people_id" value="<?=$people_id;?>">
 

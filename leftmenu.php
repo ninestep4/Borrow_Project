@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once("lib/condb.php");
 include_once("lib/inc.php");
 
@@ -31,7 +31,7 @@ if (isOnline()) {
     <!-- Brand Logo -->
 
     <a href="index.php" class="brand-link">
-        <img src="img/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <ul class="brand-text font-weight-light">ระบบจอง-ยืม-คืนวัสดุ</ul>
     </a>
 
@@ -245,6 +245,13 @@ if (isOnline()) {
                         <i class="nav-icon far fa-circle text-warning"></i>
                         <p>เบิกวัสดุ</p>
                     </a>
+                </li>
+		
+		<li class="nav-item">
+                     <a href="index.php?Node=showdrawdrb" class="nav-link">
+                         <i class="nav-icon far fa-circle text-warning"></i>
+                         <p>ทำเรื่องยืมครุภัณฑ์</p>
+                     </a>
                 </li>
 
                 <li class="nav-item">

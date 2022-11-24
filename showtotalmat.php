@@ -1,3 +1,9 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <div class="content-wrapper">
 	<br>
 	<div class="col-md-12">

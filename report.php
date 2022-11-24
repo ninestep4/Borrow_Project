@@ -1,26 +1,11 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
 
-$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
-$fontDirs = $defaultConfig['fontDir'];
-
-$defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
-$fontData = $defaultFontConfig['fontdata'];
-
-$mpdf = new \Mpdf\Mpdf([
-    'fontDir' => array_merge($fontDirs, [
-        __DIR__ . '/tmp',
-    ]),
-    'fontdata' => $fontData + [
-        'sarabun' => [
-            'R' => 'THSarabunNew.ttf',
-            'I' => 'THSarabunNew Italic.ttf',
-            'B' => 'THSarabunNew Bold.ttf',
-            'BI'=> 'THSarabunNew BoldItalic.ttf'
-        ]
-    ],
-    'default_font' => 'sarabun'
-]);
 
 
 if (!empty($_POST)) {
@@ -65,7 +50,7 @@ if (!empty($_POST)) {
                                 </select>
 
                                 <input type="submit" value="ค้นหา" class="  btn-success " name="searchM" >
-                                <a href="MyReport.pdf">โหลดรายการสรุปรายเดือน (pdf)</a>
+                                
                                 
                             </div>
                             <?php
@@ -140,8 +125,8 @@ if (!empty($_POST)) {
 
                                     error_reporting(0);
                                     $sql = "SELECT * , m2.mem_name AS name2 FROM  import dr1
-                                            LEFT OUTER JOIN member m2 ON (dr1.mem_name=m2.mem_id)
-                                            WHERE MONTH(date_import)='$month'";
+                                            LEFT OUTER JOIN member m2 ON (dr1.mem_name=m2.mem_id) 
+                                            WHERE MONTH(date_import)='$month' ORDER BY dr1.import_id ASC";
 
                                     $res = mysqli_query($con, $sql);
 
@@ -177,12 +162,6 @@ if (!empty($_POST)) {
                         <!-- /.card -->
 
 
-                        <?php
-                                $html=ob_get_contents();
-                                $mpdf->WriteHTML($html);
-                                $mpdf->Output("MyReport.pdf");
-                                ob_end_flush();
-                            ?>
 
                         </div>
 

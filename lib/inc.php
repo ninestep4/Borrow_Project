@@ -27,6 +27,16 @@ else if($Node=="emat"){return "editmat.php";}
 else if($Node=="stmat"){return "showtotalmat.php";}
 else if($Node=="searchmat"){return "searchmaterial.php";}
 
+//showวัสดุ
+else if($Node=="show1"){return "./show/show1.php";}
+else if($Node=="show2"){return "./show/show2.php";}
+else if($Node=="show3"){return "./show/show3.php";}
+else if($Node=="show4"){return "./show/show4.php";}
+else if($Node=="show5"){return "./show/show5.php";}
+else if($Node=="show6"){return "./show/show6.php";}
+else if($Node=="show7"){return "./show/show7.php";}
+else if($Node=="show8"){return "./show/show8.php";}
+else if($Node=="show9"){return "./show/show9.php";}
 
 //ครุภัณณฑ์
 else if($Node=="showdurable"){return "showdurable.php";}

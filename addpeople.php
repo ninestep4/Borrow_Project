@@ -1,3 +1,9 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
 
 if (isset($_POST['btsave'])) {
@@ -94,8 +100,10 @@ if (isset($_POST['btsave'])) {
                 <div class="col-md-15 mb-4">
                   <select class="select form-control-lg" name="people_type">
                     <option value="0" disabled>ประเภทของบุคคล</option>
+	  	    <option value="บุคลากรในคลินิก">บุคลากรในคลินิก</option>
                     <option value="บุคคลในชุมชน">บุคคลในชุมชน</option>
                     <option value="บุคคลนอกชุมชน">บุคคลนอกชุมชน</option>
+		    
                   </select>
                   <label class="form-label select-label">ประเภทของบุคคล</label>
                 </div>

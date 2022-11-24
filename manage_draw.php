@@ -1,3 +1,9 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
 if (isset($_GET['DID'])) {
     $DID = $_GET['DID'];
@@ -53,14 +59,19 @@ while ($row = mysqli_fetch_assoc($res)) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT dr1.*,mt1.*, m1.mem_name AS name1 , m2.mem_name AS name2 FROM meterdraw dr1  
+                        $sql = "SELECT dr1.*,mt1.*, m1.mem_name AS name1 , m2.mem_name AS name2,unit.* FROM meterdraw dr1  
                                 LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
                                 LEFT OUTER JOIN member m1 ON (dr1.draw_userid_draw=m1.mem_id)
                                 LEFT OUTER JOIN member m2 ON (dr1.draw_userid_app=m2.mem_id)
+				LEFT OUTER JOIN unit ON (dr1.unit_name=unit.unit_id)
                                 order by dr1.draw_id DESC ";
 
                         $res = mysqli_query($con, $sql);
-
+			
+			
+          		
+            		
+			
 
                         while ($row = mysqli_fetch_assoc($res)) {
                             $draw_id = $row['draw_id'];
@@ -101,7 +112,11 @@ while ($row = mysqli_fetch_assoc($res)) {
                                 <td style="text-align:center"><?= $draw_num; ?> <?= $unit_name; ?></td>
 
                                 <td style="text-align:center">
-                                    <?= $people_name; ?><br>
+                             
+			
+                                    <?= $people_name; ?>
+                               
+                                    <br>
                                     (<?= $draw_date_app ?>)
                                 </td>
 

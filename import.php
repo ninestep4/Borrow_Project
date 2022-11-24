@@ -1,8 +1,16 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
 if (isset($_GET['MATID'])) {
   $MATID = $_GET['MATID'];
 
-  $sql = "SELECT * FROM meter WHERE met_id='$MATID' ";
+  $sql = "SELECT * FROM meter 
+LEFT OUTER JOIN unit ON (meter.unit_name=unit.unit_id)
+WHERE met_id='$MATID' ";
   $res = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($res);
   $met_id = $row['met_id'];
@@ -62,7 +70,7 @@ if (isset($_POST['btsave1'])) {
   VALUES ('$met_name','$met_id','$totaldif','$import','$mem_id','$today','$unit_name')";
 
   $res3 = mysqli_query($con, $sql3);
-  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=smat">';
+  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showdurable">';
   exit;
 }
 

@@ -1,3 +1,9 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
 if (isset($_GET['MATID'])) {
   $MATID = $_GET['MATID'];
@@ -87,7 +93,7 @@ if (isset($_POST['btsave'])) {
 
                         <div class="form-group">
                           <label for="inputName">รายละเอียด</label>
-                          <input type="text" name="met_detail" id="inputName" class="form-control" required="" value="<?= $met_detail; ?>">
+                          <input type="text" name="met_detail" id="inputName" class="form-control"  value="<?= $met_detail; ?>">
                         </div>
 
                         <div class="form-group">

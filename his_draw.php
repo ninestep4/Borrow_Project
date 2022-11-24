@@ -1,3 +1,9 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <div class="content-wrapper">
     <br>
     <div class="col-md-12">
@@ -51,9 +57,16 @@ WHERE dr1.draw_userid_draw='$memid' order by dr1.draw_status ASC  ";
 
 
                             if ($draw_status == '0') {
-                                $statusname = "<font color='red'>รอรับวัสดุ</font>";
-                            } else {
+                                $statusname = "<font color='yellow'>รอรับวัสดุ</font>";
+                            } 
+			    else if ($draw_status == '3') {
+                                $statusname = "<font color='red'>ไม่อนุมัติ</font>";
+                            }
+			    else if ($draw_status == '1') {
                                 $statusname = "<font color='Green'>รับวัสดุแล้ว</font>";
+                            }
+			    else if ($draw_status == '4') {
+                                $statusname = "<font color='Green'>คืนครุภัณฑ์แล้ว</font>";
                             }
 
                         ?>
@@ -70,7 +83,10 @@ WHERE dr1.draw_userid_draw='$memid' order by dr1.draw_status ASC  ";
                                     <?php
                                     if ($draw_status == '0') {
                                         echo "รออนุมัติ";
-                                    } else {
+                                    } 
+				    
+
+				    else {
                                     ?>
                                         <?= $name2app; ?><br>
                                         (<?= $draw_date_app; ?>)

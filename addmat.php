@@ -1,3 +1,9 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
 
 if (isset($_POST['btsave'])) {
@@ -31,7 +37,7 @@ if (isset($_POST['btsave'])) {
   $sql .= " ) ";
 
   $res = mysqli_query($con, $sql);
-  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=smat">';
+  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showdurable">';
   exit;
 }
 ?>
@@ -70,14 +76,14 @@ if (isset($_POST['btsave'])) {
                 <div class="col-md-6 mb-4 pb-2">
                 
                   <label for="inputName">จำนวน</label>
-                  <input type="number" name="met_total" id="inputName" class="form-control" required="">
+                  <input type="number" required  min = "0" max = "99999" name="met_total" id="inputName" class="form-control" required="">
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
                   <label for="inputStatus">หน่วย</label>
                   <select name="unit_name" id="inputStatus" class="form-control" required="">
                   <option selected disabled>กรุณาเลือก</option>
                       <?php
-                      $sql = "SELECT * FROM unit";
+                      $sql = "SELECT * FROM unit ORDER BY `unit`.`unit_name` ASC";
                       $res = mysqli_query($con, $sql);
                       while ($row = mysqli_fetch_assoc($res)) {
                         $unit_id = $row['unit_id'];

@@ -1,8 +1,16 @@
+﻿<?php
+if(!isOnline()){
+  
+  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
+}
+?>
 <?php
 if (isset($_GET['MATID'])) {
   $MATID = $_GET['MATID'];
 
-  $sql = "SELECT * FROM meter WHERE met_id='$MATID' ";
+  $sql = "SELECT * FROM meter 
+LEFT OUTER JOIN unit ON (meter.unit_name=unit.unit_id)
+WHERE met_id='$MATID' ";
   $res = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($res);
   $met_id = $row['met_id'];
@@ -64,11 +72,19 @@ if (isset($_POST['btsave'])) {
 
 
   $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,   draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber,unit_name) 
-  VALUES                         (''    ,'$metmtype','$draw_num','$met_id','$valuesearch'      ,''            ,'',           '0',        '$D_Post','$D_Postend','$Name','$met_name','$met_id','$serialnumber','$unit_name')";
+  VALUES                         (''    ,'$metmtype','$draw_num','$met_id','$mem_id'      ,''            ,'',           '0',        '$D_Post','$D_Postend','$Name','$met_name','$met_id','$serialnumber','$unit_name')";
 
   $res3 = mysqli_query($con, $sql3);
+
+  if (isAdmin($_SESSION['usr'], $_SESSION['pwd'], $con)) {
   echo '<meta http-equiv="refresh" content="0; url=index.php?Node=managedraw">';
   exit;
+  }
+
+  if(isUser($_SESSION['usr'], $_SESSION['pwd'], $con)){
+    echo '<meta http-equiv="refresh" content="0; url=index.php?Node=hisdraw">';
+    exit;
+  }
 }
 
 
@@ -108,7 +124,9 @@ if (isset($_POST['btsave'])) {
                     <div>
                       <label for="inputName">จำนวนที่เบิก <font color="red">(กรุณาเบิกวัสดุไม่เกินที่มีในสต็อก)</font></label>
                     </div>
-
+		<?php
+                     if (isAdmin($_SESSION['usr'], $_SESSION['pwd'], $con)) {
+                         ?>
                     <body>
                       <br /><br />
                       <div class="container" style="width:500px;">
@@ -123,7 +141,7 @@ if (isset($_POST['btsave'])) {
                         cursor: pointer;
                       }
                     </style>
-
+		<?php } ?>
                     
 
                     <script>
@@ -194,20 +212,23 @@ if (isset($_POST['btsave'])) {
                     <?php } ?>
                     <div>
 
-                      <p>จำนวน: <input type="number" required  min = "0" max = "99999" name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
+                      <p>จำนวน: <input type="number" required  min = "0" max = <?= $met_total ?> name="draw_num" id="inputName" class="form-control" required value="1" style="width: 75px ;"></p>
                     </div>
 
 
                   </div>
-                    <div>
-                      <input type="submit" value="ส่งเบิก" class="btn btn-success " name="btsave">
-                    </div>
+
+                  <div>
+              		<input type="submit" value="ส่งเบิก" class="btn btn-success" name="btsave">
+            	  </div>
+
                 </div>
                 <!-- /.card-body -->
               </div>
 
               <!-- /.card -->
             </div>
+  
       </center>
 
     </section>

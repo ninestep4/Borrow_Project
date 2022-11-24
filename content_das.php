@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $sum_member = 0;
 $sql1 = "SELECT COUNT(*) AS sum_member FROM member";
 $res1 = mysqli_query($con, $sql1);
@@ -19,7 +19,7 @@ $row3 = mysqli_fetch_assoc($res3);
 $sum_md1 += $row3['sum_md1'];
 
 $sum_md2 = 0;
-$sql4 = "SELECT COUNT(*) AS sum_md2 FROM meterdraw WHERE draw_status='1' ";
+$sql4 = "SELECT COUNT(*) AS sum_md2 FROM meterdraw WHERE draw_status='1' OR (met_mtype = '3')";
 $res4 = mysqli_query($con, $sql4);
 $row4 = mysqli_fetch_assoc($res4);
 $sum_md2 += $row4['sum_md2'];
@@ -39,10 +39,24 @@ $row6 = mysqli_fetch_assoc($res6);
 $sum_md4 += $row6['sum_md4'];
 
 $sum_md5 = 0;
-$sql7 = "SELECT SUM(met_total) AS sum_md5 FROM meter WHERE met_mtype = '2'";
+$sql7 = "SELECT SUM(met_total) AS sum_md5 FROM meter WHERE met_mtype = '2'  ";
 $res7 = mysqli_query($con, $sql7);
 $row7 = mysqli_fetch_assoc($res7);
 $sum_md5 += $row7['sum_md5'];
+
+$sum_md6 = 0;
+$sql8 = "SELECT COUNT(*) AS sum_md6 FROM meterdraw WHERE draw_status='3' ";
+$res8 = mysqli_query($con, $sql8);
+$row8 = mysqli_fetch_assoc($res8);
+$sum_md6 += $row8['sum_md6'];
+
+$sum_md7 = 0;
+$sql9 = "SELECT COUNT(*) AS sum_md7 FROM meterdraw WHERE draw_status='4' ";
+$res9 = mysqli_query($con, $sql9);
+$row9 = mysqli_fetch_assoc($res9);
+$sum_md7 += $row9['sum_md7'];
+
+$sum_none = 0;
 
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
@@ -50,7 +64,7 @@ $sum_md5 += $row7['sum_md5'];
 
 <!-- Content Wrapper. Contains page content -->
 
-<div class="content-wrapper" style="background: -webkit-linear-gradient(#7EDABF, #7ED9DA);">
+<div class="content-wrapper" style="background-image: url('img/bg1.jpg');">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -80,7 +94,9 @@ $sum_md5 += $row7['sum_md5'];
 
       <?php if (!isOnline()) { ?>
 
-        <h2>ระบบจอง-ยืม-คืนวัสดุ ครุภัณฑ์ของคลีนิกผู้สูงอายุชุมชนบางตลาดพัฒนา 1 จังหวัดนนทบุรี</h2><br>
+        <h1>ระบบจอง-ยืม-คืนวัสดุ ครุภัณฑ์ของคลีนิกผู้สูงอายุชุมชนบางตลาดพัฒนา 1 จังหวัดนนทบุรี<br>
+          <!-- <img src="bgimg/home.jpg" width="800" class="center"> -->
+
 
 
           <html>
@@ -234,7 +250,7 @@ $sum_md5 += $row7['sum_md5'];
                   </div>
                   <div class="text-end pt-5">
                     <p class="text-sm mb-0 text-capitalize">รายการที่ไม่ผ่านการอนุมัติ</p>
-                    <h4 class="mb-0"><?= $sum_md4; ?> รายการ</h4>
+                    <h4 class="mb-0"><?= $sum_md6; ?> รายการ</h4>
                   </div>
                 </div>
               </div>
@@ -258,9 +274,10 @@ $sum_md5 += $row7['sum_md5'];
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                   ['Task', 'Hours per Day'],
-                  ['รายการเบิกทั้งหมด', <?= $sum_md3; ?>],
-                  ['รออนุมัติ', <?= $sum_md1; ?>],
-                  ['อนุมัติแล้ว', <?= $sum_md2; ?>]
+                  ['รายการเบิกทั้งหมด', <?= $sum_none; ?>],
+                  ['ไม่อนุมัติ', <?= $sum_md6; ?>],
+                  ['รอการอนุมัติ', <?= $sum_md1; ?>],
+                  ['อนุมัติแล้ว', <?= $sum_md7; ?>]
                 ]);
 
                 var options = {
