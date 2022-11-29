@@ -1,10 +1,4 @@
-﻿<?php
-if(!isOnline()){
-  
-  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
-}
-?>
-<link rel="stylesheet" href="./dist/css/adminlte.css">
+﻿<link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
     <div class="col-md-12">
@@ -86,10 +80,10 @@ if(!isOnline()){
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <td width="10%">รูปภาพ</td>
-                            <td width="10%">ชื่อวัสดุ</td>
-                            <td width="10%">รายละเอียด</td>
-                            <td width="1%">ประเภท</td>
+                            <td width="2%">ลำดับ</td>
+                            <td width="8%">รูปภาพ</td>
+                            <td width="8%">ชื่อวัสดุ</td>
+                            <td width="8%">serialnumber</td>
                             <td width="15%" style="text-align:center">จำนวนวัสดุ</td>
                             <td width="5%" style="text-align:center">ยืม</td>
                         </tr>
@@ -116,17 +110,20 @@ if(!isOnline()){
                             $met_img = $row['met_img'];
                             $met_total = $row['met_total'];
                             $met_mtype = $row['met_mtype'];
-		            $unit_name = $row['unit_name'];
+                            $serialnumber = $row['serialnumber'];
+		                    $unit_name = $row['unit_name'];
 
                             $mtype_name = $row['mtype_name'];
 
                         ?>
 
                             <tr>
+                                <td><?= $met_id;?></td>
                                 <td><img src="<?= $met_img; ?>" width="80"></td>
                                 <td><?= $met_name; ?></td>
-                                <td><?= $met_detail; ?></td>
-                                <td><?= $mtype_name; ?></td>
+                                <td width="8%">
+                                <?= $serialnumber; ?></td>
+                                
                                 <td style="text-align:center"><?= $met_total; ?> <?= $unit_name; ?></td>
 
                                 <td style="text-align:center">

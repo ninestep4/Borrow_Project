@@ -43,10 +43,10 @@ if (isset($_GET['MATID'])) {
         <table class="table table-striped">
           <thead>
             <tr>
-              <td>รูปภาพ</th>
-              <td>รหัส</td>
+	      <td>รหัส</td>
+              <td>รูปภาพ</th>          
               <td>ชื่อวัสดุ</td>
-              <td width="1%">รายละเอียด</td>
+              
               <td style="text-align:center">จำนวนที่มีอยู่</td>
               <td style="text-align:center">ประเภท</td>
               <td style="text-align:center">นำเข้า</td>
@@ -75,16 +75,16 @@ if (isset($_GET['MATID'])) {
               $met_mtype = $row['met_mtype'];
               $unit_name = $row['unit_name'];
               $mtype_name = $row['mtype_name'];
-              
+              $br_name = wordwrap($met_name, 85, "<br />\n");
 
             ?>
 
               <tr>
-                
-                <td><img src="<?= $met_img; ?>" width="80"></td>
+
                 <td><?= $met_id; ?></td>
-                <td><?= $met_name; ?></td>
-                <td><?= $met_detail; ?></td>
+                <td><img src="<?= $met_img; ?>" width="80"></td>                
+                <td><?= $br_name; ?></td>
+                
                 <td style="text-align:center"><?= $met_total;?>  <?= $unit_name?></td>
                 <td style="text-align:center"><?= $mtype_name; ?></td>
 

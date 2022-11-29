@@ -1,10 +1,8 @@
 <?php
 include_once("condb.php");
-
-
 function  ViewContent($Node=""){
 if($Node==""){return "content_das.php";}
-else if($Node=="home"){return "home.php";}
+else if($Node=="showmetforuser"){return "showmetforuser.php";}
 else if($Node=="pagelogin"){return "frmlogin.php";}
 else if($Node=="reg"){return "register.php";}
 else if($Node=="chk"){return "chklogin.php";}
@@ -19,6 +17,8 @@ else if($Node=="editpro"){return "editprofile.php";}
 else if($Node=="addpeople"){return "addpeople.php";}
 else if($Node=="search"){return "search.php";}
 else if($Node=="editpeople"){return "editpeople.php";}
+else if($Node=="report") {return "report.php";}
+else if($Node=="reportout") {return "reportout.php";}
 
 //วัสดุ
 else if($Node=="smat"){return "showmat.php";}
@@ -42,9 +42,6 @@ else if($Node=="show9"){return "./show/show9.php";}
 else if($Node=="showdurable"){return "showdurable.php";}
 else if($Node=="showdrawdrb"){return "showdrawdurable.php";}
 
-
-
-
 //การคำนวณวัสดุ
 else if($Node=="sdraw"){return "showdraw.php";}
 else if($Node=="drawmat"){return "draw_mat.php";}
@@ -52,15 +49,12 @@ else if($Node=="hisdraw"){return "his_draw.php";}
 else if($Node=="managedraw"){return "manage_draw.php";}
 else if($Node=="restoredraw") {return "restore_draw.php";}
 else if($Node=="import") {return "import.php";}
-else if($Node=="report") {return "report.php";}
 else if($Node=="detail") {return "detaildraw.php";}
 else if($Node=="noapp") {return "noapp.php";}
 else if($Node=="fucre") {return "fucre.php";}
 
-
 else {return "index.php";}
 }
-
 
 function isOnline(){
 if(isset($_SESSION['usr']) && isset($_SESSION['pwd'])){
@@ -69,9 +63,6 @@ if(isset($_SESSION['usr']) && isset($_SESSION['pwd'])){
 	return false;
 }
 }
-
-
-
 function isAdmin($usr=0,$pwd=0,$con=0){
 	$sql="SELECT * FROM member WHERE mem_user='$usr' AND mem_pass='$pwd' ";
 	$res=mysqli_query($con,$sql);
@@ -83,7 +74,6 @@ function isAdmin($usr=0,$pwd=0,$con=0){
 	}
 }
 
-
 function isUser($usr=0,$pwd=0,$con=0){
 	$sql="SELECT * FROM member WHERE mem_user='$usr' AND mem_pass='$pwd' ";
 	$res=mysqli_query($con,$sql);
@@ -94,7 +84,5 @@ function isUser($usr=0,$pwd=0,$con=0){
 		return $info['mem_level'] == 2 ? true : false;
 	}
 }
-
-
 
 ?>

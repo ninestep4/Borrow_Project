@@ -20,6 +20,7 @@ WHERE met_id='$MATID' ";
   $met_total = $row['met_total'];
   $met_mtype = $row['met_mtype'];
   $unit_name = $row['unit_name'];
+  $serialnumber = $row['serialnumber'];
 }
 ?>
 <link rel="stylesheet" href="./dist/css/adminlte.css">
@@ -36,21 +37,18 @@ if (!empty($_POST)) {
   $D_Postend =  $_POST['end'];
 }
 
-
+$date = date("Y-m-d");
 
 
 
 include_once("search.php");
 
-if (!empty($_POST)) {
-  $output =  $_POST['people_name'];
-}
+
 
 if (isset($_POST['btsave'])) {
   $met_id = $_POST['met_id'];
   $draw_num = $_POST['draw_num'];
   $draw_date = date("d-m-Y");
-  $serialnumber = $_POST['serialnumber'];
   $Name = $_POST['Name'];
 
 
@@ -61,6 +59,7 @@ if (isset($_POST['btsave'])) {
   $metmtype = $row1['met_mtype'];
   $met_name = $row1['met_name'];
   $unit_name = $row1['unit_name'];
+  $serialnumber = $row1['serialnumber'];
 
   $totaldif = $met_total - $draw_num;
 
@@ -72,7 +71,7 @@ if (isset($_POST['btsave'])) {
 
 
   $sql3 = "INSERT INTO meterdraw (draw_id,met_mtype,draw_num,   draw_metid,draw_userid_draw,draw_userid_app,draw_date_app,draw_status,start_borrow,end_borrow,people_name,met_name,met_id,serialnumber,unit_name) 
-  VALUES                         (''    ,'$metmtype','$draw_num','$met_id','$mem_id'      ,''            ,'',           '0',        '$D_Post','$D_Postend','$Name','$met_name','$met_id','$serialnumber','$unit_name')";
+  VALUES                         (''    ,'$metmtype','$draw_num','$met_id','$mem_id'      ,''            ,'$date',           '0',        '$D_Post','$D_Postend','$Name','$met_name','$met_id','$serialnumber','$unit_name')";
 
   $res3 = mysqli_query($con, $sql3);
 
@@ -89,7 +88,7 @@ if (isset($_POST['btsave'])) {
 
 
 ?>
-
+ 
 
 
 
@@ -191,23 +190,24 @@ if (isset($_POST['btsave'])) {
 
 
                     if ($met_mtype == 2) {
-                    ?>
-                    
 
-                      <input type="text" name="serialnumber" id="serialnumber" class="form-control" placeholder="ป้อนserialnumber" />
-                        <div id="serialnumber"></div><br>
-                        <div>
-                      <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
+                     ?>
+                      <div><b>Serialnumber: </b><?= $serialnumber; ?>
+                      </div> <br>
+                        
+
+			                  <div>
+                          <p>วันที่ยืม: <input type="date" value="<?php echo $D_Post ?>" name="start"></p>
                         </div>
-                      <div>
-                        <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
+                        <div>
+                         <p>วันที่คืน: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
 
-                      </div>
+                         </div>
                       <div>
                       <label for="inputName"><font color="red">(หากไม่กำหนดวันคืนไม่ต้องเลือกวันที่คืน)</font></label>
                     </div>
 
-                    
+                   
 
                     <?php } ?>
                     <div>

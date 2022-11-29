@@ -39,25 +39,26 @@ while ($row = mysqli_fetch_assoc($res)) {
 
         <div class="card">
 
-            <div class="card-header">
-                <h3 class="card-title">จัดการข้อมูลการเบิกวัสดุ</h3>
+            <div class="card-header" >
+                <h3 class="card-title">จัดการข้อมูลการเบิกและการยืม</h3>
             </div>
 
-            <div class="card-body p-0">
-                <table class="table table-striped">
+            <div class="card-body p-0"  >
+                <table class="table table-striped" width="100%">
                     <thead>
                         <tr>
-                            <th width="1 px">อันดับที่ </th> 
-                            <th style="text-align:center">รูปภาพ</th>
-                            <th style="text-align:center">ชื่อวัสดุ</th>
-                            <th style="text-align:center">จำนวนเบิก</th>
-                            <th style="text-align:center">ผู้เบิก/วันเบิก</th>
-                            <th style="text-align:center">ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th style="text-align:center">รายละเอียด</th>
-                            <th style="text-align:center">สถานะ</th>
+                            
+                            <th>รูปภาพ</th>
+                            <th style="text-align:center" width="100%">ชื่อวัสดุ</th>
+                            <th style="text-align:center" width="100%">จำนวนเบิก</th>
+                            <th style="text-align:center" width="100%">ผู้เบิก/วันเบิก</th>
+                            <th style="text-align:center" width="100%">ผู้อนุมัติ/วันอนุมัติ</th>
+                            <th style="text-align:center" width="100%">รายละเอียด</th>
+                            <th style="text-align:center" width="100%">สถานะ</th>
                         </tr>
                     </thead>
                     <tbody>
+                    
                         <?php
                         $sql = "SELECT dr1.*,mt1.*, m1.mem_name AS name1 , m2.mem_name AS name2,unit.* FROM meterdraw dr1  
                                 LEFT OUTER JOIN meter mt1 ON (dr1.draw_metid=mt1.met_id)
@@ -84,12 +85,14 @@ while ($row = mysqli_fetch_assoc($res)) {
                             $draw_date_app = $row['draw_date_app'];
                             $draw_status = $row['draw_status'];
                             $unit_name = $row['unit_name'];
-
+				
+                            
 
                             $met_name = $row['met_name'];
+			    $br_name = wordwrap($met_name, 85, "<br />\n");
                             $met_img = $row['met_img'];
 
-
+		
                             $name1draw = $row['name1'];
                             $name2app = $row['name2'];
 
@@ -106,16 +109,20 @@ while ($row = mysqli_fetch_assoc($res)) {
                         ?>
 
                             <tr>
-                                <td style="text-align:center"><?= $draw_id; ?></td>
-                                <td style="text-align:center"><img src="<?= $met_img; ?>" width="80"></td>
-                                <td style="text-align:center"><?= $met_name; ?></td>
-                                <td style="text-align:center"><?= $draw_num; ?> <?= $unit_name; ?></td>
+                                <!-- <td width="100%"> <?= $draw_id; ?> </td> -->
+                                <td><img src="<?= $met_img; ?>" width="80"></td>
+                                <td><?= $br_name; ?></td>
+                                <td style="text-align:center" width="100%"><?= $draw_num; ?> <?= $unit_name; ?></td>
 
                                 <td style="text-align:center">
-                             
-			
+                                <?php
+				                if($draw_userid_draw > '10'){
+                                    ?>  <?= $name1draw; ?> <?php }
+                                  else{ ?>
                                     <?= $people_name; ?>
-                               
+                                    
+                                    <?php } ?>
+                                    
                                     <br>
                                     (<?= $draw_date_app ?>)
                                 </td>
@@ -138,7 +145,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                                 </td>
                                 <td style="text-align:center">
                                     <?= $statusname; ?>
-                                    <?php if ($draw_status == '0') { ?>
+                                    <?php if ($draw_status == '0') { ?>  <br>
 
                                         <a href="index.php?Node=managedraw&DID=<?= $draw_id; ?>" 
                                         onclick="if(confirm('คุณต้องการอนุมัติรายการนี้ใช่ไหม?')) return true; else return false;"><input type="button" value="อนุมัติ"></a>

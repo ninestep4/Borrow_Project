@@ -1,16 +1,10 @@
 ﻿<?php
-if(!isOnline()){
-  
-  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
-}
-?>
-<?php
 if (isset($_GET['DID'])) {
   $DID = $_GET['DID'];
 
-  $sql = "SELECT * FROM meterdraw 
-	  LEFT OUTER JOIN unit ON (meterdraw.unit_name=unit.unit_id)
-          WHERE draw_id='$DID' ";
+  $sql = "SELECT *,unit.* FROM meterdraw 
+  LEFT OUTER JOIN unit ON (meterdraw.unit_name=unit.unit_id)
+  WHERE draw_id='$DID' ";
   $res = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($res);
   $draw_id = $row['draw_id'];
@@ -61,15 +55,14 @@ if (isset($_GET['DID'])) {
                         </tr>
                   <!-- /.card-body -->
                 </div>
-                
+
+		<div>
+              <a href="index.php?Node=managedraw" class="btn btn-success  " >ย้อนกลับ</a>
+            </div>
+       
                 <!-- /.card -->
               </div>
 
-              <div class="col-md-4">
-              <a href="index.php?Node=managedraw" class="btn btn-success  " >ย้อนกลับ</a>
-
-            </div>
-             
       </center>
 
     </section>

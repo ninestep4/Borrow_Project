@@ -1,10 +1,4 @@
 ﻿<?php
-if(!isOnline()){
-  
-  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
-}
-?>
-<?php
 if (isset($_GET['MATID'])) {
   $MATID = $_GET['MATID'];
   $sql = "DELETE FROM meter WHERE met_id='$MATID' ";
@@ -27,8 +21,8 @@ if (isset($_GET['MATID'])) {
 
       <div class="card-header">
         <div class="row">
-          <div class="col-sm-8" <h3 class="card-title">จัดการข้อมูลวัสดุ
-            <a href="index.php?Node=amat"> [เพิ่มวัสดุ] </a>
+          <div class="col-sm-8" <h3 class="card-title">จัดการข้อมูลครุภัณฑ์
+            <a href="index.php?Node=amat"> [เพิ่มครุภัณฑ์] </a>
             </h3>
           </div>
           <div class="col-sm-4">
@@ -44,12 +38,13 @@ if (isset($_GET['MATID'])) {
         <table class="table table-striped">
           <thead>
             <tr>
+	      <td width="7%">รหัส</td>
               <td>รูปภาพ</td>
-              <td>รหัส</td>
-              <td>ชื่อวัสดุ</td>
-              <td width="1%">รายละเอียด</td>
+              <td width="1%">ชื่อวัสดุ</td>
+              <td width="1%">Serialnumber</td>
               <td style="text-align:center">จำนวนที่มีอยู่</td>
               <td>ประเภท</td>
+	     <!-- <td style="text-align:center" >สถานะ</td> -->
               <td style="text-align:center">รายการนำเข้า</td>
               <td style="text-align:center">แก้ไขรายการ</td>
               <td style="text-align:center">ลบรายการ</td>
@@ -61,8 +56,9 @@ if (isset($_GET['MATID'])) {
               $material_name = $_POST["material_name"];
             }
             error_reporting(0);
-            $sql = "SELECT meter.*,metertype.* FROM meter
+            $sql = "SELECT meter.*,metertype.*,unit.* FROM meter
           LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
+          LEFT OUTER JOIN unit ON (meter.unit_name=unit.unit_id)
           WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='0'AND (meter.met_mtype='2')  )  ORDER BY meter.met_name ASC ";
             $res = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_assoc($res)) {
@@ -72,19 +68,25 @@ if (isset($_GET['MATID'])) {
               $met_img = $row['met_img'];
               $met_total = $row['met_total'];
               $met_mtype = $row['met_mtype'];
+              $serialnumber = $row['serialnumber'];
+	      $unit_name = $row['unit_name'];
 
               $mtype_name = $row['mtype_name'];
 
             ?>
 
               <tr>
-
+		<td width="3%"><?= $met_id; ?></td>
                 <td><img src="<?= $met_img; ?>" width="80"></td>
-                <td width="1%"><?= $met_id; ?></td>
                 <td><?= $met_name; ?></td>
-                <td><?= $met_detail; ?></td>
-                <td style="text-align:center"><?= $met_total; ?></td>
+                <td style="text-align:center"><?= $serialnumber; ?></td>
+                <td style="text-align:center"><?= $met_total; ?> <?= $unit_name; ?></td>
                 <td><?= $mtype_name; ?></td>
+		<!--<td style="text-align:center">
+                <a href="index.php?Node=import&MATID=<?= $met_id; ?>"type="button" class="btn btn-info" 
+                        onclick="if(confirm('คุณต้องการนำเข้ารายการนี้ใช่ไหม?')) return true; else return false;">ส่งซ่อม
+                    </a>
+                </td> -->
 
                 
                 <td style="text-align:center">

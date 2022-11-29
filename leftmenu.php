@@ -219,6 +219,13 @@ if (isOnline()) {
                     </a>
                 </li>
 
+		<li class="nav-item">
+                    <a href="index.php?Node=reportout" class="nav-link">
+                        <i class="material-icons">search</i>
+                        <p>รายงานการนำออก</p>
+                    </a>
+                </li>
+
                 <footer style="position:fixed; bottom: 0; height:100px; ">
                     <div class="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
                         <li class="nav-item">
@@ -241,7 +248,7 @@ if (isOnline()) {
                 </li>
 
                 <li class="nav-item">
-                    <a href="index.php?Node=sdraw" class="nav-link">
+                    <a href="index.php?Node=showmetforuser" class="nav-link">
                         <i class="nav-icon far fa-circle text-warning"></i>
                         <p>เบิกวัสดุ</p>
                     </a>
@@ -250,7 +257,7 @@ if (isOnline()) {
 		<li class="nav-item">
                      <a href="index.php?Node=showdrawdrb" class="nav-link">
                          <i class="nav-icon far fa-circle text-warning"></i>
-                         <p>ทำเรื่องยืมครุภัณฑ์</p>
+                         <p>ยืมครุภัณฑ์</p>
                      </a>
                 </li>
 

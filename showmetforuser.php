@@ -1,8 +1,4 @@
-﻿<?php
-if(!isOnline()){
-echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";} ?>
-
-<link rel="stylesheet" href="./dist/css/adminlte.css">
+﻿<link rel="stylesheet" href="./dist/css/adminlte.css">
 <div class="content-wrapper">
     <br>
     <div class="col-md-12">
@@ -99,7 +95,7 @@ echo "<script>alert('กรุณาเข้าสู่ระบบก่อ�
                         $sql = "SELECT meter.*,metertype.*,unit.* FROM meter
                         LEFT OUTER JOIN metertype ON (meter.met_mtype=metertype.mtype_id)
                         LEFT OUTER JOIN unit ON (meter.unit_name=unit.unit_id)
-                        WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND meter.met_mtype='9') ORDER BY meter.met_name ASC";
+                        WHERE ( met_name LIKE '%$material_name%' AND meter.met_total>='1'AND meter.met_mtype='3' OR meter.met_mtype='5') ORDER BY meter.met_name ASC";
                         $res = mysqli_query($con, $sql);
 
                         while ($row = mysqli_fetch_assoc($res)) {

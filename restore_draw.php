@@ -54,13 +54,13 @@ if(isset($_POST['btre'])){
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th width="10%">รูปภาพ</th>
-                            <th width="7%">ชื่อวัสดุ</th>
-                            <th width="15%" style="text-align:center">จำนวนเบิก</th>
-                            <th width="15%">ผู้เบิก/วันเบิก</th>
-                            <th width="20%">ผู้อนุมัติ/วันอนุมัติ</th>
-                            <th style="text-align:center">รายละเอียด</th>
-                            <th width="10%">สถานะ</th>
+                            <td width="10%">รูปภาพ</td>
+                            <td width="7%">ชื่อวัสดุ</td>
+                            <td width="15%" style="text-align:center">จำนวนเบิก</td>
+                            <td width="15%">ผู้เบิก/วันเบิก</td>
+                            <td width="20%">ผู้อนุมัติ/วันอนุมัติ</td>
+                            <td style="text-align:center">รายละเอียด</td>
+                            <td width="10%">สถานะ</td>
                             
                         </tr>
                     </thead>

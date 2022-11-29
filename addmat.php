@@ -1,10 +1,4 @@
 ﻿<?php
-if(!isOnline()){
-  
-  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
-}
-?>
-<?php
 
 if (isset($_POST['btsave'])) {
   $met_name = $_POST['met_name'];
@@ -12,6 +6,7 @@ if (isset($_POST['btsave'])) {
   $met_total = $_POST['met_total'];
   $met_mtype = $_POST['met_mtype'];
   $unit_name = $_POST['unit_name'];
+  $serialnumber = $_POST['serialnumber'];
 
   $chk_pic = $_FILES['met_img']["name"];
   if ($chk_pic <> "") {
@@ -24,7 +19,7 @@ if (isset($_POST['btsave'])) {
 
   $sql = "INSERT INTO meter ";
   $sql .= "(met_id,met_name,met_detail,met_img,";
-  $sql .= "met_total,met_mtype,unit_name)";
+  $sql .= "met_total,met_mtype,unit_name,serialnumber)";
   $sql .= " VALUES ";
   $sql .= " ( ";
   $sql .= " '' ";
@@ -34,6 +29,7 @@ if (isset($_POST['btsave'])) {
   $sql .= " ,'$met_total' ";
   $sql .= " ,'$met_mtype' ";
   $sql .= " ,'$unit_name' ";
+  $sql .= " ,'$serialnumber' ";
   $sql .= " ) ";
 
   $res = mysqli_query($con, $sql);
@@ -59,7 +55,7 @@ if (isset($_POST['btsave'])) {
             <div class="card-body">
 
             <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">เพิ่มข้อมูลวัสดุ</h3>
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">เพิ่มข้อมูลวัสดุและครุภัณฑ์</h3>
         
 
               <div class="form-group">
@@ -76,7 +72,7 @@ if (isset($_POST['btsave'])) {
                 <div class="col-md-6 mb-4 pb-2">
                 
                   <label for="inputName">จำนวน</label>
-                  <input type="number" required  min = "0" max = "99999" name="met_total" id="inputName" class="form-control" required="">
+                  <input type="number" name="met_total" id="inputName" class="form-control" required="">
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
                   <label for="inputStatus">หน่วย</label>
@@ -113,8 +109,13 @@ if (isset($_POST['btsave'])) {
                     <option value="<?= $mtype_id; ?>"><?= $mtype_name; ?></option>
 
                   <?php } ?>
-
+                    
                 </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inputName">serialnumber <font color="red">(กรณีต้องการเพื่มครุภัณฑ์)</font></label>
+                <input type="text" name="serialnumber" id="inputName" class="form-control" >
               </div>
 
 

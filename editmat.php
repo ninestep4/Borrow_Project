@@ -1,10 +1,4 @@
 ﻿<?php
-if(!isOnline()){
-  
-  echo "<script>alert('กรุณาเข้าสู่ระบบก่อนการใช้งาน');window.location ='index.php?Node=pagelogin';</script>";
-}
-?>
-<?php
 if (isset($_GET['MATID'])) {
   $MATID = $_GET['MATID'];
 
@@ -17,6 +11,7 @@ if (isset($_GET['MATID'])) {
   $met_img = $row['met_img'];
   $met_total = $row['met_total'];
   $met_mtype = $row['met_mtype'];
+  $serialnumber =$row['serialnumber'];
   $unit_name1 = $row['unit_name'];
 }
 ?>
@@ -28,8 +23,9 @@ if (isset($_POST['btsave'])) {
   $met_detail = $_POST['met_detail'];
   $met_total = $_POST['met_total'];
   $met_mtype = $_POST['met_mtype'];
+  $serialnumber = $_POST['serialnumber'];
   $unit_name = $_POST['unit_name'];
-
+  
   $met_img_ori = $_POST['met_img_ori'];
 
   $chk_pic = $_FILES['met_img']["name"];
@@ -47,6 +43,7 @@ if (isset($_POST['btsave'])) {
   $sql .= " ,met_img='$met_img' ";
   $sql .= " ,met_total='$met_total' ";
   $sql .= " ,met_mtype='$met_mtype' ";
+  $sql .= " ,serialnumber='$serialnumber' ";
   $sql .= " ,unit_name='$unit_name' ";
   $sql .= " WHERE met_id='$met_id' ";
 
@@ -55,7 +52,7 @@ if (isset($_POST['btsave'])) {
   $sql2 = "UPDATE import SET met_total='$met_total'";
   $res2 = mysqli_query($con, $sql);
 
-  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=smat">';
+  echo '<meta http-equiv="refresh" content="0; url=index.php?Node=showdurable">';
   exit;
 }
 ?>
@@ -79,7 +76,7 @@ if (isset($_POST['btsave'])) {
                   <div class="col-md-12">
                     <div class="card card-primary">
                       <div class="card-header">
-                        <h3 class="card-title">แก้ไขข้อมูลวัสดุ</h3>
+                        <h3 class="card-title">แก้ไขข้อมูลวัสดุและครุภัณฑ์</h3>
                       </div>
                       <div class="card-body">
 
@@ -95,6 +92,7 @@ if (isset($_POST['btsave'])) {
                           <label for="inputName">รายละเอียด</label>
                           <input type="text" name="met_detail" id="inputName" class="form-control"  value="<?= $met_detail; ?>">
                         </div>
+
 
                         <div class="form-group">
                           <label for="inputName">จำนวน</label>
@@ -147,7 +145,15 @@ if (isset($_POST['btsave'])) {
                           </select>
                         </div>
 
-
+                        <?php
+                        if($mtype_id = '2'){
+                          ?>
+                        <div class="form-group">
+                          <label for="inputName">Serialnumber</label>
+                          <input type="text" name="serialnumber" id="inputName" class="form-control"  value="<?= $serialnumber; ?>">
+                        </div>
+                        
+                        <?php } ?>
                         <div class="form-group">
                           <img src="<?= $met_img; ?>" width="80">
                           <input type="hidden" name="met_img_ori" value="<?= $met_img; ?>">

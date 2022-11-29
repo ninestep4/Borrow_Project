@@ -6,9 +6,7 @@ if(!isOnline()){
 ?>
 
 <?php
-
-
-
+error_reporting(0);
 $D_Post = date("d-m-Y");
 if (!empty($_POST)) {
   $D_Post =  $_POST['start'];
@@ -24,7 +22,7 @@ if (!empty($_POST)) {
 <link rel="stylesheet" href="./dist/css/adminlte.css">
 
 <section class="content">
-    <form action="index.php?Node=report" method="POST" enctype="multipart/form-data">
+    <form action="index.php?Node=reportout" method="POST" enctype="multipart/form-data">
         <center>
             <div class="content-wrapper">
                 <br>
@@ -33,14 +31,12 @@ if (!empty($_POST)) {
                     <div class="card">
 
                         <div class="card-header col-md-15 mb-4">
-                            <h3 class="card-title">จัดการข้อมูลการเบิกวัสดุ</h3>
+                            
 
 
                             <div class="card-body col-md-15 mb-4"><br>
-                            <div>
-                                <p>เริ่มวันที่: <input type="date" value="<?php echo $D_Post ?>" name="start"></p> <p>ถึง: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
-                            <!-- </div>
-                                <select name="month" id="month" class="form-control custom-select" style="width:500px;" >
+                            <p>เริ่มวันที่: <input type="date" value="<?php echo $D_Post ?>" name="start"></p> <p>ถึง: <input type="date" value="<?php echo $D_Postend ?>" name="end"></p>
+                                <!-- <select name="month" id="month" class="form-control custom-select" style="width:500px;" >
                                     <option value="">เลือกเดือนที่ต้องการค้นหา</option>
 
                                     <option value="1">มกราคม</option>
@@ -56,14 +52,12 @@ if (!empty($_POST)) {
                                     <option value="11">พฤศจิกายน</option>
                                     <option value="12">ธันวาคม</option>
 
-                                </select>
+                                </select> -->
 
-                                <input type="submit" value="ค้นหา" class="  btn-success " name="searchM" >
+                                <input type="submit" value="ค้นหา" class="  btn-success " name="searchoutM" >
                                 
                                 
-                            </div> -->
-                            <input type="submit" value="ค้นหา" class="  btn-success " name="searchM" >
-				<br>
+                            </div>
                             <?php
                             error_reporting(0);
 
@@ -108,10 +102,10 @@ if (!empty($_POST)) {
                             <?php
                              ob_start();
                              ?>
-				<br>
+
                             <div>
                                 <?php error_reporting(0); ?>
-                                <h1>รายการนำเข้าประจำเดือน</h1>
+                                <h1>รายการนำออกประจำเดือน</h1>
                                 <h3><?= $M ?></h3>
                             </div>
 
@@ -123,10 +117,11 @@ if (!empty($_POST)) {
                                     <tr>
                                          <td style="text-align:center" width="10%" >ลำดับ</td>
                                          <td width="20%">ชื่อวัสดุ</td>
+                                         <td style="text-align:center" width="15%">จำนวนออก</td>
                                          <td style="text-align:center" width="15%">จำนวนคงเหลือ</td>
-                                         <td style="text-align:center" width="20%">จำนวนนำเข้า</td>
-                                         <td width="20%">ผู้นำเข้า</td>
-                                         <td width="15%">วันที่นำเข้า</td>
+                                         
+                                         
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -135,12 +130,15 @@ if (!empty($_POST)) {
                                     
 
                                     error_reporting(0);
-                                    $sql = "SELECT * , m2.mem_name AS name2 FROM  import dr1
-                                            LEFT OUTER JOIN member m2 ON (dr1.mem_name=m2.mem_id) 
-                                            WHERE `date_import` BETWEEN '$D_Post' AND '$D_Postend' ORDER BY dr1.import_id ASC";
+                                    $sql = "SELECT meterdraw.met_name , sum(draw_num) as SUMNUM , meter.met_total,unit.* FROM meterdraw,meter
+                                    LEFT OUTER JOIN unit ON (meter.unit_name=unit.unit_id)
+                                    WHERE draw_status = '1' AND  draw_date_app BETWEEN '$D_Post' AND '$D_Postend' AND meterdraw.met_id = meter.met_id GROUP BY draw_metid 
+                                    ";
+                                  
+                                          
 
                                     $res = mysqli_query($con, $sql);
-
+                                    $i=1;
                                     while ($row = mysqli_fetch_assoc($res)) {
                                         $import_id = $row['import_id'];
                                         $met_name = $row['met_name'];
@@ -150,25 +148,34 @@ if (!empty($_POST)) {
                                         $date_import = $row['date_import'];
                                         $name2 = $row['name2'];
                                         $unit_name=$row['unit_name'];
+                                        $draw_num=$row['SUMNUM'];
+                                        $draw_metid=$row['draw_metid'];
+                                        
 
+                                        // $sql1 = "SELECT * FROM meter WHERE $draw_metid = met_id ";
+                                        // $res1 = mysqli_query($con, $sql1);
+                                        
+                                        // while ($row1 = mysqli_fetch_assoc($res)) {
+                                        //     $met_total=$row1['met_total'];
+                                        
                                     ?>
 
-                                       
+                                    
 
                         </div>
                          <div class="card-body p-0">
                             <tr>
-                                         <td style="text-align:center"><?= $import_id; ?></td>
+                                         <td style="text-align:center"><?= $i; ?></td>
                                          <td><?= $met_name; ?></td>
-                                         <td style="text-align:center"><?= $met_total; ?></td>
-                                         <td style="text-align:center"><?= $import_total; ?></td>
-                                         <td><?= $mem_name; ?></td>
-                                         <td><?= $date_import; ?></td>
+                                         <td style="text-align:center"><?= $draw_num; ?> <?= $unit_name; ?></td>
+                                         <td style="text-align:center"><?= $met_total; ?> <?= $unit_name; ?></td>
+                                     
                             </tr>
                         </tbody>
 
-
-                        <?php } ?>
+                            
+                        <?php $i++; } ?>
+                        
                         </table>
                         <!-- /.card -->
 
